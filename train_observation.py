@@ -23,7 +23,7 @@ import lightning as Lightning
 def train_observation():
     net_type = "comp"#"d"
     dataset = "gibson_f"
-    dataset_path = r"C:\Users\matth\Downloads\Gibson_Floorplan_Localization_Dataset"
+    dataset_path = "/cluster/scratch/wueestm/gibson/Gibson_Floorplan_Localization_Dataset"
 
     # get device
     device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -94,11 +94,18 @@ def train_observation():
                 F_W=F_W,
                 use_pred=True).to(device)
 
-
+    #from lightning.pytorch.callbacks import ModelCheckpoint
+    #checkpoint_callback = ModelCheckpoint(
+    #dirpath='checkpoints',  # Directory where the checkpoints will be saved
+    #filename='best-checkpoint',  # Filename for the checkpoint
+    #save_top_k=1,  # Save only the best model
+    #monitor='val_loss',  # Metric to monitor to decide the best model
+    #mode='min'  # Minimize the monitored metric
+    #)
 
     # Train the model
-    trainer = Lightning.Trainer(fast_dev_run=10)
-    #trainer.fit(model, dataset)
+    trainer = Lightning.Trainer(max_epochs=1, max_steps=10, enable_checkpointing=True)
+    #trainer = Lightning.Trainer(fast_dev_run=10, enable_checkpointing=True)
     trainer.fit(model, train_dataloaders=dataloader)
 
 

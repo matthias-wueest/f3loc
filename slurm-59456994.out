@@ -1,0 +1,32 @@
+======= USING DEVICE :  cuda  =======
+/cluster/home/wueestm/anaconda3/envs/f3loc/lib/python3.8/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/cluster/home/wueestm/anaconda3/envs/f3loc/lib/python3.8/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=ResNet50_Weights.IMAGENET1K_V1`. You can also use `weights=ResNet50_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+/cluster/home/wueestm/anaconda3/envs/f3loc/lib/python3.8/site-packages/lightning/pytorch/trainer/connectors/logger_connector/logger_connector.py:75: Starting from v1.9.0, `tensorboardX` has been removed as a dependency of the `lightning.pytorch` package, due to potential conflicts with other packages in the ML ecosystem. For this reason, `logger=True` will use `CSVLogger` as the default logger, unless the `tensorboard` or `tensorboardX` packages are found. Please `pip install lightning[extra]` or one of them to enable TensorBoard support by default
+Running in `fast_dev_run` mode: will run the requested loop using 10 batch(es). Logging and checkpointing is suppressed.
+/cluster/home/wueestm/anaconda3/envs/f3loc/lib/python3.8/site-packages/lightning/pytorch/trainer/configuration_validator.py:74: You defined a `validation_step` but have no `val_dataloader`. Skipping val loop.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+
+  | Name       | Type       | Params
+------------------------------------------
+0 | comp_d_net | comp_d_net | 26.4 M
+------------------------------------------
+5.3 K     Trainable params
+26.4 M    Non-trainable params
+26.4 M    Total params
+105.718   Total estimated model params size (MB)
+SLURM auto-requeueing enabled. Setting signal handlers.
+/cluster/home/wueestm/anaconda3/envs/f3loc/lib/python3.8/site-packages/lightning/pytorch/trainer/connectors/data_connector.py:441: The 'train_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=7` in the `DataLoader` to improve performance.
+Training: |          | 0/? [00:00<?, ?it/s]Training:   0%|          | 0/10 [00:00<?, ?it/s]Epoch 0:   0%|          | 0/10 [00:00<?, ?it/s] /cluster/home/wueestm/anaconda3/envs/f3loc/lib/python3.8/site-packages/torch/functional.py:512: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at /opt/conda/conda-bld/pytorch_1712608851799/work/aten/src/ATen/native/TensorShape.cpp:3587.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+/cluster/home/wueestm/anaconda3/envs/f3loc/lib/python3.8/site-packages/torch/nn/functional.py:4343: UserWarning: Default grid_sample and affine_grid behavior has changed to align_corners=False since 1.3.0. Please specify align_corners=True if the old behavior is desired. See the documentation of grid_sample for details.
+  warnings.warn(
+/cluster/home/wueestm/anaconda3/envs/f3loc/lib/python3.8/site-packages/torch/nn/modules/conv.py:456: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at /opt/conda/conda-bld/pytorch_1712608851799/work/aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv2d(input, weight, bias, self.stride,
+Epoch 0:  10%|█         | 1/10 [00:06<00:54,  0.16it/s]Epoch 0:  10%|█         | 1/10 [00:06<00:54,  0.16it/s]Epoch 0:  20%|██        | 2/10 [00:10<00:42,  0.19it/s]Epoch 0:  20%|██        | 2/10 [00:10<00:42,  0.19it/s]Epoch 0:  30%|███       | 3/10 [00:15<00:36,  0.19it/s]Epoch 0:  30%|███       | 3/10 [00:15<00:36,  0.19it/s]Epoch 0:  40%|████      | 4/10 [00:20<00:30,  0.19it/s]Epoch 0:  40%|████      | 4/10 [00:20<00:30,  0.19it/s]Epoch 0:  50%|█████     | 5/10 [00:25<00:25,  0.19it/s]Epoch 0:  50%|█████     | 5/10 [00:25<00:25,  0.19it/s]Epoch 0:  60%|██████    | 6/10 [00:30<00:20,  0.19it/s]Epoch 0:  60%|██████    | 6/10 [00:30<00:20,  0.19it/s]Epoch 0:  70%|███████   | 7/10 [00:35<00:15,  0.20it/s]Epoch 0:  70%|███████   | 7/10 [00:35<00:15,  0.20it/s]Epoch 0:  80%|████████  | 8/10 [00:40<00:10,  0.20it/s]Epoch 0:  80%|████████  | 8/10 [00:40<00:10,  0.20it/s]Epoch 0:  90%|█████████ | 9/10 [00:46<00:05,  0.20it/s]Epoch 0:  90%|█████████ | 9/10 [00:46<00:05,  0.20it/s]Epoch 0: 100%|██████████| 10/10 [00:50<00:00,  0.20it/s]Epoch 0: 100%|██████████| 10/10 [00:50<00:00,  0.20it/s]Epoch 0: 100%|██████████| 10/10 [00:51<00:00,  0.20it/s]`Trainer.fit` stopped: `max_steps=10` reached.
+Epoch 0: 100%|██████████| 10/10 [00:51<00:00,  0.20it/s]
