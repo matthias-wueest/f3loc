@@ -352,7 +352,8 @@ class GridSeqDataset(Dataset):
             p = (np.random.random() - 0.5) * 2 * self.pitch
             # generate mask
             mask = np.ones(list(ref_img.shape[:2]))
-            mask = gravity_align(mask, r, p, visualize=False, mode=1)
+            #mask = gravity_align(mask, r, p, visualize=False, mode=1)
+            mask = gravity_align(mask, r, p, mode=1)
             mask[mask < 1] = 0
             ref_mask = mask.astype(np.uint8)
             data_dict["ref_mask"] = ref_mask
@@ -365,7 +366,8 @@ class GridSeqDataset(Dataset):
                 p = (np.random.random() - 0.5) * 2 * self.pitch
                 # generate mask
                 mask = np.ones(list(ref_img.shape[:2]))
-                mask = gravity_align(mask, r, p, visualize=False, mode=1)
+                #mask = gravity_align(mask, r, p, visualize=False, mode=1)
+                mask = gravity_align(mask, r, p, mode=1)
                 mask[mask < 1] = 0
                 src_mask.append(mask.astype(np.uint8))
             src_mask = np.stack(src_mask, axis=0)  # (L, H, W)
@@ -416,3 +418,153 @@ class GridSeqDataset(Dataset):
         data_dict["src_img"] = src_img
 
         return data_dict
+
+
+
+
+#    def __getitem_old__(self, idx):
+#        """
+#        data_dict:
+#            "ref_img": (3, H, W)
+#            "ref_pose": (3)
+#            "src_img": (L, 3, H, W)
+#            "src_pose": (L, 3)
+#            "ref_mask": (H, W)
+#            "src_mask": (L, H, W)
+#            "ref_depth": (fW), ground truth depth of the reference img
+#            "src_depth": (L, fW), ground truth depth of the source img
+#        """
+#        if self.start_scene is not None:
+#            idx += self.scene_start_idx[self.start_scene]
+#
+#        # get the scene name according to the idx
+#        scene_idx = np.sum(idx >= np.array(self.scene_start_idx)) - 1
+#        scene_name = self.scene_names[scene_idx]
+#
+#        # get idx within scene
+#        idx_within_scene = idx - self.scene_start_idx[scene_idx]
+#
+#        # get reference depth
+#        ref_depth = self.gt_depth[scene_idx][idx_within_scene * (self.L + 1) + self.L]
+#        data_dict = {"ref_depth": ref_depth}
+#
+#        # get source depth
+#        src_depth = np.stack(
+#            self.gt_depth[scene_idx][
+#                idx_within_scene * (self.L + 1) : idx_within_scene * (self.L + 1)
+#                + self.L
+#            ],
+#            axis=0,
+#        )
+#        data_dict["src_depth"] = src_depth
+#
+#        # get reference pose
+#        ref_pose = self.gt_pose[scene_idx][idx_within_scene * (self.L + 1) + self.L]
+#        data_dict["ref_noise"] = 0
+#        data_dict["ref_pose"] = ref_pose
+#
+#        # get source pose
+#        src_pose = np.stack(
+#            self.gt_pose[scene_idx][
+#                idx_within_scene * (self.L + 1) : idx_within_scene * (self.L + 1)
+#                + self.L
+#            ],
+#            axis=0,
+#        )
+#        data_dict["src_noise"] = 0
+#        data_dict["src_pose"] = src_pose
+#
+#        # get source images
+#        src_img = []
+#        for l in range(self.L):
+#            image_path = os.path.join(
+#                self.dataset_dir,
+#                scene_name,
+#                "rgb",
+#                str(idx_within_scene).zfill(5) + "-" + str(l) + ".png",
+#            )
+#            src_img_l = cv2.imread(image_path, cv2.IMREAD_COLOR)
+#            src_img.append(src_img_l)
+#        src_img = np.stack(src_img, axis=0).astype(np.float32)  # (L, H, W, 3)
+#        # get reference image
+#        image_path = os.path.join(
+#            self.dataset_dir,
+#            scene_name,
+#            "rgb",
+#            str(idx_within_scene).zfill(5) + "-" + str(self.L) + ".png",
+#        )
+#        ref_img = cv2.imread(image_path, cv2.IMREAD_COLOR).astype(
+#            np.float32
+#        )  # (H, W, 3)
+#
+#        if self.add_rp:
+#            # reference
+#            # get virtual roll and pitch
+#            r = (np.random.random() - 0.5) * 2 * self.roll
+#            p = (np.random.random() - 0.5) * 2 * self.pitch
+#            # generate mask
+#            mask = np.ones(list(ref_img.shape[:2]))
+#            mask = gravity_align(mask, r, p, visualize=False, mode=1)
+#            mask[mask < 1] = 0
+#            ref_mask = mask.astype(np.uint8)
+#            data_dict["ref_mask"] = ref_mask
+#
+#            # source
+#            src_mask = []
+#            for l in range(self.L):
+#                # get virtual roll and pitch
+#                r = (np.random.random() - 0.5) * 2 * self.roll
+#                p = (np.random.random() - 0.5) * 2 * self.pitch
+#                # generate mask
+#                mask = np.ones(list(ref_img.shape[:2]))
+#                mask = gravity_align(mask, r, p, visualize=False, mode=1)
+#                mask[mask < 1] = 0
+#                src_mask.append(mask.astype(np.uint8))
+#            src_mask = np.stack(src_mask, axis=0)  # (L, H, W)
+#            data_dict["src_mask"] = src_mask
+#
+#            # normalize => crop
+#            # normailize
+#            ref_img = cv2.cvtColor(ref_img, cv2.COLOR_BGR2RGB) / 255.0
+#            ref_img -= (0.485, 0.456, 0.406)
+#            ref_img /= (0.229, 0.224, 0.225)
+#
+#            # crop
+#            ref_img[ref_mask == 0, :] = 0
+#
+#            # source
+#            for l in range(self.L):
+#                # normalize => crop
+#                # normailize
+#                src_img[l, :, :, :] = (
+#                    cv2.cvtColor(src_img[l, :, :, :], cv2.COLOR_BGR2RGB) / 255.0
+#                )
+#                src_img[l, :, :, :] -= (0.485, 0.456, 0.406)
+#                src_img[l, :, :, :] /= (0.229, 0.224, 0.225)
+#
+#                # crop
+#                src_img[l, :, :, :][src_mask[l, :, :] == 0, :] = 0
+#        else:
+#            # normalize => crop
+#            # normailize
+#            ref_img = cv2.cvtColor(ref_img, cv2.COLOR_BGR2RGB) / 255.0
+#            ref_img -= (0.485, 0.456, 0.406)
+#            ref_img /= (0.229, 0.224, 0.225)
+#
+#            # source
+#            for l in range(self.L):
+#                # normalize => crop
+#                # normailize
+#                src_img[l, :, :, :] = (
+#                    cv2.cvtColor(src_img[l, :, :, :], cv2.COLOR_BGR2RGB) / 255.0
+#                )
+#                src_img[l, :, :, :] -= (0.485, 0.456, 0.406)
+#                src_img[l, :, :, :] /= (0.229, 0.224, 0.225)
+#
+#        # from H,W,C to C,H,W
+#        ref_img = np.transpose(ref_img, (2, 0, 1)).astype(np.float32)
+#        src_img = np.transpose(src_img, (0, 3, 1, 2)).astype(np.float32)
+#        data_dict["ref_img"] = ref_img
+#        data_dict["src_img"] = src_img
+#
+#        return data_dict
