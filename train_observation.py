@@ -104,7 +104,9 @@ def train_observation():
     #)
 
     # Train the model
-    trainer = Lightning.Trainer(max_epochs=1, max_steps=10, enable_checkpointing=True)
+    trainer = Lightning.Trainer(max_steps=10, max_epochs=1, enable_checkpointing=True)
+    #trainer = Lightning.Trainer(max_steps=8, max_epochs=1, enable_checkpointing=True)
+    #trainer = Lightning.Trainer(max_epochs=8, enable_checkpointing=True)
     #trainer = Lightning.Trainer(fast_dev_run=10, enable_checkpointing=True)
     trainer.fit(model, train_dataloaders=dataloader)
 
