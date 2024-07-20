@@ -57,7 +57,7 @@ class comp_d_net_pl(pl.LightningModule):
         pred_dict = self.comp_d_net(batch)
         d_comp = pred_dict["d_comp"]
         l1_loss = F.l1_loss(d_comp, batch["ref_depth"])
-        self.log("l1_loss-train", l1_loss)
+        self.log("l1_loss-train", l1_loss, prog_bar=True, logger=True)
 
         loss = l1_loss
 
@@ -65,18 +65,18 @@ class comp_d_net_pl(pl.LightningModule):
             shape_loss = self.shape_loss_weight * (
                 1 - F.cosine_similarity(d_comp, batch["ref_depth"], dim=-1).mean()
             )
-            self.log("shape_loss-train", shape_loss)
+            self.log("shape_loss-train", shape_loss, prog_bar=True, logger=True)
 
             loss += shape_loss
 
-        self.log("loss-train", loss)
+        self.log("loss-train", loss, prog_bar=True, logger=True)
         return loss
 
     def validation_step(self, batch, batch_idx):
         pred_dict = self.comp_d_net(batch)
         d_comp = pred_dict["d_comp"]
         l1_loss = F.l1_loss(d_comp, batch["ref_depth"])
-        self.log("l1_loss-valid", l1_loss)
+        self.log("l1_loss-valid", l1_loss, prog_bar=True, logger=True)
 
         loss = l1_loss
 
@@ -84,8 +84,9 @@ class comp_d_net_pl(pl.LightningModule):
             shape_loss = self.shape_loss_weight * (
                 1 - F.cosine_similarity(d_comp, batch["ref_depth"], dim=-1).mean()
             )
-            self.log("shape_loss-valid", shape_loss)
+            self.log("shape_loss-valid", shape_loss, prog_bar=True, logger=True)
 
             loss += shape_loss
 
-        self.log("loss-valid", loss)
+        self.log("loss-valid", loss, prog_bar=True, logger=True)
+        return loss

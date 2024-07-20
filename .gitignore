@@ -46,3 +46,7 @@ desktop.ini
 
 # data
 data/
+
+tb_logs
+slurm-files
+evol_path

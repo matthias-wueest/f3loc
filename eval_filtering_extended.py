@@ -84,6 +84,7 @@ def evaluate_filtering():
     # logs
     log_error = True
     log_timing = True
+    log_error_extended = True
 
     # parameters
     L = 3  # number of the source frames
@@ -438,6 +439,57 @@ def evaluate_filtering():
             feature_extraction_time += feature_extraction_end - feature_extraction_start
             iteration_time += end_iter - start_iter
             n_iter += 1
+
+
+        if evol_path is not None:
+            pred_poses_map = np.stack(pred_poses_map)
+
+            ## Error
+            error = (
+                ((pred_poses_map[-(traj_l - L):, :2] - poses_map[-(traj_l - L):, :2]) ** 2).sum(axis=1)
+                ** 0.5
+            ) * 0.01
+
+
+            ## Distance Travelled
+
+            # Calculate the differences between each consecutive pair of positions
+            differences = np.diff(poses_map[-(traj_l - L):, :2], axis=0)
+
+            # Calculate the Euclidean distance for each pair
+            distances = np.sqrt((differences ** 2).sum(axis=1))* 0.01
+
+            # Calculate the accumulated distance for each timestamp
+            distance_travelled = np.concatenate(([0], np.cumsum(distances)))
+
+
+            ## Plot Error vs. Distance Travelled
+            fig = plt.figure(1, figsize=(6, 6))
+            fig.clf()
+            ax = fig.add_subplot(2, 1, 1)
+            print("here 1")
+            ax.plot(error)
+            ax.grid()
+            ax.set_xlabel("Step [-]", fontsize=14)
+            ax.set_ylabel("Error [m]", fontsize=14)
+            ax.tick_params(axis='x', labelsize=14)
+            ax.tick_params(axis='y', labelsize=14) 
+            ax.set_ylim([0,10])
+            print("here 1")
+            ax = fig.add_subplot(2, 1, 2)
+            ax.plot(distance_travelled, error)
+            ax.grid()
+            ax.set_xlabel("Distance Travelled [m]", fontsize=14)
+            ax.set_ylabel("Error [m]", fontsize=14)
+            ax.tick_params(axis='x', labelsize=14)
+            ax.tick_params(axis='y', labelsize=14)
+            ax.set_ylim([0,10])
+
+            fig.tight_layout()
+
+            if not os.path.exists(os.path.join(evol_path, "pretty_filter", str(data_idx))):
+                os.makedirs(os.path.join(evol_path, "pretty_filter", str(data_idx)))
+            fig.savefig(os.path.join(evol_path, "pretty_filter", str(data_idx), "error_evolution" + ".png"))
 
         if log_error:
             pred_poses_map = np.stack(pred_poses_map)

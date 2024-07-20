@@ -27,7 +27,8 @@ class Attention(nn.Module):
 
         # softmax
         D = Q.shape[2]
-        attn_weights = torch.softmax(QK / (D**2), dim=2)  # (N, L, S)
+        #attn_weights = torch.softmax(QK / (D**2), dim=2)  # (N, L, S)
+        attn_weights = torch.softmax(QK / (D**0.5), dim=2)  # (N, L, S)
 
         # weighted average
         x = torch.einsum("nsd,nls->nld", V, attn_weights)  # (N, L, D)
@@ -330,6 +331,9 @@ def get_rel_pose(ref_pose, src_pose):
     """
     # NOTE: the relative pose theta needs to be in -pi/pi
     if ref_pose.dim() == 1 and src_pose.dim() == 1:
+
+#        print("Here1 (get_rel_pose)")
+
         # only compute a single one
         rel_pose = src_pose - ref_pose  # (3)
         cr = torch.cos(ref_pose[-1])
@@ -340,6 +344,9 @@ def get_rel_pose(ref_pose, src_pose):
         rel_pose[1] = rel_y
         rel_pose[-1] = (rel_pose[-1] + torch.pi) % (torch.pi * 2) - torch.pi
     else:
+
+#        print("Here2 (get_rel_pose)")
+
         # compute the source pose w.r.t. reference pose
         rel_pose = src_pose - ref_pose.unsqueeze(1)  # (N, L, 3)
         cr = torch.cos(ref_pose[:, -1]).unsqueeze(-1)  # (N, 1)

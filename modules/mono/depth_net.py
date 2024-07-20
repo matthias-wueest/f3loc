@@ -80,8 +80,8 @@ class depth_feature_res(nn.Module):
             nn.Linear(1, 32), nn.Tanh(), nn.Linear(32, 32), nn.Tanh()
         )
 
-        # Attention block, attetion to 2D image
-        self.q_proj = nn.Linear(160, 128, bias=False)
+        # Attention block, attention to 2D image
+        self.q_proj = nn.Linear(160, 128, bias=False) # 40x40=160
         self.k_proj = nn.Linear(160, 128, bias=False)
         self.v_proj = nn.Linear(160, 128, bias=False)
         self.attn = Attention()

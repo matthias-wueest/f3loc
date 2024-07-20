@@ -1,0 +1,1873 @@
+======= USING DEVICE :  cuda  =======
+/cluster/home/wueestm/anaconda3/envs/f3loc/lib/python3.8/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/cluster/home/wueestm/anaconda3/envs/f3loc/lib/python3.8/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=ResNet50_Weights.IMAGENET1K_V1`. You can also use `weights=ResNet50_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+load desdf ...
+  0%|          | 0/9 [00:00<?, ?it/s]100%|██████████| 9/9 [00:00<00:00, 1041.14it/s]
+desdf shape:  (113, 79, 36)
+load poses and maps ...
+  0%|          | 0/9 [00:00<?, ?it/s] 22%|██▏       | 2/9 [00:00<00:00, 15.63it/s] 44%|████▍     | 4/9 [00:00<00:00,  9.99it/s] 67%|██████▋   | 6/9 [00:00<00:00, 12.47it/s] 89%|████████▉ | 8/9 [00:00<00:00, 12.26it/s]100%|██████████| 9/9 [00:00<00:00, 12.61it/s]
+Length Test Set:  37
+length of test_set:  37
+  0%|          | 0/1 [00:00<?, ?it/s]eval_filtering_extended_working.py:377: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at /opt/conda/conda-bld/pytorch_1712608851799/work/torch/csrc/utils/tensor_new.cpp:274.)
+  poses = torch.tensor(data["poses"], device=device).unsqueeze(0)
+t =  0
+rays shape: (11,)
+rays range: 1.8274878039608646 to 5.892718786586587
+prior shape: torch.Size([112, 67, 36])
+prior range: 3.7017293834651355e-06 to 3.7017293834651355e-06
+prior sum: 0.9999999403953552
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 1.2789221273123985e-06 to 7.402900337183382e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 1.2789221273123985e-06 to 7.402900337183382e-06
+posterior sum: 1.0
+/cluster/home/wueestm/anaconda3/envs/f3loc/lib/python3.8/site-packages/torch/functional.py:512: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at /opt/conda/conda-bld/pytorch_1712608851799/work/aten/src/ATen/native/TensorShape.cpp:3587.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 2.8015357232420018e-14 to 0.30712562799453735
+filter_rot shape: torch.Size([7])
+filter_rot range: 6.763993035244003e-15 to 0.7972349524497986
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 1.3851742153292435e-07 to 7.22036702427431e-06
+transition:  tensor([0.1241, 0.0036, 0.0476], device='cuda:0')
+t =  1
+rays shape: (11,)
+rays range: 1.749773644224266 to 5.635681073851696
+prior shape: torch.Size([112, 67, 36])
+prior range: 1.3851742153292435e-07 to 7.22036702427431e-06
+prior sum: 0.9999999403953552
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 1.213635641761357e-06 to 7.11501434125239e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 4.85704134689513e-08 to 1.3042144928476773e-05
+posterior sum: 1.0
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 2.7808701522080703e-14 to 0.3053774833679199
+filter_rot shape: torch.Size([7])
+filter_rot range: 6.552019126901398e-13 to 0.9963345527648926
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 7.253191824929672e-09 to 1.28809770103544e-05
+transition:  tensor([0.1244, 0.0004, 0.0061], device='cuda:0')
+t =  2
+rays shape: (11,)
+rays range: 1.6911490012660324 to 5.497897058852646
+prior shape: torch.Size([112, 67, 36])
+prior range: 7.253191824929672e-09 to 1.28809770103544e-05
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 1.1899729770448175e-06 to 6.964237854845123e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 2.5953881266360668e-09 to 2.204560223617591e-05
+posterior sum: 1.0
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 2.6727521563151002e-14 to 0.3058087229728699
+filter_rot shape: torch.Size([7])
+filter_rot range: 2.4430159501279136e-13 to 0.9768854975700378
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 4.860701841025161e-10 to 2.1424675651360303e-05
+transition:  tensor([ 0.1248, -0.0005, -0.0153], device='cuda:0')
+t =  3
+rays shape: (11,)
+rays range: 1.641529472830365 to 5.4123663519768135
+prior shape: torch.Size([112, 67, 36])
+prior range: 4.860701841025161e-10 to 2.1424675651360303e-05
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 1.1804604582721367e-06 to 6.86280782247195e-06
+likelihood sum: 0.9999999403953552
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 1.897473428380536e-10 to 3.491694587864913e-05
+posterior sum: 0.9999998807907104
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 2.5718889976153632e-14 to 0.30671873688697815
+filter_rot shape: torch.Size([7])
+filter_rot range: 8.760644933016731e-14 to 0.9406976103782654
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 4.12206935251902e-11 to 3.3611464459681883e-05
+transition:  tensor([ 0.1251, -0.0014, -0.0247], device='cuda:0')
+t =  4
+rays shape: (11,)
+rays range: 1.598719799192207 to 5.349780770013705
+prior shape: torch.Size([112, 67, 36])
+prior range: 4.12206935251902e-11 to 3.3611464459681883e-05
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 1.1599573781495565e-06 to 6.803173164371401e-06
+likelihood sum: 1.0000001192092896
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 1.6398467653222504e-11 to 5.1992210501339287e-05
+posterior sum: 0.9999998807907104
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 2.505227165853271e-14 to 0.3069954812526703
+filter_rot shape: torch.Size([7])
+filter_rot range: 9.049743376551844e-14 to 0.9420678019523621
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 3.825063529805384e-12 to 4.9731334001990035e-05
+transition:  tensor([ 0.1253, -0.0014, -0.0244], device='cuda:0')
+t =  5
+rays shape: (11,)
+rays range: 1.5590695323873691 to 5.286456329816359
+prior shape: torch.Size([112, 67, 36])
+prior range: 3.825063529805384e-12 to 4.9731334001990035e-05
+prior sum: 0.9999999403953552
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 1.1365772252247552e-06 to 6.7814216890838e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 1.674857518299544e-12 to 7.49487298890017e-05
+posterior sum: 1.0000001192092896
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 2.9490451557536226e-14 to 0.3068118393421173
+filter_rot shape: torch.Size([7])
+filter_rot range: 2.225859648574452e-17 to 0.5365220904350281
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 4.348287138342122e-13 to 6.896651757415384e-05
+transition:  tensor([ 0.1236, -0.0040, -0.0956], device='cuda:0')
+t =  6
+rays shape: (11,)
+rays range: 1.5684547002717892 to 5.45311643403274
+prior shape: torch.Size([112, 67, 36])
+prior range: 4.348287138342122e-13 to 6.896651757415384e-05
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 1.1868210094689857e-06 to 6.903088433318771e-06
+likelihood sum: 0.9999999403953552
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 2.1624943589287904e-13 to 0.00010305159230483696
+posterior sum: 1.0
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 3.37592197848912e-14 to 0.3064558804035187
+filter_rot shape: torch.Size([7])
+filter_rot range: 2.3323047549756214e-19 to 0.8302319049835205
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 5.5345407212270895e-14 to 9.701259841676801e-05
+transition:  tensor([ 0.1222, -0.0070, -0.1314], device='cuda:0')
+t =  7
+rays shape: (11,)
+rays range: 1.6434537025443103 to 5.704704080922293
+prior shape: torch.Size([112, 67, 36])
+prior range: 5.5345407212270895e-14 to 9.701259841676801e-05
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 1.271533051294682e-06 to 7.231878953462001e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 3.099985749327981e-14 to 0.00014828685380052775
+posterior sum: 1.0
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 2.4943051096792956e-12 to 0.3071459233760834
+filter_rot shape: torch.Size([7])
+filter_rot range: 3.056989552244053e-17 to 0.5148794651031494
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 3.249200428569014e-14 to 0.00012704763503279537
+transition:  tensor([ 0.0814, -0.0033, -0.0931], device='cuda:0')
+t =  8
+rays shape: (11,)
+rays range: 1.7227120472143975 to 5.396674453968579
+prior shape: torch.Size([112, 67, 36])
+prior range: 3.249200428569014e-14 to 0.00012704763503279537
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 1.3374828995438293e-06 to 7.154090326366713e-06
+likelihood sum: 1.0000001192092896
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 1.7164922776332844e-14 to 0.00018331983301322907
+posterior sum: 1.0
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 2.434361678980545e-14 to 0.3095003664493561
+filter_rot shape: torch.Size([7])
+filter_rot range: 3.1265946501207976e-18 to 0.6702227592468262
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 3.3703993660246694e-15 to 0.00016571061860304326
+transition:  tensor([0.1252, 0.0065, 0.1113], device='cuda:0')
+t =  9
+rays shape: (11,)
+rays range: 1.5855850230698703 to 5.506794229195572
+prior shape: torch.Size([112, 67, 36])
+prior range: 3.3703993660246694e-15 to 0.00016571061860304326
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 1.186080112347554e-06 to 6.939338618394686e-06
+likelihood sum: 0.9999999403953552
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 1.8084125895308526e-15 to 0.00023313054407481104
+posterior sum: 1.0
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 2.0634498883870256e-12 to 0.3092823326587677
+filter_rot shape: torch.Size([7])
+filter_rot range: 1.8703476783387565e-17 to 0.5484309792518616
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 1.286272893481332e-15 to 0.00021443255536723882
+transition:  tensor([0.0833, 0.0030, 0.0970], device='cuda:0')
+t =  10
+rays shape: (11,)
+rays range: 1.5007564252676062 to 5.02226540593029
+prior shape: torch.Size([112, 67, 36])
+prior range: 1.286272893481332e-15 to 0.00021443255536723882
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 1.0787563269332168e-06 to 6.527326149807777e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 6.779126549396122e-16 to 0.0002854436752386391
+posterior sum: 1.0
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 1.956568154021232e-12 to 0.30945223569869995
+filter_rot shape: torch.Size([7])
+filter_rot range: 2.806106210124118e-18 to 0.6774298548698425
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 3.5159088266928807e-16 to 0.0002572805096860975
+transition:  tensor([0.0838, 0.0042, 0.1121], device='cuda:0')
+t =  11
+rays shape: (11,)
+rays range: 1.4095061681836503 to 4.607210400204556
+prior shape: torch.Size([112, 67, 36])
+prior range: 3.5159088266928807e-16 to 0.0002572805096860975
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 9.492956110079831e-07 to 6.280828984017717e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 1.795965678598967e-16 to 0.0003251390880905092
+posterior sum: 1.0
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 2.5664620168647234e-12 to 0.3067396581172943
+filter_rot shape: torch.Size([7])
+filter_rot range: 1.1316181504305141e-17 to 0.582878828048706
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 1.0106478827538601e-16 to 0.00029380538035184145
+transition:  tensor([0.0811, 0.0036, 0.1011], device='cuda:0')
+t =  12
+rays shape: (11,)
+rays range: 1.3374762909732436 to 4.329054793925577
+prior shape: torch.Size([112, 67, 36])
+prior range: 1.0106478827538601e-16 to 0.00029380538035184145
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 8.634507366878097e-07 to 6.0810084505646955e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 5.468975426554777e-17 to 0.0003726015565916896
+posterior sum: 1.0
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 4.21954249318901e-09 to 0.3181595504283905
+filter_rot shape: torch.Size([7])
+filter_rot range: 9.477846211980554e-18 to 0.5950262546539307
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 2.0407673324294225e-16 to 0.0003310253960080445
+transition:  tensor([ 1.6310e-03, -6.2730e-05, -1.0248e-01], device='cuda:0')
+t =  13
+rays shape: (11,)
+rays range: 1.373460361530121 to 4.525784659619602
+prior shape: torch.Size([112, 67, 36])
+prior range: 2.0407673324294225e-16 to 0.0003310253960080445
+prior sum: 0.9999999403953552
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 9.232231832356774e-07 to 6.221758667379618e-06
+likelihood sum: 0.9999999403953552
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 1.0173706112026501e-16 to 0.00040820924914442003
+posterior sum: 1.0000001192092896
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 4.021796673470135e-09 to 0.3180910348892212
+filter_rot shape: torch.Size([7])
+filter_rot range: 6.704155348906011e-18 to 0.6186888217926025
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 3.156948969140717e-16 to 0.00038275582483038306
+transition:  tensor([ 2.1942e-03, -8.6639e-05, -1.0524e-01], device='cuda:0')
+t =  14
+rays shape: (11,)
+rays range: 1.4176366456835126 to 4.8155752660091276
+prior shape: torch.Size([112, 67, 36])
+prior range: 3.156948969140717e-16 to 0.00038275582483038306
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 1.0082865173899336e-06 to 6.38425990473479e-06
+likelihood sum: 1.0000001192092896
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 1.4619007811110974e-16 to 0.0004768456856254488
+posterior sum: 1.0
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 1.2853135222812284e-10 to 0.26936790347099304
+filter_rot shape: torch.Size([7])
+filter_rot range: 1.506810236363949e-17 to 0.5632433891296387
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 2.455130820968102e-16 to 0.00042343162931501865
+transition:  tensor([ 0.0408, -0.0015, -0.0988], device='cuda:0')
+t =  15
+rays shape: (11,)
+rays range: 1.4781092558567435 to 5.130635358281175
+prior shape: torch.Size([112, 67, 36])
+prior range: 2.455130820968102e-16 to 0.00042343162931501865
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 1.075497721103602e-06 to 6.621332431677729e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 1.117841688939015e-16 to 0.0005348315462470055
+posterior sum: 0.9999998211860657
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 1.3589533665037123e-10 to 0.2706761360168457
+filter_rot shape: torch.Size([7])
+filter_rot range: 2.2186540782585027e-17 to 0.536744236946106
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 1.485588719225554e-16 to 0.0004821084439754486
+transition:  tensor([ 0.0402, -0.0014, -0.0957], device='cuda:0')
+t =  16
+rays shape: (11,)
+rays range: 1.5625599469608373 to 5.432875931858961
+prior shape: torch.Size([112, 67, 36])
+prior range: 1.485588719225554e-16 to 0.0004821084439754486
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 1.1467636795714498e-06 to 6.70669442115468e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 6.374432471345943e-17 to 0.0006042204913683236
+posterior sum: 0.9999999403953552
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 4.1436241104975124e-09 to 0.3181360363960266
+filter_rot shape: torch.Size([7])
+filter_rot range: 2.4706149885624107e-18 to 0.6858747601509094
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 2.147018351239614e-16 to 0.0005559060373343527
+transition:  tensor([ 1.8436e-03, -7.8261e-05, -1.1313e-01], device='cuda:0')
+t =  17
+rays shape: (11,)
+rays range: 1.7079313386015806 to 5.226618264812306
+prior shape: torch.Size([112, 67, 36])
+prior range: 2.147018351239614e-16 to 0.0005559060373343527
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 1.2605313486346859e-06 to 7.009520231804345e-06
+likelihood sum: 0.9999999403953552
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 8.499560711901647e-17 to 0.0007178253144957125
+posterior sum: 1.0
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 4.405792619621707e-09 to 0.31820401549339294
+filter_rot shape: torch.Size([7])
+filter_rot range: 7.94275615939852e-18 to 0.6071153879165649
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 2.751075397711486e-16 to 0.0006091992254368961
+transition:  tensor([ 1.1233e-03, -4.3773e-05, -1.0389e-01], device='cuda:0')
+t =  18
+rays shape: (11,)
+rays range: 1.8911030015619275 to 5.219962331987121
+prior shape: torch.Size([112, 67, 36])
+prior range: 2.751075397711486e-16 to 0.0006091992254368961
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 1.2354004184089717e-06 to 6.864848728582729e-06
+likelihood sum: 0.9999999403953552
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 1.0040608780999779e-16 to 0.0007640499388799071
+posterior sum: 1.0
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 3.0486384527961263e-09 to 0.31730717420578003
+filter_rot shape: torch.Size([7])
+filter_rot range: 9.729514258988588e-18 to 0.5932314395904541
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 2.490600855029968e-16 to 0.0006723284022882581
+transition:  tensor([ 0.0054, -0.0002, -0.1023], device='cuda:0')
+t =  19
+rays shape: (11,)
+rays range: 2.130936289254146 to 5.336918663897871
+prior shape: torch.Size([112, 67, 36])
+prior range: 2.490600855029968e-16 to 0.0006723284022882581
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 1.3251877817310742e-06 to 7.01873113939655e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 8.452850815327513e-17 to 0.0008552023791708052
+posterior sum: 1.0
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 1.0756762841568346e-10 to 0.2650931477546692
+filter_rot shape: torch.Size([7])
+filter_rot range: 2.10980670494163e-17 to 0.5401845574378967
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 3.0031992543242607e-16 to 0.0007548511493951082
+transition:  tensor([ 0.0428, -0.0015, -0.0961], device='cuda:0')
+t =  20
+rays shape: (11,)
+rays range: 2.3270758930763686 to 5.093013598410345
+prior shape: torch.Size([112, 67, 36])
+prior range: 3.0031992543242607e-16 to 0.0007548511493951082
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 1.2520782775027328e-06 to 6.9262027864169795e-06
+likelihood sum: 0.9999999403953552
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 8.829811578846709e-17 to 0.0009439369896426797
+posterior sum: 1.0000001192092896
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 1.1416604467351377e-10 to 0.26651954650878906
+filter_rot shape: torch.Size([7])
+filter_rot range: 5.683736659864165e-17 to 0.47300493717193604
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 2.2738295066576273e-16 to 0.0008021822432056069
+transition:  tensor([ 0.0421, -0.0014, -0.0880], device='cuda:0')
+t =  21
+rays shape: (11,)
+rays range: 2.2427599377474583 to 5.307381518395643
+prior shape: torch.Size([112, 67, 36])
+prior range: 2.2738295066576273e-16 to 0.0008021822432056069
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 1.3039538089287817e-06 to 6.933234999451088e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 6.540788418697707e-17 to 0.0010092376032844186
+posterior sum: 1.0
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 2.280359061301862e-12 to 0.30722156167030334
+filter_rot shape: torch.Size([7])
+filter_rot range: 5.441871808176484e-21 to 0.9776065349578857
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 1.5452472349341444e-16 to 0.0009511292446404696
+transition:  tensor([ 0.0821, -0.0058, -0.1595], device='cuda:0')
+t =  22
+rays shape: (11,)
+rays range: 2.130793911748138 to 5.109888172244169
+prior shape: torch.Size([112, 67, 36])
+prior range: 1.5452472349341444e-16 to 0.0009511292446404696
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 1.2239128182045533e-06 to 6.804927579651121e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 3.9944244068997837e-17 to 0.0011869968147948384
+posterior sum: 1.0
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 2.0652858763459125e-12 to 0.30840179324150085
+filter_rot shape: torch.Size([7])
+filter_rot range: 4.198134509810402e-20 to 0.9129875898361206
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 1.2376567492594019e-16 to 0.0010805065976455808
+transition:  tensor([ 0.0831, -0.0055, -0.1444], device='cuda:0')
+t =  23
+rays shape: (11,)
+rays range: 2.0647645383032027 to 4.910974025726318
+prior shape: torch.Size([112, 67, 36])
+prior range: 1.2376567492594019e-16 to 0.0010805065976455808
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 1.102359874494141e-06 to 6.577602107427083e-06
+likelihood sum: 0.9999999403953552
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 2.8037141278697064e-17 to 0.0013329226057976484
+posterior sum: 0.9999999403953552
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 1.898003889472255e-12 to 0.30962446331977844
+filter_rot shape: torch.Size([7])
+filter_rot range: 8.721243337627542e-19 to 0.7528588175773621
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 1.1443266886639828e-16 to 0.0011875825002789497
+transition:  tensor([ 0.0840, -0.0045, -0.1213], device='cuda:0')
+t =  24
+rays shape: (11,)
+rays range: 2.006499698495435 to 4.927033185958862
+prior shape: torch.Size([112, 67, 36])
+prior range: 1.1443266886639828e-16 to 0.0011875825002789497
+prior sum: 0.9999999403953552
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 1.0662549811968347e-06 to 6.504081738967216e-06
+likelihood sum: 0.9999999403953552
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 2.5403550409560933e-17 to 0.001409340649843216
+posterior sum: 1.0
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 2.488101088007899e-12 to 0.3070046305656433
+filter_rot shape: torch.Size([7])
+filter_rot range: 4.641901851173014e-18 to 0.6436564326286316
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 1.4661592392534184e-16 to 0.001221104641444981
+transition:  tensor([ 0.0814, -0.0039, -0.1082], device='cuda:0')
+t =  25
+rays shape: (11,)
+rays range: 1.9475508601343408 to 5.0088290814108385
+prior shape: torch.Size([112, 67, 36])
+prior range: 1.4661592392534184e-16 to 0.001221104641444981
+prior sum: 0.9999999403953552
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 9.880150173557922e-07 to 6.2877511481929105e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 2.810430834443637e-17 to 0.001464414526708424
+posterior sum: 1.0
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 1.9312798430794198e-14 to 0.3106726109981537
+filter_rot shape: torch.Size([7])
+filter_rot range: 3.0500253532308465e-16 to 0.5773495435714722
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 2.877524115672303e-17 to 0.001318658352829516
+transition:  tensor([ 0.1275, -0.0045, -0.0741], device='cuda:0')
+t =  26
+rays shape: (11,)
+rays range: 1.8367926146468332 to 4.666856239162659
+prior shape: torch.Size([112, 67, 36])
+prior range: 2.877524115672303e-17 to 0.001318658352829516
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 9.476820537202002e-07 to 6.265308456931962e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 7.833718865413005e-18 to 0.0016226507723331451
+posterior sum: 1.0
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 3.833303168160676e-14 to 0.30390381813049316
+filter_rot shape: torch.Size([7])
+filter_rot range: 1.130040419217355e-15 to 0.6719167232513428
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 4.219031819194574e-18 to 0.0014034039340913296
+transition:  tensor([ 0.1213, -0.0035, -0.0631], device='cuda:0')
+t =  27
+rays shape: (11,)
+rays range: 1.7320756575754777 to 4.650182826520035
+prior shape: torch.Size([112, 67, 36])
+prior range: 4.219031819194574e-18 to 0.0014034039340913296
+prior sum: 1.0000001192092896
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 8.798008366284193e-07 to 5.959284408163512e-06
+likelihood sum: 1.0000001192092896
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 1.2661032216914014e-18 to 0.001672431011684239
+posterior sum: 1.0000001192092896
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 3.0159744059815585e-12 to 0.30533725023269653
+filter_rot shape: torch.Size([7])
+filter_rot range: 2.0239740042775995e-15 to 0.7137675285339355
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 2.607495595556767e-18 to 0.0015187233220785856
+transition:  tensor([ 0.0797, -0.0015,  0.0581], device='cuda:0')
+t =  28
+rays shape: (11,)
+rays range: 1.6601207283431951 to 4.40641352436165
+prior shape: torch.Size([112, 67, 36])
+prior range: 2.607495595556767e-18 to 0.0015187233220785856
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 8.515221452398691e-07 to 5.90126410315861e-06
+likelihood sum: 0.9999999403953552
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 8.919194896041841e-19 to 0.001798734301701188
+posterior sum: 1.0
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 1.360073442757681e-10 to 0.27069175243377686
+filter_rot shape: torch.Size([7])
+filter_rot range: 2.996558714541134e-17 to 0.5162380933761597
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 4.069504034224588e-18 to 0.0015129054663702846
+transition:  tensor([0.0402, 0.0014, 0.0932], device='cuda:0')
+t =  29
+rays shape: (11,)
+rays range: 1.6286052559230615 to 4.680514845004679
+prior shape: torch.Size([112, 67, 36])
+prior range: 4.069504034224588e-18 to 0.0015129054663702846
+prior sum: 0.9999999403953552
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 8.766634209678159e-07 to 6.078070327930618e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 1.501111851162617e-18 to 0.0018192097777500749
+posterior sum: 1.0000001192092896
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 1.591241244672248e-12 to 0.310644268989563
+filter_rot shape: torch.Size([7])
+filter_rot range: 7.177806451053479e-21 to 0.9712523221969604
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 1.0600976124478264e-18 to 0.0016844187630340457
+transition:  tensor([0.0857, 0.0060, 0.1575], device='cuda:0')
+t =  30
+rays shape: (11,)
+rays range: 1.56569130721317 to 4.4865710735321045
+prior shape: torch.Size([112, 67, 36])
+prior range: 1.0600976124478264e-18 to 0.0016844187630340457
+prior sum: 0.9999999403953552
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 9.063999755198893e-07 to 6.1061537053319626e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 4.751870860720993e-19 to 0.0020090206526219845
+posterior sum: 1.0
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 2.081321226476973e-12 to 0.30855074524879456
+filter_rot shape: torch.Size([7])
+filter_rot range: 1.709151859423978e-19 to 0.8468960523605347
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 3.201989784810745e-19 to 0.001779547892510891
+transition:  tensor([0.0831, 0.0049, 0.1338], device='cuda:0')
+t =  31
+rays shape: (11,)
+rays range: 1.508820356270791 to 4.340732813165377
+prior shape: torch.Size([112, 67, 36])
+prior range: 3.201989784810745e-19 to 0.001779547892510891
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 9.405663377037854e-07 to 6.168243544379948e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 1.5959440500369413e-19 to 0.0021186424419283867
+posterior sum: 1.0000001192092896
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 2.7103232852487835e-12 to 0.3058575987815857
+filter_rot shape: torch.Size([7])
+filter_rot range: 7.111910206153693e-19 to 0.7654486894607544
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 1.1108938691359128e-19 to 0.0019589511211961508
+transition:  tensor([0.0805, 0.0043, 0.1228], device='cuda:0')
+t =  32
+rays shape: (11,)
+rays range: 1.4826876364878383 to 4.1746572002423905
+prior shape: torch.Size([112, 67, 36])
+prior range: 1.1108938691359128e-19 to 0.0019589511211961508
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 9.790287549549248e-07 to 6.262464466999518e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 5.625092475415693e-20 to 0.0023386068642139435
+posterior sum: 0.9999999403953552
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 2.1385369468112855e-14 to 0.3094589114189148
+filter_rot shape: torch.Size([7])
+filter_rot range: 1.7411376329698903e-15 to 0.7030161023139954
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 8.416511033938772e-21 to 0.0020074802450835705
+transition:  tensor([0.1266, 0.0035, 0.0594], device='cuda:0')
+t =  33
+rays shape: (11,)
+rays range: 1.4503970269034965 to 4.222562609489054
+prior shape: torch.Size([112, 67, 36])
+prior range: 8.416511033938772e-21 to 0.0020074802450835705
+prior sum: 0.9999999403953552
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 9.953500921255909e-07 to 6.1599653236044105e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 4.184765687836154e-21 to 0.0022786816116422415
+posterior sum: 0.9999999403953552
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 2.8562896270184143e-14 to 0.30645087361335754
+filter_rot shape: torch.Size([7])
+filter_rot range: 7.23150651773391e-14 to 0.932324230670929
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 7.879049320216288e-22 to 0.0020864680409431458
+transition:  tensor([0.1240, 0.0026, 0.0265], device='cuda:0')
+t =  34
+rays shape: (11,)
+rays range: 1.4085637015652732 to 4.209100333283622
+prior shape: torch.Size([112, 67, 36])
+prior range: 7.879049320216288e-22 to 0.0020864680409431458
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 9.615129101803177e-07 to 6.104515250626719e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 3.9785496721982997e-22 to 0.0024284408427774906
+posterior sum: 0.9999998807907104
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 2.600837873247084e-14 to 0.3065437972545624
+filter_rot shape: torch.Size([7])
+filter_rot range: 1.3029070281434657e-13 to 0.9564803838729858
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 7.681442818902045e-23 to 0.0021980039309710264
+transition:  tensor([ 0.1250, -0.0012, -0.0211], device='cuda:0')
+t =  35
+rays shape: (11,)
+rays range: 1.345612333946982 to 4.082205535743891
+prior shape: torch.Size([112, 67, 36])
+prior range: 7.681442818902045e-23 to 0.0021980039309710264
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 9.156017881650769e-07 to 6.027315521350829e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 3.9681565244353215e-23 to 0.0025634339544922113
+posterior sum: 1.0
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 2.3077856493207774e-14 to 0.3078588843345642
+filter_rot shape: torch.Size([7])
+filter_rot range: 3.095448702049308e-14 to 0.8900365233421326
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 7.828708477093971e-24 to 0.0023692739196121693
+transition:  tensor([ 0.1260, -0.0017, -0.0341], device='cuda:0')
+t =  36
+rays shape: (11,)
+rays range: 1.2768979057576881 to 3.8797125928973193
+prior shape: torch.Size([112, 67, 36])
+prior range: 7.828708477093971e-24 to 0.0023692739196121693
+prior sum: 0.9999998807907104
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 8.710090924068936e-07 to 5.964996489637997e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 4.1440669842732706e-24 to 0.002764365402981639
+posterior sum: 1.0000001192092896
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 3.086395952722233e-14 to 0.3053935170173645
+filter_rot shape: torch.Size([7])
+filter_rot range: 2.800967702947573e-14 to 0.8845414519309998
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 9.337046421047733e-25 to 0.0025131828151643276
+transition:  tensor([ 0.1234, -0.0020, -0.0350], device='cuda:0')
+t =  37
+rays shape: (11,)
+rays range: 2.6625803178897995 to 3.705873115444557
+prior shape: torch.Size([112, 67, 36])
+prior range: 9.337046421047733e-25 to 0.0025131828151643276
+prior sum: 0.9999999403953552
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 8.759378147260577e-07 to 5.942920779489214e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 4.83008882644605e-25 to 0.002931875642389059
+posterior sum: 1.0000001192092896
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 1.8521483310810286e-14 to 0.3095099627971649
+filter_rot shape: torch.Size([7])
+filter_rot range: 7.124908437761493e-14 to 0.9316566586494446
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 9.203776382979212e-26 to 0.0026358573231846094
+transition:  tensor([ 0.1280, -0.0016, -0.0266], device='cuda:0')
+t =  38
+rays shape: (11,)
+rays range: 2.5533858621421746 to 3.540024269737482
+prior shape: torch.Size([112, 67, 36])
+prior range: 9.203776382979212e-26 to 0.0026358573231846094
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 8.363971915059665e-07 to 5.8259097386326175e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 4.878729373564396e-26 to 0.003036144655197859
+posterior sum: 1.0
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 2.484699322376563e-14 to 0.3069552481174469
+filter_rot shape: torch.Size([7])
+filter_rot range: 1.7323612704935043e-13 to 0.9664525389671326
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 9.742369779349298e-27 to 0.0027600943576544523
+transition:  tensor([ 0.1254, -0.0013, -0.0185], device='cuda:0')
+t =  39
+rays shape: (11,)
+rays range: 2.4487158343436373 to 3.4000211111607395
+prior shape: torch.Size([112, 67, 36])
+prior range: 9.742369779349298e-27 to 0.0027600943576544523
+prior sum: 0.9999999403953552
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 8.006319376363535e-07 to 5.735243576054927e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 5.37758505739194e-27 to 0.003111736150458455
+posterior sum: 1.0
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 2.2547110730655913e-14 to 0.3073056638240814
+filter_rot shape: torch.Size([7])
+filter_rot range: 4.92521117206185e-13 to 0.9923776388168335
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 1.0264630750530595e-27 to 0.0028528962284326553
+transition:  tensor([ 0.1263, -0.0005, -0.0087], device='cuda:0')
+t =  40
+rays shape: (11,)
+rays range: 2.343430638358112 to 3.2953635494087625
+prior shape: torch.Size([112, 67, 36])
+prior range: 1.0264630750530595e-27 to 0.0028528962284326553
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 7.672427955185412e-07 to 5.629677616525441e-06
+likelihood sum: 1.0000001192092896
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 5.782874769697376e-28 to 0.0031689456664025784
+posterior sum: 1.0
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 2.903018063026182e-14 to 0.3052213788032532
+filter_rot shape: torch.Size([7])
+filter_rot range: 8.464282334925965e-14 to 0.9392299652099609
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 1.1871837826197458e-28 to 0.0029395155142992735
+transition:  tensor([ 0.1240, -0.0007, -0.0250], device='cuda:0')
+t =  41
+rays shape: (11,)
+rays range: 2.2434858796564034 to 3.157250881743923
+prior shape: torch.Size([112, 67, 36])
+prior range: 1.1871837826197458e-28 to 0.0029395155142992735
+prior sum: 0.9999998807907104
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 7.372041181952227e-07 to 5.5513996812806e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 6.832862404945645e-29 to 0.0032419245690107346
+posterior sum: 1.0
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 2.4286802901901314e-14 to 0.30812764167785645
+filter_rot shape: torch.Size([7])
+filter_rot range: 4.655155435255706e-15 to 0.7720397114753723
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 1.3431509159162266e-29 to 0.002844536444172263
+transition:  tensor([ 0.1255, -0.0030, -0.0509], device='cuda:0')
+t =  42
+rays shape: (11,)
+rays range: 2.136859050881147 to 3.1254100805535363
+prior shape: torch.Size([112, 67, 36])
+prior range: 1.3431509159162266e-29 to 0.002844536444172263
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 7.101610890458687e-07 to 5.5000809879857115e-06
+likelihood sum: 0.9999999403953552
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 7.909601688603939e-30 to 0.003096001222729683
+posterior sum: 0.9999999403953552
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 2.0395724971661137e-14 to 0.30938923358917236
+filter_rot shape: torch.Size([7])
+filter_rot range: 1.0424573395262024e-14 to 0.825405478477478
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 1.522753719767064e-30 to 0.002744484692811966
+transition:  tensor([ 0.1271, -0.0027, -0.0438], device='cuda:0')
+t =  43
+rays shape: (11,)
+rays range: 2.0353866494576365 to 3.097718315687239
+prior shape: torch.Size([112, 67, 36])
+prior range: 1.522753719767064e-30 to 0.002744484692811966
+prior sum: 0.9999999403953552
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 6.85589895965677e-07 to 5.4710226322640665e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 9.175844015230611e-31 to 0.0029731031972914934
+posterior sum: 1.0
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 2.678972088653378e-14 to 0.30675074458122253
+filter_rot shape: torch.Size([7])
+filter_rot range: 2.7897975406589517e-14 to 0.8843197226524353
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 2.0146226388488686e-31 to 0.0027571176178753376
+transition:  tensor([ 0.1247, -0.0020, -0.0351], device='cuda:0')
+t =  44
+rays shape: (11,)
+rays range: 1.9422273173725997 to 2.962926699917065
+prior shape: torch.Size([112, 67, 36])
+prior range: 2.0146226388488686e-31 to 0.0027571176178753376
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 6.607916134271363e-07 to 5.403589511843165e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 1.1545252948451441e-31 to 0.003045234363526106
+posterior sum: 0.9999998211860657
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 2.248478943452873e-14 to 0.3079013228416443
+filter_rot shape: torch.Size([7])
+filter_rot range: 1.5756248031555814e-13 to 0.963263213634491
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 2.2278766803574613e-32 to 0.0028500703629106283
+transition:  tensor([ 0.1263, -0.0014, -0.0193], device='cuda:0')
+t =  45
+rays shape: (11,)
+rays range: 1.8507370876731182 to 2.817005708089306
+prior shape: torch.Size([112, 67, 36])
+prior range: 2.2278766803574613e-32 to 0.0028500703629106283
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 6.36461209069239e-07 to 5.344958481146023e-06
+likelihood sum: 0.9999998807907104
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 1.2263386691939762e-32 to 0.0031278394162654877
+posterior sum: 1.0
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 2.949709568397449e-14 to 0.3049996793270111
+filter_rot shape: torch.Size([7])
+filter_rot range: 4.004573094570224e-13 to 0.9886430501937866
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 2.6422688549386452e-33 to 0.0029037408530712128
+transition:  tensor([ 0.1239, -0.0006, -0.0107], device='cuda:0')
+t =  46
+rays shape: (11,)
+rays range: 1.7616043697119685 to 2.679721134405356
+prior shape: torch.Size([112, 67, 36])
+prior range: 2.6422688549386452e-33 to 0.0029037408530712128
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 6.137256036709005e-07 to 5.28907185071148e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 1.4837548873559703e-33 to 0.003205372951924801
+posterior sum: 1.0
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 1.62800816664449e-14 to 0.30941540002822876
+filter_rot shape: torch.Size([7])
+filter_rot range: 1.00692999945029e-12 to 0.9996050000190735
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 2.741484940334114e-34 to 0.0029422699008136988
+transition:  tensor([1.2931e-01, 1.2221e-04, 1.9877e-03], device='cuda:0')
+t =  47
+rays shape: (11,)
+rays range: 1.6675562893705131 to 2.581961628438088
+prior shape: torch.Size([112, 67, 36])
+prior range: 2.741484940334114e-34 to 0.0029422699008136988
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 5.916238592362788e-07 to 5.252024493529461e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 1.573010954015624e-34 to 0.003263268619775772
+posterior sum: 1.0
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 3.272240402360689e-14 to 0.3036465048789978
+filter_rot shape: torch.Size([7])
+filter_rot range: 1.0475330455492204e-12 to 0.9997403621673584
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 4.035757944354705e-35 to 0.002983705373480916
+transition:  tensor([1.2296e-01, 9.1806e-05, 1.6115e-03], device='cuda:0')
+t =  48
+rays shape: (11,)
+rays range: 1.5780351050106494 to 2.4795010968961884
+prior shape: torch.Size([112, 67, 36])
+prior range: 4.035757944354705e-35 to 0.002983705373480916
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 5.717499789170688e-07 to 5.212883479543962e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 2.364386926562175e-35 to 0.003301996970549226
+posterior sum: 1.0
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 1.788598328960559e-14 to 0.3089500963687897
+filter_rot shape: torch.Size([7])
+filter_rot range: 6.617881698374461e-13 to 0.9964476823806763
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 6.29669935914304e-36 to 0.0029993148054927588
+transition:  tensor([0.1284, 0.0004, 0.0060], device='cuda:0')
+t =  49
+rays shape: (11,)
+rays range: 1.4838529746738212 to 2.3734771043450333
+prior shape: torch.Size([112, 67, 36])
+prior range: 6.29669935914304e-36 to 0.0029993148054927588
+prior sum: 0.9999999403953552
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 5.519978003576398e-07 to 5.174894340598257e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 3.772904593589268e-36 to 0.0033147099893540144
+posterior sum: 1.0
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 3.575691649780437e-14 to 0.30313369631767273
+filter_rot shape: torch.Size([7])
+filter_rot range: 7.367981550397695e-13 to 0.9975519776344299
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 2.2614582405669087e-36 to 0.003041693940758705
+transition:  tensor([0.1221, 0.0003, 0.0050], device='cuda:0')
+t =  50
+rays shape: (11,)
+rays range: 1.3848302631547533 to 2.250060130999146
+prior shape: torch.Size([112, 67, 36])
+prior range: 2.2614582405669087e-36 to 0.003041693940758705
+prior sum: 0.9999999403953552
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 5.341104269973584e-07 to 5.1421261559880804e-06
+likelihood sum: 0.9999999403953552
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 1.3844572333858283e-36 to 0.003335287794470787
+posterior sum: 1.0
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 1.9517775321832055e-14 to 0.3082341253757477
+filter_rot shape: torch.Size([7])
+filter_rot range: 8.244008232148603e-13 to 0.9984902739524841
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 1.668916068439375e-36 to 0.003075599204748869
+transition:  tensor([0.1277, 0.0002, 0.0039], device='cuda:0')
+t =  51
+rays shape: (11,)
+rays range: 1.289841866590333 to 2.094945034252208
+prior shape: torch.Size([112, 67, 36])
+prior range: 1.668916068439375e-36 to 0.003075599204748869
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 5.159615739103174e-07 to 5.1144529606972355e-06
+likelihood sum: 0.9999999403953552
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 1.0455013853768544e-36 to 0.003369993530213833
+posterior sum: 1.0
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 2.689842231872082e-14 to 0.30584871768951416
+filter_rot shape: torch.Size([7])
+filter_rot range: 7.863209290236064e-15 to 0.8071739673614502
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 1.4533998622671852e-36 to 0.002995103597640991
+transition:  tensor([ 0.1247, -0.0006, -0.0463], device='cuda:0')
+t =  52
+rays shape: (11,)
+rays range: 1.2013840914416563 to 2.006969162579953
+prior shape: torch.Size([112, 67, 36])
+prior range: 1.4533998622671852e-36 to 0.002995103597640991
+prior sum: 1.0000001192092896
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 5.018767410547298e-07 to 5.0902090151794255e-06
+likelihood sum: 0.9999999403953552
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 9.294986250668334e-37 to 0.003261283505707979
+posterior sum: 1.0
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 2.490687167687293e-14 to 0.30948877334594727
+filter_rot shape: torch.Size([7])
+filter_rot range: 5.764675972609749e-19 to 0.7781934142112732
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 3.5849535649269536e-36 to 0.002922304905951023
+transition:  tensor([ 0.1249, -0.0073, -0.1245], device='cuda:0')
+t =  53
+rays shape: (11,)
+rays range: 1.115529999296156 to 1.829112470149994
+prior shape: torch.Size([112, 67, 36])
+prior range: 3.5849535649269536e-36 to 0.002922304905951023
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 4.912280360258592e-07 to 5.080433311377419e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 1.9739469514633292e-36 to 0.003201096085831523
+posterior sum: 1.0
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 2.247484357366207e-14 to 0.31032952666282654
+filter_rot shape: torch.Size([7])
+filter_rot range: 7.158535792343893e-19 to 0.7650485634803772
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 1.7883773678840024e-36 to 0.0027989400550723076
+transition:  tensor([ 0.1259, -0.0071, -0.1228], device='cuda:0')
+t =  54
+rays shape: (11,)
+rays range: 1.057639208504589 to 1.6848286390304565
+prior shape: torch.Size([112, 67, 36])
+prior range: 1.7883773678840024e-36 to 0.0027989400550723076
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 4.809537017536059e-07 to 5.092630999570247e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 8.240716548436629e-37 to 0.0031074818689376116
+posterior sum: 1.0
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 3.016347683237018e-14 to 0.3073749244213104
+filter_rot shape: torch.Size([7])
+filter_rot range: 5.208211618813049e-18 to 0.6358600854873657
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 2.1626814517022415e-36 to 0.0026066764257848263
+transition:  tensor([ 0.1233, -0.0062, -0.1072], device='cuda:0')
+t =  55
+rays shape: (11,)
+rays range: 1.0235472963433359 to 1.6071179932121296
+prior shape: torch.Size([112, 67, 36])
+prior range: 2.1626814517022415e-36 to 0.0026066764257848263
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 4.715767545349081e-07 to 5.060387138655642e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 8.355688491175517e-37 to 0.002892922144383192
+posterior sum: 1.0000001192092896
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 1.8814217897381372e-14 to 0.31053194403648376
+filter_rot shape: torch.Size([7])
+filter_rot range: 1.3569515460617174e-15 to 0.6851139068603516
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 5.7572044726316815e-37 to 0.0026393039152026176
+transition:  tensor([ 0.1277, -0.0037, -0.0615], device='cuda:0')
+t =  56
+rays shape: (11,)
+rays range: 0.9910662001626622 to 1.4300326236838785
+prior shape: torch.Size([112, 67, 36])
+prior range: 5.7572044726316815e-37 to 0.0026393039152026176
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 4.5995943764864933e-07 to 5.050346317148069e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 2.231843355767296e-37 to 0.00291543360799551
+posterior sum: 0.9999998807907104
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 2.5543726950793232e-14 to 0.3076007068157196
+filter_rot shape: torch.Size([7])
+filter_rot range: 1.7942405848288094e-14 to 0.8589101433753967
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 4.207887636247374e-37 to 0.0027093621902167797
+transition:  tensor([ 0.1250, -0.0028, -0.0390], device='cuda:0')
+t =  57
+rays shape: (11,)
+rays range: 0.9603386492584645 to 1.4083397729672285
+prior shape: torch.Size([112, 67, 36])
+prior range: 4.207887636247374e-37 to 0.0027093621902167797
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 4.488579179451335e-07 to 5.065378900326323e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 1.6324669725565363e-37 to 0.0029883997049182653
+posterior sum: 0.9999999403953552
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 2.3969944816992425e-14 to 0.30686530470848083
+filter_rot shape: torch.Size([7])
+filter_rot range: 4.068217930499468e-13 to 0.9889527559280396
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 4.027099058820569e-37 to 0.0027679104823619127
+transition:  tensor([ 0.1258, -0.0006, -0.0105], device='cuda:0')
+t =  58
+rays shape: (11,)
+rays range: 0.921571897514692 to 1.250004541084172
+prior shape: torch.Size([112, 67, 36])
+prior range: 4.027099058820569e-37 to 0.0027679104823619127
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 4.3606675603768963e-07 to 5.064251581643475e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 1.5639115280460662e-37 to 0.003073484869673848
+posterior sum: 0.9999998807907104
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 2.20859775238412e-14 to 0.3071206212043762
+filter_rot shape: torch.Size([7])
+filter_rot range: 7.248413024310563e-13 to 0.9973967671394348
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 6.806114712704791e-37 to 0.002863687463104725
+transition:  tensor([ 1.2655e-01, -2.5332e-06,  5.1055e-03], device='cuda:0')
+t =  59
+rays shape: (11,)
+rays range: 0.866459985863566 to 1.098777257569222
+prior shape: torch.Size([112, 67, 36])
+prior range: 6.806114712704791e-37 to 0.002863687463104725
+prior sum: 1.0000001192092896
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 4.241750275468803e-07 to 5.0862972784671e-06
+likelihood sum: 1.0000001192092896
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 2.644393919351431e-37 to 0.0031511345878243446
+posterior sum: 1.0
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 2.9965105104255013e-14 to 0.30483800172805786
+filter_rot shape: torch.Size([7])
+filter_rot range: 4.132543103291947e-13 to 0.9892569184303284
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 1.3107441809579519e-36 to 0.0029297133442014456
+transition:  tensor([0.1237, 0.0006, 0.0104], device='cuda:0')
+t =  60
+rays shape: (11,)
+rays range: 0.7489917442839394 to 1.0291490039788578
+prior shape: torch.Size([112, 67, 36])
+prior range: 1.3107441809579519e-36 to 0.0029297133442014456
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 4.136861946335557e-07 to 5.1037632147199474e-06
+likelihood sum: 0.9999999403953552
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 6.311146948097208e-37 to 0.0032230233773589134
+posterior sum: 1.0
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 4.6966897038203115e-09 to 0.3182397782802582
+filter_rot shape: torch.Size([7])
+filter_rot range: 6.3007104128424604e-18 to 0.622917652130127
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 1.2796154274647395e-35 to 0.002750958316028118
+transition:  tensor([ 3.7082e-04, -1.4706e-05, -1.0573e-01], device='cuda:0')
+t =  61
+rays shape: (11,)
+rays range: 0.7494811152003663 to 1.0087285168786657
+prior shape: torch.Size([112, 67, 36])
+prior range: 1.2796154274647395e-35 to 0.002750958316028118
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 4.1404715034332185e-07 to 5.100102953292662e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 4.996387295942988e-36 to 0.003027810249477625
+posterior sum: 1.0
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 3.876757581622314e-09 to 0.31802505254745483
+filter_rot shape: torch.Size([7])
+filter_rot range: 1.0939605048898538e-17 to 0.5851988792419434
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 1.2158448474531934e-33 to 0.0026924475096166134
+transition:  tensor([ 2.6251e-03, -9.9769e-05, -1.0133e-01], device='cuda:0')
+t =  62
+rays shape: (11,)
+rays range: 0.7468849773759353 to 1.0585715650489558
+prior shape: torch.Size([112, 67, 36])
+prior range: 1.2158448474531934e-33 to 0.0026924475096166134
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 4.1552985408088716e-07 to 5.0907174227177165e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 4.793732543388003e-34 to 0.0029667504131793976
+posterior sum: 1.0
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 3.6731675479018122e-09 to 0.3179070055484772
+filter_rot shape: torch.Size([7])
+filter_rot range: 8.062728781081986e-18 to 0.606090784072876
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 4.437168280749644e-33 to 0.002698951866477728
+transition:  tensor([ 0.0033, -0.0001, -0.1038], device='cuda:0')
+t =  63
+rays shape: (11,)
+rays range: 0.7428221106529236 to 1.134087991701094
+prior shape: torch.Size([112, 67, 36])
+prior range: 4.437168280749644e-33 to 0.002698951866477728
+prior sum: 0.9999999403953552
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 4.1627151858847355e-07 to 5.096646418678574e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 1.432980235391667e-33 to 0.002996893599629402
+posterior sum: 0.9999998807907104
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 4.132187925165454e-09 to 0.3181321620941162
+filter_rot shape: torch.Size([7])
+filter_rot range: 5.86921205989448e-18 to 0.6277454495429993
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 3.3044138318846596e-31 to 0.0026050955057144165
+transition:  tensor([ 1.8764e-03, -7.4805e-05, -1.0630e-01], device='cuda:0')
+t =  64
+rays shape: (11,)
+rays range: 0.7435633540153503 to 1.292085574662043
+prior shape: torch.Size([112, 67, 36])
+prior range: 3.3044138318846596e-31 to 0.0026050955057144165
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 4.1875725287354726e-07 to 5.07554477735539e-06
+likelihood sum: 0.9999999403953552
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 9.981381141589224e-32 to 0.002890484407544136
+posterior sum: 0.9999999403953552
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 1.359142659529411e-10 to 0.2706904411315918
+filter_rot shape: torch.Size([7])
+filter_rot range: 8.95419290775896e-18 to 0.5989170670509338
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 3.895840304613877e-31 to 0.0026248653884977102
+transition:  tensor([ 0.0402, -0.0016, -0.1029], device='cuda:0')
+t =  65
+rays shape: (11,)
+rays range: 0.7009349135944755 to 1.4428911312190071
+prior shape: torch.Size([112, 67, 36])
+prior range: 3.895840304613877e-31 to 0.0026248653884977102
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 4.174201535533939e-07 to 5.111421614856226e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 1.0627988845629092e-31 to 0.002962155267596245
+posterior sum: 1.0
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 3.3451965641972947e-09 to 0.3176431357860565
+filter_rot shape: torch.Size([7])
+filter_rot range: 3.603551127221936e-18 to 0.6607174873352051
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 1.1967614322331836e-29 to 0.0026936412323266268
+transition:  tensor([ 0.0043, -0.0002, -0.1102], device='cuda:0')
+t =  66
+rays shape: (11,)
+rays range: 0.6974820752855123 to 1.8203185260915402
+prior shape: torch.Size([112, 67, 36])
+prior range: 1.1967614322331836e-29 to 0.0026936412323266268
+prior sum: 0.9999999403953552
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 4.2456440496607684e-07 to 5.107607194076991e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 2.7309033976947428e-30 to 0.0030908556655049324
+posterior sum: 1.0
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 4.417657351041271e-09 to 0.318206250667572
+filter_rot shape: torch.Size([7])
+filter_rot range: 3.1158193818713756e-18 to 0.6704532504081726
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 4.085953664249202e-29 to 0.0026071181055158377
+transition:  tensor([ 1.0915e-03, -4.5623e-05, -1.1130e-01], device='cuda:0')
+t =  67
+rays shape: (11,)
+rays range: 0.6969173198665498 to 4.642431906616208
+prior shape: torch.Size([112, 67, 36])
+prior range: 4.085953664249202e-29 to 0.0026071181055158377
+prior sum: 1.0000001192092896
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 4.846873480346403e-07 to 5.291105026117293e-06
+likelihood sum: 1.0000001192092896
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 1.0503507332280968e-29 to 0.0030390711035579443
+posterior sum: 1.0
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 2.924929853875824e-09 to 0.3171341121196747
+filter_rot shape: torch.Size([7])
+filter_rot range: 2.949615842547474e-18 to 0.6741095185279846
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 2.7711464486759348e-28 to 0.002757294801995158
+transition:  tensor([ 0.0059, -0.0002, -0.1117], device='cuda:0')
+t =  68
+rays shape: (11,)
+rays range: 0.6903347536331512 to 4.7915576008727925
+prior shape: torch.Size([112, 67, 36])
+prior range: 2.7711464486759348e-28 to 0.002757294801995158
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 5.384630981097871e-07 to 5.54455664314446e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 6.32089906821337e-29 to 0.0032284993212670088
+posterior sum: 1.0
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 3.984832019909845e-09 to 0.31807559728622437
+filter_rot shape: torch.Size([7])
+filter_rot range: 3.772083800355634e-18 to 0.6576473116874695
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 2.144173051604292e-27 to 0.002902158536016941
+transition:  tensor([ 2.3022e-03, -9.4805e-05, -1.0980e-01], device='cuda:0')
+t =  69
+rays shape: (11,)
+rays range: 0.6898604005292777 to 5.7360790929379935
+prior shape: torch.Size([112, 67, 36])
+prior range: 2.144173051604292e-27 to 0.002902158536016941
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 5.800346229989373e-07 to 5.771388259745436e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 5.404321202065912e-28 to 0.003622360061854124
+posterior sum: 1.0
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 4.2185286375229225e-09 to 0.3181592524051666
+filter_rot shape: torch.Size([7])
+filter_rot range: 1.0248503091735996e-17 to 0.5896711349487305
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 4.922805204788071e-27 to 0.0029042395763099194
+transition:  tensor([ 1.6339e-03, -6.2464e-05, -1.0186e-01], device='cuda:0')
+t =  70
+rays shape: (11,)
+rays range: 0.6875337621235159 to 5.348664825361855
+prior shape: torch.Size([112, 67, 36])
+prior range: 4.922805204788071e-27 to 0.0029042395763099194
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 6.493430646514753e-07 to 5.831782800669316e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 1.081644530930151e-27 to 0.003603649092838168
+posterior sum: 1.0
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 2.0313351695167015e-12 to 0.3083156943321228
+filter_rot shape: torch.Size([7])
+filter_rot range: 2.961009122958811e-21 to 0.9888081550598145
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 1.8510926208314233e-26 to 0.003322326811030507
+transition:  tensor([ 0.0832, -0.0061, -0.1639], device='cuda:0')
+t =  71
+rays shape: (11,)
+rays range: 0.6296584842640733 to 5.582918280569455
+prior shape: torch.Size([112, 67, 36])
+prior range: 1.8510926208314233e-26 to 0.003322326811030507
+prior sum: 1.0000001192092896
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 6.653494324382336e-07 to 5.942273674008902e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 3.382439116733371e-27 to 0.004264261107891798
+posterior sum: 1.0
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 2.6267091800258324e-12 to 0.3058595061302185
+filter_rot shape: torch.Size([7])
+filter_rot range: 2.4179329410234623e-20 to 0.9343695044517517
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 8.158112287122397e-26 to 0.003702943678945303
+transition:  tensor([ 0.0808, -0.0053, -0.1485], device='cuda:0')
+t =  72
+rays shape: (11,)
+rays range: 0.6023439776777799 to 5.597826730916105
+prior shape: torch.Size([112, 67, 36])
+prior range: 8.158112287122397e-26 to 0.003702943678945303
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 6.212629273250059e-07 to 5.749194770032773e-06
+likelihood sum: 0.9999999403953552
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 1.412177038365461e-26 to 0.004865396302193403
+posterior sum: 1.0
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 1.8082419242504422e-12 to 0.30936399102211
+filter_rot shape: torch.Size([7])
+filter_rot range: 2.008523572301071e-21 to 0.9939467906951904
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 1.3583156803538707e-25 to 0.004351799376308918
+transition:  tensor([ 0.0844, -0.0063, -0.1667], device='cuda:0')
+t =  73
+rays shape: (11,)
+rays range: 0.5855393541242672 to 5.52133421409455
+prior shape: torch.Size([112, 67, 36])
+prior range: 1.3583156803538707e-25 to 0.004351799376308918
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 7.046806445032416e-07 to 5.71818327443907e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 2.1687498051060186e-26 to 0.005459095351397991
+posterior sum: 1.0
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 2.346849277412577e-12 to 0.3071337640285492
+filter_rot shape: torch.Size([7])
+filter_rot range: 3.4652602419066624e-20 to 0.920735776424408
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 2.071548490591344e-25 to 0.004657928831875324
+transition:  tensor([ 0.0819, -0.0053, -0.1458], device='cuda:0')
+t =  74
+rays shape: (11,)
+rays range: 0.6027045369515094 to 5.446400012876771
+prior shape: torch.Size([112, 67, 36])
+prior range: 2.071548490591344e-25 to 0.004657928831875324
+prior sum: 0.9999998807907104
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 7.54429095195519e-07 to 5.8686869124358054e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 3.5507732516669886e-26 to 0.006119424011558294
+posterior sum: 0.9999999403953552
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 2.2196675920904685e-12 to 0.30795472860336304
+filter_rot shape: torch.Size([7])
+filter_rot range: 1.9399697334180585e-18 to 0.7017796039581299
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 6.712003783588414e-25 to 0.004664222709834576
+transition:  tensor([ 0.0825, -0.0047, -0.1150], device='cuda:0')
+t =  75
+rays shape: (11,)
+rays range: 0.6245104278958934 to 6.617205177648943
+prior shape: torch.Size([112, 67, 36])
+prior range: 6.712003783588414e-25 to 0.004664222709834576
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 8.047422284107597e-07 to 6.286148163781036e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 1.2779052393919464e-25 to 0.006316757295280695
+posterior sum: 1.0
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 2.986192632688407e-14 to 0.3076673746109009
+filter_rot shape: torch.Size([7])
+filter_rot range: 1.0906681399362549e-18 to 0.7388358116149902
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 2.8736506726255235e-24 to 0.004738891962915659
+transition:  tensor([ 0.1233, -0.0069, -0.1195], device='cuda:0')
+t =  76
+rays shape: (11,)
+rays range: 0.6815342129323847 to 5.943478334906078
+prior shape: torch.Size([112, 67, 36])
+prior range: 2.8736506726255235e-24 to 0.004738891962915659
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 8.338233214999491e-07 to 6.368297363223974e-06
+likelihood sum: 0.9999998807907104
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 5.619509329871703e-25 to 0.0067461286671459675
+posterior sum: 1.0000001192092896
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 5.715556066626659e-14 to 0.30766788125038147
+filter_rot shape: torch.Size([7])
+filter_rot range: 8.367580198778963e-19 to 0.7554299831390381
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 5.472606567417702e-24 to 0.005414645187556744
+transition:  tensor([ 0.1174, -0.0062, -0.1216], device='cuda:0')
+t =  77
+rays shape: (11,)
+rays range: 0.7759742796246477 to 6.201644937589262
+prior shape: torch.Size([112, 67, 36])
+prior range: 5.472606567417702e-24 to 0.005414645187556744
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 9.392046536049747e-07 to 6.738995125488145e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 1.1807987545862456e-24 to 0.007628344930708408
+posterior sum: 0.9999999403953552
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 1.1062154664509549e-10 to 0.26569634675979614
+filter_rot shape: torch.Size([7])
+filter_rot range: 2.3552962355520395e-15 to 0.7245412468910217
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 1.2399079049992297e-23 to 0.00601560715585947
+transition:  tensor([0.0425, 0.0009, 0.0568], device='cuda:0')
+t =  78
+rays shape: (11,)
+rays range: 0.7448967495388454 to 5.631752376019266
+prior shape: torch.Size([112, 67, 36])
+prior range: 1.2399079049992297e-23 to 0.00601560715585947
+prior sum: 0.9999999403953552
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 7.812936360096501e-07 to 5.959601821814431e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 2.275520557068848e-24 to 0.007162217050790787
+posterior sum: 1.0
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 2.1480083337022116e-12 to 0.3086440861225128
+filter_rot shape: torch.Size([7])
+filter_rot range: 1.0057757724023105e-17 to 0.5909585952758789
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 2.0381691923112172e-23 to 0.0059067606925964355
+transition:  tensor([0.0829, 0.0037, 0.1020], device='cuda:0')
+t =  79
+rays shape: (11,)
+rays range: 0.6771150538610293 to 4.995728969573975
+prior shape: torch.Size([112, 67, 36])
+prior range: 2.0381691923112172e-23 to 0.0059067606925964355
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 7.296323474292876e-07 to 5.70435804547742e-06
+likelihood sum: 0.9999999403953552
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 3.4447086596368244e-24 to 0.007708551827818155
+posterior sum: 0.9999999403953552
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 2.4635531448483593e-14 to 0.30953824520111084
+filter_rot shape: torch.Size([7])
+filter_rot range: 3.9349651755443694e-18 to 0.6548040509223938
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 3.465952526042245e-23 to 0.005948709789663553
+transition:  tensor([0.1250, 0.0071, 0.1095], device='cuda:0')
+t =  80
+rays shape: (11,)
+rays range: 0.6125969406414571 to 4.7281477919833
+prior shape: torch.Size([112, 67, 36])
+prior range: 3.465952526042245e-23 to 0.005948709789663553
+prior sum: 0.9999999403953552
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 7.225901299534598e-07 to 5.8562418416840956e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 5.521107708022953e-24 to 0.007679861504584551
+posterior sum: 1.0000001192092896
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 2.5788959929682297e-14 to 0.3082681894302368
+filter_rot shape: torch.Size([7])
+filter_rot range: 9.201543369754487e-16 to 0.657060980796814
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 3.5592406923387853e-23 to 0.006380338687449694
+transition:  tensor([0.1248, 0.0045, 0.0648], device='cuda:0')
+t =  81
+rays shape: (11,)
+rays range: 0.5729718945322307 to 4.747546898555268
+prior shape: torch.Size([112, 67, 36])
+prior range: 3.5592406923387853e-23 to 0.006380338687449694
+prior sum: 0.9999999403953552
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 6.785738264625252e-07 to 5.899077223148197e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 5.302822795800152e-24 to 0.008263812400400639
+posterior sum: 1.0
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 2.7466647595122788e-14 to 0.30625125765800476
+filter_rot shape: torch.Size([7])
+filter_rot range: 6.822966264240574e-14 to 0.9296939969062805
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 2.5541567995290392e-23 to 0.0069711278192698956
+transition:  tensor([0.1245, 0.0016, 0.0270], device='cuda:0')
+t =  82
+rays shape: (11,)
+rays range: 0.5378876348454151 to 4.629075202543393
+prior shape: torch.Size([112, 67, 36])
+prior range: 2.5541567995290392e-23 to 0.0069711278192698956
+prior sum: 0.9999999403953552
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 6.724929448864714e-07 to 5.767175025539473e-06
+likelihood sum: 0.9999999403953552
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 4.268106289718865e-24 to 0.008541032671928406
+posterior sum: 1.0
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 2.8684655562286054e-14 to 0.3051905035972595
+filter_rot shape: torch.Size([7])
+filter_rot range: 1.1995075072102068e-12 to 0.9999898076057434
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 7.251119510648345e-24 to 0.007245086133480072
+transition:  tensor([ 0.1241,  0.0005, -0.0003], device='cuda:0')
+t =  83
+rays shape: (11,)
+rays range: 0.515804840298921 to 4.5077630828527315
+prior shape: torch.Size([112, 67, 36])
+prior range: 7.251119510648345e-24 to 0.007245086133480072
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 7.056549975459347e-07 to 5.831952421431197e-06
+likelihood sum: 0.9999999403953552
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 2.1136979697067883e-24 to 0.008757504634559155
+posterior sum: 1.0
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 2.978695035852491e-14 to 0.3049940764904022
+filter_rot shape: torch.Size([7])
+filter_rot range: 2.1191998622518277e-13 to 0.9727874398231506
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 1.7703855065393776e-24 to 0.007678537629544735
+transition:  tensor([ 0.1238, -0.0008, -0.0166], device='cuda:0')
+t =  84
+rays shape: (11,)
+rays range: 0.49563472136340353 to 4.384195732989324
+prior shape: torch.Size([112, 67, 36])
+prior range: 1.7703855065393776e-24 to 0.007678537629544735
+prior sum: 0.9999998807907104
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 7.008861757640261e-07 to 5.761432930739829e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 5.265938913923251e-25 to 0.009497261606156826
+posterior sum: 1.0
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 3.093321971725342e-14 to 0.30498260259628296
+filter_rot shape: torch.Size([7])
+filter_rot range: 1.0359426397222801e-13 to 0.9476228356361389
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 3.894519514376561e-25 to 0.008135264739394188
+transition:  tensor([ 0.1234, -0.0013, -0.0232], device='cuda:0')
+t =  85
+rays shape: (11,)
+rays range: 0.47424416937534347 to 4.261664683272517
+prior shape: torch.Size([112, 67, 36])
+prior range: 3.894519514376561e-25 to 0.008135264739394188
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 7.083480682013032e-07 to 5.764005436503794e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 1.241796117531586e-25 to 0.010060991160571575
+posterior sum: 0.9999999403953552
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 2.3768347587414113e-14 to 0.3097204864025116
+filter_rot shape: torch.Size([7])
+filter_rot range: 3.0125572561275527e-18 to 0.6727021932601929
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 8.813013517280401e-26 to 0.0074865566566586494
+transition:  tensor([ 0.1254, -0.0066, -0.1116], device='cuda:0')
+t =  86
+rays shape: (11,)
+rays range: 1.260454077716655 to 4.1454994678497314
+prior shape: torch.Size([112, 67, 36])
+prior range: 8.813013517280401e-26 to 0.0074865566566586494
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 7.393505256914068e-07 to 5.685764335794374e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 2.391326601365336e-26 to 0.008781572803854942
+posterior sum: 1.0
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 2.473992656516679e-14 to 0.30925536155700684
+filter_rot shape: torch.Size([7])
+filter_rot range: 4.1567538044657625e-18 to 0.6511105895042419
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 2.4384302255731812e-26 to 0.006609770935028791
+transition:  tensor([ 0.1251, -0.0062, -0.1090], device='cuda:0')
+t =  87
+rays shape: (11,)
+rays range: 1.3790161690341425 to 4.014275550842285
+prior shape: torch.Size([112, 67, 36])
+prior range: 2.4384302255731812e-26 to 0.006609770935028791
+prior sum: 1.0000001192092896
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 7.040549121484219e-07 to 5.580763627222041e-06
+likelihood sum: 0.9999999403953552
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 6.105925154854538e-27 to 0.007780000567436218
+posterior sum: 1.0
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 2.5822553256370402e-14 to 0.3086988925933838
+filter_rot shape: torch.Size([7])
+filter_rot range: 3.5557606018955625e-17 to 0.504613995552063
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 9.876680281810975e-27 to 0.0067759971134364605
+transition:  tensor([ 0.1247, -0.0057, -0.0918], device='cuda:0')
+t =  88
+rays shape: (11,)
+rays range: 1.3157042029731787 to 3.9217971563339233
+prior shape: torch.Size([112, 67, 36])
+prior range: 9.876680281810975e-27 to 0.0067759971134364605
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 7.147795031414717e-07 to 5.593808964476921e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 2.5552229314838986e-27 to 0.00800332985818386
+posterior sum: 1.0
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 2.7295814602188752e-14 to 0.3074728846549988
+filter_rot shape: torch.Size([7])
+filter_rot range: 8.18820715000983e-16 to 0.648614764213562
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 3.5509129201065556e-27 to 0.006475596688687801
+transition:  tensor([ 0.1243, -0.0038, -0.0658], device='cuda:0')
+t =  89
+rays shape: (11,)
+rays range: 1.2424344914409422 to 3.7663265619580986
+prior shape: torch.Size([112, 67, 36])
+prior range: 3.5509129201065556e-27 to 0.006475596688687801
+prior sum: 0.9999999403953552
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 6.859338554932037e-07 to 5.483139830175787e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 1.0700952105361468e-27 to 0.007428967859596014
+posterior sum: 1.0
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 2.8601497255656416e-14 to 0.30643129348754883
+filter_rot shape: torch.Size([7])
+filter_rot range: 2.710295028229663e-14 to 0.8827111124992371
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 1.4747371363047883e-27 to 0.006414959207177162
+transition:  tensor([ 0.1240, -0.0026, -0.0353], device='cuda:0')
+t =  90
+rays shape: (11,)
+rays range: 1.1891963865042485 to 3.6624026438869652
+prior shape: torch.Size([112, 67, 36])
+prior range: 1.4747371363047883e-27 to 0.006414959207177162
+prior sum: 1.0000001192092896
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 6.793046054553997e-07 to 5.5040823099261615e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 5.269879254885531e-28 to 0.007243028841912746
+posterior sum: 1.0000001192092896
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 3.024931176311314e-14 to 0.30501505732536316
+filter_rot shape: torch.Size([7])
+filter_rot range: 3.6242048858520226e-13 to 0.9865871071815491
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 5.5014651084608045e-28 to 0.0063750552944839
+transition:  tensor([ 0.1236, -0.0010, -0.0116], device='cuda:0')
+t =  91
+rays shape: (11,)
+rays range: 1.1490037613990332 to 3.5414835551357386
+prior shape: torch.Size([112, 67, 36])
+prior range: 5.5014651084608045e-28 to 0.0063750552944839
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 6.628050073231861e-07 to 5.469101779453922e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 2.0097655544957907e-28 to 0.007049373351037502
+posterior sum: 0.9999998807907104
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 3.1953985898253157e-14 to 0.3040124177932739
+filter_rot shape: torch.Size([7])
+filter_rot range: 7.292038609225948e-13 to 0.9974542260169983
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 2.1875867866316857e-28 to 0.006258970592170954
+transition:  tensor([0.1232, 0.0003, 0.0050], device='cuda:0')
+t =  92
+rays shape: (11,)
+rays range: 1.1182808527109545 to 3.420912550362949
+prior shape: torch.Size([112, 67, 36])
+prior range: 2.1875867866316857e-28 to 0.006258970592170954
+prior sum: 1.0000001192092896
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 6.478606451310043e-07 to 5.42577890882967e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 8.026302811730976e-29 to 0.00694819213822484
+posterior sum: 1.0000001192092896
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 2.4314956583002152e-14 to 0.30691054463386536
+filter_rot shape: torch.Size([7])
+filter_rot range: 2.5371629168262355e-13 to 0.9779226779937744
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 7.659267508873163e-29 to 0.006336914841085672
+transition:  tensor([0.1256, 0.0009, 0.0149], device='cuda:0')
+t =  93
+rays shape: (11,)
+rays range: 1.093490003217967 to 3.3060239273070007
+prior shape: torch.Size([112, 67, 36])
+prior range: 7.659267508873163e-29 to 0.006336914841085672
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 6.320656211755704e-07 to 5.399685505835805e-06
+likelihood sum: 0.9999999403953552
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 3.3976888948483966e-29 to 0.007218634244054556
+posterior sum: 1.0
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 2.433321353114727e-14 to 0.3078630566596985
+filter_rot shape: torch.Size([7])
+filter_rot range: 1.8044427578653086e-15 to 0.7055712342262268
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 2.3250963791016115e-29 to 0.006237495690584183
+transition:  tensor([0.1255, 0.0025, 0.0591], device='cuda:0')
+t =  94
+rays shape: (11,)
+rays range: 1.099023818312885 to 3.2107110666163394
+prior shape: torch.Size([112, 67, 36])
+prior range: 2.3250963791016115e-29 to 0.006237495690584183
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 6.270028620747325e-07 to 5.334814431989798e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 1.1272062465967232e-29 to 0.007034353446215391
+posterior sum: 0.9999999403953552
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 3.412951209624468e-14 to 0.30534589290618896
+filter_rot shape: torch.Size([7])
+filter_rot range: 4.601199436515607e-16 to 0.606915295124054
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 6.237209136649515e-30 to 0.0056504150852561
+transition:  tensor([0.1223, 0.0040, 0.0707], device='cuda:0')
+t =  95
+rays shape: (11,)
+rays range: 1.1288918245537525 to 3.0528640747070312
+prior shape: torch.Size([112, 67, 36])
+prior range: 6.237209136649515e-30 to 0.0056504150852561
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 6.059486281628779e-07 to 5.307407718646573e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 3.438121988471484e-30 to 0.006029297132045031
+posterior sum: 1.0
+filters_trans shape: torch.Size([36, 7, 7])
+filters_trans range: 2.3992035436256817e-14 to 0.30880481004714966
+filter_rot shape: torch.Size([7])
+filter_rot range: 4.1138352075112037e-16 to 0.5988417863845825
+prob_vol shape: torch.Size([112, 67, 36])
+prob_vol range: 1.2765875232698407e-30 to 0.00512302340939641
+transition:  tensor([0.1255, 0.0042, 0.0716], device='cuda:0')
+t =  96
+rays shape: (11,)
+rays range: 1.179466800539539 to 2.9446127031396303
+prior shape: torch.Size([112, 67, 36])
+prior range: 1.2765875232698407e-30 to 0.00512302340939641
+prior sum: 1.0
+likelihood shape: torch.Size([112, 67, 36])
+likelihood range: 5.888344958293601e-07 to 5.256996246316703e-06
+likelihood sum: 1.0
+posterior shape: torch.Size([112, 67, 36])
+posterior range: 8.723389656830748e-31 to 0.005795605946332216
+posterior sum: 0.9999998807907104
+10m recall =  1.0
+5m recall =  0.8144329896907216
+2m recall =  0.7319587628865979
+1m recall =  0.7319587628865979
+0.5m recall =  0.7319587628865979
+0.1m recall =  0.4845360824742268
+1m 30 deg recall =  0.31958762886597936
+last_errors [0.02878293 0.05033778 0.04502405 0.03513165 0.01678396 0.09866715
+ 0.06191707 0.02733087 0.00270527 0.02754254]
+100%|██████████| 1/1 [00:46<00:00, 46.59s/it]100%|██████████| 1/1 [00:46<00:00, 46.59s/it]
+============================================
+1.0 success rate :  0.02702702702702703
+0.5 success rate :  0.02702702702702703
+0.3 success rate :  0.02702702702702703
+0.2 success rate :  0.02702702702702703
+mean RMSE succeeded :  0.046890577652477346
+mean RMSE all :  0.046890577652477346
+============================================
+feature_extraction_time :  0.0003825575113296509
+matching_time :  0.003633663058280945
+iteration_time :  0.4547804743051529

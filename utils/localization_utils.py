@@ -6,6 +6,11 @@ import torch.nn.functional as F
 from scipy.interpolate import *
 
 
+import torch
+import torch.nn.functional as F
+import numpy as np
+from typing import Tuple
+
 def localize(
     desdf: torch.tensor, rays: torch.tensor, orn_slice=36, return_np=True, lambd=40
 ) -> Tuple[torch.tensor]:
@@ -36,7 +41,7 @@ def localize(
     pad_back = V - pad_front
     pad_desdf = F.pad(desdf, [pad_front, pad_back], mode="circular")
 
-    # probablility is -l1norm
+    # probability is -l1norm
     prob_vol = torch.stack(
         [
             -torch.norm(pad_desdf[:, :, i : i + V] - rays, p=1.0, dim=2)
@@ -45,16 +50,27 @@ def localize(
         dim=2,
     )  # (H,W,O)
     prob_vol = torch.exp(prob_vol / lambd)  # NOTE: here make prob positive
+    
+    ###
+    total_sum = torch.sum(prob_vol)
+    prob_vol = prob_vol / total_sum
+    ###
 
     # maxpooling
     prob_dist, orientations = torch.max(prob_vol, dim=2)
 
     # get the prediction
-    pred_y, pred_x = torch.where(prob_dist == prob_dist.max())
+    prob_dist_cpu = prob_dist.cpu().numpy()  # Move the tensor to the CPU and convert to numpy
+    pred_y, pred_x = np.unravel_index(np.argmax(prob_dist_cpu), prob_dist_cpu.shape)
+    device = prob_dist.device  # Use the same device as prob_dist
+    pred_x = torch.tensor(pred_x, device=device)
+    pred_y = torch.tensor(pred_y, device=device)
+
     orn = orientations[pred_y, pred_x]
     # from orientation indices to radians
     orn = orn / orn_slice * 2 * torch.pi
-    pred = torch.cat((pred_x, pred_y, orn))
+    pred = torch.cat((pred_x.unsqueeze(0), pred_y.unsqueeze(0), orn.unsqueeze(0)))
+
     if return_np:
         return (
             prob_vol.detach().cpu().numpy(),
@@ -69,6 +85,166 @@ def localize(
             orientations.to(torch.float32).detach().cpu(),
             pred.to(torch.float32).detach().cpu(),
         )
+
+def localize_noflip(
+    desdf: torch.tensor, rays: torch.tensor, orn_slice=36, return_np=True, lambd=40
+) -> Tuple[torch.tensor]:
+    """
+    Localize in the desdf according to the rays
+    Input:
+        desdf: (H, W, O), counter clockwise
+        rays: (V,) from left to right (clockwise)
+        orn_slice: number of orientations
+        return_np: return as ndarray instead of torch.tensor
+        lambd: parameter for likelihood
+    Output:
+        prob_vol: probability volume (H, W, O), ndarray
+        prob_dist: probability distribution, (H, W) maxpool the prob_vol along orientation, ndarray
+        orientations: orientation with max likelihood at each position, (H, W), ndarray
+        pred: (3, ) predicted state [x,y,theta], ndarray
+    """
+
+    # flip the ray, to make rotation direction mathematically positive
+    #rays = torch.flip(rays, [0])
+    O = desdf.shape[2]
+    V = rays.shape[0]
+    # expand rays to have the same dimension as desdf
+    rays = rays.reshape((1, 1, -1))
+
+    # circular pad the desdf
+    pad_front = V // 2
+    pad_back = V - pad_front
+    pad_desdf = F.pad(desdf, [pad_front, pad_back], mode="circular")
+
+#    # probability is -l1norm
+#    prob_vol = torch.stack(
+#        [
+#            -torch.norm(pad_desdf[:, :, i : i + V] - rays, p=1.0, dim=2)
+#            for i in range(O)
+#        ],
+#        dim=2,
+#    )  # (H,W,O)
+
+    prob_vol = torch.stack(
+        [
+            -torch.sum(
+                torch.clamp(
+                    torch.abs(pad_desdf[:, :, i : i + V] - rays), max=5
+                ),
+                dim=2
+            ) / V * 11
+            for i in range(O)
+        ],
+        dim=2,
+    )
+
+    prob_vol = torch.exp(prob_vol / lambd)  # NOTE: here make prob positive
+    ###
+    total_sum = torch.sum(prob_vol)
+    prob_vol = prob_vol / total_sum
+    ###
+
+
+    # maxpooling
+    prob_dist, orientations = torch.max(prob_vol, dim=2)
+
+    # get the prediction
+    prob_dist_cpu = prob_dist.cpu().numpy()  # Move the tensor to the CPU and convert to numpy
+    pred_y, pred_x = np.unravel_index(np.argmax(prob_dist_cpu), prob_dist_cpu.shape)
+    #pred_y, pred_x = torch.where(prob_dist_cpu == prob_dist_cpu.max())
+    device = prob_dist.device  # Use the same device as prob_dist
+    pred_x = torch.tensor(pred_x, device=device)
+    pred_y = torch.tensor(pred_y, device=device)
+
+    orn = orientations[pred_y, pred_x]
+    # from orientation indices to radians
+    orn = orn / orn_slice * 2 * torch.pi
+    pred = torch.cat((pred_x.unsqueeze(0), pred_y.unsqueeze(0), orn.unsqueeze(0)))
+
+    if return_np:
+        return (
+            prob_vol.detach().cpu().numpy(),
+            prob_dist.detach().cpu().numpy(),
+            orientations.detach().cpu().numpy(),
+            pred.detach().cpu().numpy(),
+        )
+    else:
+        return (
+            prob_vol.to(torch.float32).detach().cpu(),
+            prob_dist.to(torch.float32).detach().cpu(),
+            orientations.to(torch.float32).detach().cpu(),
+            pred.to(torch.float32).detach().cpu(),
+        )
+
+
+# def localize(
+#     desdf: torch.tensor, rays: torch.tensor, orn_slice=36, return_np=True, lambd=40
+# ) -> Tuple[torch.tensor]:
+#     """
+#     Localize in the desdf according to the rays
+#     Input:
+#         desdf: (H, W, O), counter clockwise
+#         rays: (V,) from left to right (clockwise)
+#         orn_slice: number of orientations
+#         return_np: return as ndarray instead of torch.tensor
+#         lambd: parameter for likelihood
+#     Output:
+#         prob_vol: probability volume (H, W, O), ndarray
+#         prob_dist: probability distribution, (H, W) maxpool the prob_vol along orientation, ndarray
+#         orientations: orientation with max likelihood at each position, (H, W), ndarray
+#         pred: (3, ) predicted state [x,y,theta], ndarray
+#     """
+# 
+#     # flip the ray, to make rotation direction mathematically positive
+#     rays = torch.flip(rays, [0])
+#     O = desdf.shape[2]
+#     V = rays.shape[0]
+#     # expand rays to have the same dimension as desdf
+#     rays = rays.reshape((1, 1, -1))
+# 
+#     # circular pad the desdf
+#     pad_front = V // 2
+#     pad_back = V - pad_front
+#     pad_desdf = F.pad(desdf, [pad_front, pad_back], mode="circular")
+# 
+#     # probablility is -l1norm
+#     prob_vol = torch.stack(
+#         [
+#             -torch.norm(pad_desdf[:, :, i : i + V] - rays, p=1.0, dim=2)
+#             for i in range(O)
+#         ],
+#         dim=2,
+#     )  # (H,W,O)
+#     prob_vol = torch.exp(prob_vol / lambd)  # NOTE: here make prob positive
+# 
+#     # maxpooling
+#     prob_dist, orientations = torch.max(prob_vol, dim=2)
+# 
+#     # get the prediction
+#     #pred_y, pred_x = np.unravel_index(np.argmax(prob_dist.numpy()), prob_dist.shape)
+#     prob_dist_cpu = prob_dist.cpu().numpy() # Move the tensor to the CPU and convert to numpy
+#     pred_y, pred_x = np.unravel_index(np.argmax(prob_dist_cpu), prob_dist_cpu.shape)
+#     pred_x = torch.from_numpy(np.array([pred_x]))
+#     pred_y = torch.from_numpy(np.array([pred_y]))
+#     #pred_y, pred_x = torch.where(prob_dist == prob_dist.max())
+#     orn = orientations[pred_y, pred_x]
+#     # from orientation indices to radians
+#     orn = orn / orn_slice * 2 * torch.pi
+#     pred = torch.cat((pred_x, pred_y, orn))
+#     if return_np:
+#         return (
+#             prob_vol.detach().cpu().numpy(),
+#             prob_dist.detach().cpu().numpy(),
+#             orientations.detach().cpu().numpy(),
+#             pred.detach().cpu().numpy(),
+#         )
+#     else:
+#         return (
+#             prob_vol.to(torch.float32).detach().cpu(),
+#             prob_dist.to(torch.float32).detach().cpu(),
+#             orientations.to(torch.float32).detach().cpu(),
+#             pred.to(torch.float32).detach().cpu(),
+#         )
 
 
 def get_ray_from_depth(d, V=11, dv=10, a0=None, F_W=3 / 8):
@@ -95,6 +271,9 @@ def get_ray_from_depth(d, V=11, dv=10, a0=None, F_W=3 / 8):
     interp_d = griddata(np.arange(W).reshape(-1, 1), d, w, method="linear")
     rays = interp_d / np.cos(angles)
 
+    print(f"rays shape: {rays.shape}")
+    print(f"rays range: {rays.min()} to {rays.max()}")
+
     return rays
 
 
@@ -114,7 +293,7 @@ def transit(
         transition: ego motion
         sig_o: stddev of rotation
         sig_x: stddev in x translation
-        sig_w: stddev in y translation
+        sig_y: stddev in y translation
         tsize: translational filter size
         rsize: rotational filter size
         resolution: resolution of the grid [m/pixel]
@@ -132,9 +311,21 @@ def transit(
         resolution=resolution,
     )  # (O, 5, 5), (5,)
 
+    if torch.isnan(prob_vol).any():
+        print("NaNs found in prob_vol1")
+
+    ### Added 01.07.2024
+    # Move filters to the same device as prob_vol
+    device = prob_vol.device
+    filters_trans = filters_trans.to(device)
+    filter_rot = filter_rot.to(device)
+    ###
+
     # set grouped 2d convolution, O as channels
     prob_vol = prob_vol.permute((2, 0, 1))  # (O, H, W)
-
+    #print("prob_vol2: ", prob_vol)
+    if torch.isnan(prob_vol).any():
+        print("NaNs found in prob_vol2")
     # convolve with the translational filters
     # NOTE: make sure the filter is convolved correctly need to flip
     prob_vol = F.conv2d(
@@ -144,7 +335,9 @@ def transit(
         groups=O,
         padding="same",
     )  # (O, H, W)
-
+    #print("prob_vol3: ", prob_vol)
+    if torch.isnan(prob_vol).any():
+        print("NaNs found in prob_vol3")
     # convolve with rotational filters
     # reshape as batch
     prob_vol = prob_vol.permute((1, 2, 0))  # (H, W, O)
@@ -152,14 +345,33 @@ def transit(
     prob_vol = F.pad(
         prob_vol, pad=[int((rsize - 1) / 2), int((rsize - 1) / 2)], mode="circular"
     )
+    #print("prob_vol3a: ", prob_vol)
+    if torch.isnan(prob_vol).any():
+        print("3a: NaNs found in prob_vol")
+    
+
     prob_vol = F.conv1d(
         prob_vol, weight=filter_rot.flip(dims=[-1]).unsqueeze(0).unsqueeze(0), bias=None
     )  # TODO (HxW, 1, O)
-
+    if torch.isnan(prob_vol).any():
+        print("4: NaNs found in prob_vol")
+    # print("prob_vol4: ", prob_vol)
     # reshape
     prob_vol = prob_vol.reshape([H, W, O])  # (H, W, O)
     # normalize
     prob_vol = prob_vol / prob_vol.sum()
+    # print("prob_vol5: ", prob_vol)
+    if torch.isnan(prob_vol).any():
+        print("5: NaNs found in prob_vol")
+
+    print(f"filters_trans shape: {filters_trans.shape}")
+    print(f"filters_trans range: {filters_trans.min().item()} to {filters_trans.max().item()}")
+
+    print(f"filter_rot shape: {filter_rot.shape}")
+    print(f"filter_rot range: {filter_rot.min().item()} to {filter_rot.max().item()}")
+
+    print(f"prob_vol shape: {prob_vol.shape}")
+    print(f"prob_vol range: {prob_vol.min().item()} to {prob_vol.max().item()}")
 
     return prob_vol
 
@@ -208,13 +420,24 @@ def get_filters(
     s_th = torch.sin(orns).reshape((O, 1, 1))  # (O, 1, 1)
     center_x = transition[0] * c_th - transition[1] * s_th  # (O, 1, 1)
     center_y = transition[0] * s_th + transition[1] * c_th  # (O, 1, 1)
+#    center_y = transition[0] * c_th - transition[1] * s_th  # (O, 1, 1) # try
+#    center_x = transition[0] * s_th + transition[1] * c_th  # (O, 1, 1)
 
     # add uncertainty
     filters_trans = torch.exp(
         -((grid_x - center_x) ** 2) / (sig_x**2) - (grid_y - center_y) ** 2 / (sig_y**2)
     )  # (O, 5, 5)
+
+    if torch.isnan(filters_trans).any():
+        print("NaNs found in filters_trans2")
+
     # normalize
-    filters_trans = filters_trans / filters_trans.sum(-1).sum(-1).reshape((O, 1, 1))
+    epsilon = 1e-10
+    filters_trans = filters_trans / (filters_trans.sum(-1).sum(-1).reshape((O, 1, 1)) + epsilon)
+    #filters_trans = filters_trans / filters_trans.sum(-1).sum(-1).reshape((O, 1, 1))
+    if torch.isnan(filters_trans).any():
+        print("NaNs found in filters_trans3")
+
 
     # rotation filter
     grid_o = (
@@ -224,5 +447,8 @@ def get_filters(
         * torch.pi
     )
     filter_rot = torch.exp(-((grid_o - center_o) ** 2) / (sig_o**2))  # (5)
+
+    if torch.isnan(filter_rot).any():
+        print("NaNs found in filter_rot")
 
     return filters_trans, filter_rot

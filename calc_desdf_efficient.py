@@ -1,59 +1,10 @@
-import cv2
+from numba import njit, prange
 import numpy as np
+import matplotlib.image as mpimg
+import tqdm
 
 
-def gravity_align(
-    img,
-    r,
-    p,
-    K=np.array([[240, 0, 320], [0, 240, 240], [0, 0, 1]]).astype(np.float32),
-    mode=0,
-):
-    """
-    Align the image with gravity direction
-    Input:
-        img: input image
-        r: roll
-        p: pitch
-        K: camera intrisics
-        mode: interpolation mode for warping, default: 0 - 'linear', else 1 - 'nearest'
-    Output:
-        aligned_img: gravity aligned image
-    """
-    # calculate R_gc from roll and pitch
-    # From gravity to camera, yaw->pitch->roll
-    # From camera to gravity, roll->pitch->yaw
-    p = (
-        -p
-    )  # this is because the pitch axis of robot and camera is in the opposite direction
-    cr = np.cos(r)
-    sr = np.sin(r)
-    cp = np.cos(p)
-    sp = np.sin(p)
-
-    # compute R_cg first
-    # pitch
-    R_x = np.array([[1, 0, 0], [0, cp, sp], [0, -sp, cp]])
-
-    # roll
-    R_z = np.array([[cr, sr, 0], [-sr, cr, 0], [0, 0, 1]])
-
-    R_cg = R_z @ R_x
-    R_gc = R_cg.T
-
-    # get shape
-    h, w = list(img.shape[:2])
-
-    # directly compute the homography
-    persp_M = K @ R_gc @ np.linalg.inv(K)
-
-    aligned_img = cv2.warpPerspective(
-        img, persp_M, (w, h), flags=cv2.INTER_NEAREST if mode == 1 else cv2.INTER_LINEAR
-    )
-
-    return aligned_img
-
-
+@njit
 def ray_cast(occ, pos, ang, dist_max=500):
     """
     Cast ray in the occupancy map
@@ -236,38 +187,33 @@ def ray_cast(occ, pos, ang, dist_max=500):
                 hit = True
         dist = np.linalg.norm(current_pos - pos, 2)
         return dist
-    
 
-def quaternion_to_euler(quaternions):
-    """
-    Convert an array of quaternions to Euler angles.
-    
-    Parameters:
-        quaternions (np.ndarray): A 2D array where each row is a quaternion [q_w, q_x, q_y, q_z].
-    
-    Returns:
-        euler_angles (np.ndarray): A 2D array where each row contains Euler angles [roll, pitch, yaw].
-    """
-    q_w = quaternions[:, 0]
-    q_x = quaternions[:, 1]
-    q_y = quaternions[:, 2]
-    q_z = quaternions[:, 3]
-    
-    # Roll (x-axis rotation)
-    sinr_cosp = 2 * (q_w * q_x + q_y * q_z)
-    cosr_cosp = 1 - 2 * (q_x * q_x + q_y * q_y)
-    roll = np.arctan2(sinr_cosp, cosr_cosp)
-    
-    # Pitch (y-axis rotation)
-    sinp = 2 * (q_w * q_y - q_z * q_x)
-    pitch = np.where(np.abs(sinp) >= 1,
-                     np.sign(sinp) * np.pi / 2,
-                     np.arcsin(sinp))
-    
-    # Yaw (z-axis rotation)
-    siny_cosp = 2 * (q_w * q_z + q_x * q_y)
-    cosy_cosp = 1 - 2 * (q_y * q_y + q_z * q_z)
-    yaw = np.arctan2(siny_cosp, cosy_cosp)
-    
-    euler_angles = np.stack((roll, pitch, yaw), axis=-1)
-    return euler_angles
+
+#@njit(parallel=True)
+def raycast_desdf_with_progress(occ, orn_slice=36, max_dist=10, original_resolution=0.01, resolution=0.1):
+    ratio = resolution / original_resolution
+    desdf = np.zeros(list((np.array(occ.shape) // ratio).astype(int)) + [orn_slice])
+    with tqdm.tqdm(total=orn_slice * desdf.shape[0] * desdf.shape[1]) as pbar:
+        for o in range(orn_slice):
+            theta = o / orn_slice * np.pi * 2
+            for row in range(desdf.shape[0]):
+                for col in range(desdf.shape[1]):
+                    pos = np.array([row, col]) * ratio
+                    desdf[row, col, o] = ray_cast(occ, pos, theta, max_dist / original_resolution)
+                    pbar.update(1)
+    return desdf * original_resolution
+
+
+if __name__ == "__main__":
+    floorplan_name = "map_cropped.png" #"map.png" # 
+    floorplan = mpimg.imread(floorplan_name)
+    pixel_per_meter = 18.315046895211292
+    occ = floorplan * 255
+    original_resolution = 1 / pixel_per_meter
+    resolution = 1
+    orn_slice = 36
+    max_dist = 10
+
+    desdf = raycast_desdf_with_progress(occ, orn_slice=orn_slice, max_dist=max_dist, original_resolution=original_resolution, resolution=resolution)
+    filename = "desdf_cropped_orn_slice_36_resolution_1_attempt2.npy" #"desdf_complete_orn_slice_36_resolution_01.npy" #
+    np.save(filename, desdf)

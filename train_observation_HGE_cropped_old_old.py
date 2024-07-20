@@ -22,9 +22,14 @@ import lightning as Lightning
 
 def train_observation():
     net_type = "d"#"comp"#
-    dataset = "gibson_f"
-    #dataset_path = "/cluster/scratch/wueestm/gibson/Gibson_Floorplan_Localization_Dataset"
-    dataset_path= "/cluster/project/cvg/data/gibson/Gibson_Floorplan_Localization_Dataset"
+
+    # dataset = "gibson_f"
+    # #dataset_path = "/cluster/scratch/wueestm/gibson/Gibson_Floorplan_Localization_Dataset"
+    # dataset_path= "/cluster/project/cvg/data/gibson/Gibson_Floorplan_Localization_Dataset"
+
+    dataset = "hge_customized_cropped"
+    dataset_path = "/cluster/project/cvg/data/lamar/HGE_customized_cropped"
+
 
     # get device
     device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -32,19 +37,19 @@ def train_observation():
 
 
     # parameters
-    L = 3  # number of the source frames
+    L = 0  # number of the source frames
     D = 128  # number of depth planes
     d_min = 0.1  # minimum depth
     d_max = 15.0  # maximum depth
     d_hyp = -0.2  # depth transform (uniform sampling in d**d_hyp)
-    F_W = 3 / 8  # camera intrinsic, focal length / image width
-    trans_thresh = 0.005  # translation threshold (variance) if using comp_s
+    #F_W = 3 / 8  # camera intrinsic, focal length / image width
+    #trans_thresh = 0.005  # translation threshold (variance) if using comp_s
 
     add_rp = (
-        True  # whether use roll and pitch angle augmentation, only used in training
+        False  # whether use roll and pitch angle augmentation, only used in training
     )
-    roll = 0.1  # maximum roll augmentation in randian
-    pitch = 0.1  # maximum pitch augmentation in randian
+    roll = 0  # maximum roll augmentation in randian
+    pitch = 0  # maximum pitch augmentation in randian
 
 
     # paths
@@ -53,7 +58,9 @@ def train_observation():
     #log_dir = ckpt_path
     desdf_path = os.path.join(dataset_path, "desdf")
 
-    if net_type == "d":
+    if (net_type == "d") & (dataset == "hge_customized_cropped"):
+        depth_suffix = "depth90"
+    elif net_type == "d":
         depth_suffix = "depth40"
     else:
         depth_suffix = "depth160"
@@ -123,8 +130,7 @@ def train_observation():
 
     # Train the model
     #trainer = Lightning.Trainer(max_steps=10, max_epochs=1, enable_checkpointing=True)
-    trainer = Lightning.Trainer(max_epochs=20, enable_checkpointing=False, logger=logger)
-    #trainer = Lightning.Trainer(max_epochs=100, enable_checkpointing=True, logger=logger)
+    trainer = Lightning.Trainer(max_epochs=100, enable_checkpointing=True, logger=logger)
     #trainer = Lightning.Trainer(max_steps=8, max_epochs=1, enable_checkpointing=True)
     #trainer = Lightning.Trainer(max_epochs=8, enable_checkpointing=True)
     #trainer = Lightning.Trainer(fast_dev_run=10, enable_checkpointing=True)
