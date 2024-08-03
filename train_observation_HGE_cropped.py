@@ -114,8 +114,32 @@ with open(split_file, "r") as f:
 # Set seed  
 seed_everything(seed, workers=True)
 
+# # Define data
+# train_dataset = GridSeqDataset_hge_customized_cropped_gravity_align(
+#     dataset_dir,
+#     split.train,
+#     L=L,
+#     depth_dir=depth_dir,
+#     depth_suffix=depth_suffix,
+#     add_rp=add_rp,
+#     roll=roll,
+#     pitch=pitch,
+# )
+# 
+# 
+# val_dataset = GridSeqDataset_hge_customized_cropped_gravity_align(
+#     dataset_dir,
+#     split.val,
+#     L=L,
+#     depth_dir=depth_dir,
+#     depth_suffix=depth_suffix,
+#     add_rp=add_rp,
+#     roll=roll,
+#     pitch=pitch,
+# )
+
 # Define data
-train_dataset = GridSeqDataset_hge_customized_cropped_gravity_align(
+train_dataset = GridSeqDataset_hge_customized_cropped_metric3d(
     dataset_dir,
     split.train,
     L=L,
@@ -127,7 +151,7 @@ train_dataset = GridSeqDataset_hge_customized_cropped_gravity_align(
 )
 
 
-val_dataset = GridSeqDataset_hge_customized_cropped_gravity_align(
+val_dataset = GridSeqDataset_hge_customized_cropped_metric3d(
     dataset_dir,
     split.val,
     L=L,
@@ -137,7 +161,6 @@ val_dataset = GridSeqDataset_hge_customized_cropped_gravity_align(
     roll=roll,
     pitch=pitch,
 )
-
 
 # In[9]:
 
@@ -158,8 +181,8 @@ val_dataloader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False)
 
 
 # Define model 
-model = depth_net_pl(shape_loss_weight=shape_loss_weight, lr=lr, d_min=d_min, d_max=d_max, d_hyp=d_hyp, D=D)
-
+#model = depth_net_pl(shape_loss_weight=shape_loss_weight, lr=lr, d_min=d_min, d_max=d_max, d_hyp=d_hyp, D=D)
+model = depth_net_metric3d_pl(shape_loss_weight=shape_loss_weight, lr=lr, d_min=d_min, d_max=d_max, d_hyp=d_hyp, D=D)
 
 # In[12]:
 

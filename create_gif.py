@@ -32,14 +32,14 @@ from src.helper_functions import *
 
 
 net_type = "d"
-#dataset = "gibson_t" # "gibson_g" # 
-dataset = "hge_customized_cropped"
+dataset = "gibson_t" # "gibson_g" # 
+#dataset = "hge_customized_cropped"
 #dataset = "hge_customized_complete"
 
 if dataset == "gibson_t":
     dataset_path = "/cluster/project/cvg/data/gibson/Gibson_Floorplan_Localization_Dataset"
     #evol_path = "./evol_path/gibson_f/gt" #evol_path = "./evol_path/gibson_f/mono"
-    evol_path = "./evol_path/gibson_f/" #evol_path = "./evol_path/gibson_f/mono"
+    evol_path = "./evol_path/gibson_t/" #evol_path = "./evol_path/gibson_f/mono"
     desdf_resolution = 0.1
     orn_slice = 36
 elif dataset == "hge_customized_cropped":
@@ -150,8 +150,9 @@ def resize_image(image, size):
 #evol_path = "/cluster/home/wueestm/f3loc/evol_path/hge_customized_cropped/gt/pretty_filter_extended/0"
 #evol_path = "/cluster/home/wueestm/f3loc/evol_path/hge_customized_cropped/gt/"#pretty_filter_extended/0"
 #evol_path = "/cluster/home/wueestm/f3loc/evol_path/hge_customized_complete/gt/"#pretty_filter_extended/0"
-evol_path = "/cluster/home/wueestm/f3loc/evol_path/hge_customized_cropped/gt/"
-
+#evol_path = "/cluster/home/wueestm/f3loc/evol_path/hge_customized_cropped/gt/"
+#evol_path = "/cluster/home/wueestm/f3loc/evol_path/hge_customized_complete/metric3d_percentile/gravity_align"
+evol_path = "/cluster/home/wueestm/f3loc/evol_path/gibson_t"
 
 ### Create GIF
 # for data_idx in tqdm.tqdm(range(0,1)):

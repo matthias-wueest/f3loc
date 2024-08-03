@@ -244,7 +244,7 @@ if __name__ == "__main__":
     occ = floorplan*255 # occ: the map as occupancy
     original_resolution = 1/pixel_per_meter
     resolution = 0.1
-    orn_slice = 36
+    orn_slice = 72#36
     max_dist = 10
 
 

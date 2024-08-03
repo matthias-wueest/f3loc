@@ -1,0 +1,32 @@
+======= USING DEVICE :  cuda  =======
+/cluster/home/wueestm/anaconda3/envs/f3loc/lib/python3.8/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/cluster/home/wueestm/anaconda3/envs/f3loc/lib/python3.8/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=ResNet50_Weights.IMAGENET1K_V1`. You can also use `weights=ResNet50_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+load desdf ...
+Affine transformation matrix:
+ [[ 2.17114437e-01  1.82770027e+01  1.33427459e+03]
+ [ 1.83530911e+01 -1.73803654e-01  7.28138788e+02]]
+Destination points:
+ [[1516.   490.5]
+ [1532.  2162. ]
+ [ 350.  1515. ]
+ [ 391.   135. ]]
+Transformed points:
+ [[1516.19150279  495.13390132]
+ [1531.81872801 2157.6136592 ]
+ [ 350.21402267 1520.17882748]
+ [ 390.77574653  129.57361201]]
+pixel_per_meter: 18.315046895211022
+load poses and maps ...
+  0%|          | 0/3 [00:00<?, ?it/s] 67%|██████▋   | 2/3 [00:00<00:00, 16.93it/s]100%|██████████| 3/3 [00:00<00:00, 17.28it/s]
+Length Test Set:  11
+length of test_set:  11
+  0%|          | 0/11 [00:00<?, ?it/s]Before loading data
+xFormers not available
+xFormers not available
+xFormers not available
+xFormers not available
+Depth image  0  done.
+Depth image  1  done.
+slurmstepd: error: *** JOB 3852855 ON eu-g4-020 CANCELLED AT 2024-08-03T13:55:04 ***

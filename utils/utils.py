@@ -54,6 +54,78 @@ def gravity_align(
     return aligned_img
 
 
+def gravity_align_depth(depth_img, r, p, K=np.array([[240, 0, 320], [0, 240, 240], [0, 0, 1]]).astype(np.float32)):
+    """
+    Align the depth image with gravity direction
+    Input:
+        depth_img: input depth image
+        r: roll
+        p: pitch
+        K: camera intrinsics
+    Output:
+        aligned_depth_img: gravity aligned depth image
+    """
+    # Calculate R_gc from roll and pitch
+    p = -p  # This is because the pitch axis of robot and camera is in the opposite direction
+    cr = np.cos(r)
+    sr = np.sin(r)
+    cp = np.cos(p)
+    sp = np.sin(p)
+
+    # Compute R_cg first
+    # Pitch
+    R_x = np.array([[1, 0, 0], [0, cp, sp], [0, -sp, cp]])
+
+    # Roll
+    R_z = np.array([[cr, sr, 0], [-sr, cr, 0], [0, 0, 1]])
+
+    R_cg = R_z @ R_x
+    R_gc = R_cg.T
+
+    # Get the shape of the depth image
+    h, w = depth_img.shape
+
+    # Generate grid of (u, v) pixel coordinates
+    u, v = np.meshgrid(np.arange(w), np.arange(h))
+
+    # Back-project to 3D
+    z = depth_img.flatten()
+    x = (u.flatten() - K[0, 2]) * z / K[0, 0]
+    y = (v.flatten() - K[1, 2]) * z / K[1, 1]
+
+    # Stack to get 3D points
+    points_3D = np.vstack((x, y, z))
+
+    # Rotate points
+    rotated_points_3D = R_gc @ points_3D
+
+    # Project back to 2D
+    x_rot = (rotated_points_3D[0, :] * K[0, 0] / rotated_points_3D[2, :]) + K[0, 2]
+    y_rot = (rotated_points_3D[1, :] * K[1, 1] / rotated_points_3D[2, :]) + K[1, 2]
+    z_rot = rotated_points_3D[2, :]
+
+    # Round and cast to int
+    x_rot = np.round(x_rot).astype(int)
+    y_rot = np.round(y_rot).astype(int)
+
+    # Create an empty aligned depth image
+    aligned_depth_img = np.zeros_like(depth_img)
+
+    # Mask for valid indices
+    valid_mask = (x_rot >= 0) & (x_rot < w) & (y_rot >= 0) & (y_rot < h)
+
+    # Filter valid points
+    x_rot = x_rot[valid_mask]
+    y_rot = y_rot[valid_mask]
+    z_rot = z_rot[valid_mask]
+
+    # Use numpy's advanced indexing to assign the values
+    aligned_depth_img[y_rot, x_rot] = z_rot
+
+    return aligned_depth_img
+
+
+
 def ray_cast(occ, pos, ang, dist_max=500):
     """
     Cast ray in the occupancy map

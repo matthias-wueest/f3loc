@@ -1,0 +1,2763 @@
+======= USING DEVICE :  cuda  =======
+/cluster/home/wueestm/anaconda3/envs/f3loc/lib/python3.8/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/cluster/home/wueestm/anaconda3/envs/f3loc/lib/python3.8/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=ResNet50_Weights.IMAGENET1K_V1`. You can also use `weights=ResNet50_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+load desdf ...
+Affine transformation matrix:
+ [[ 2.17114437e-01  1.82770027e+01  1.33427459e+03]
+ [ 1.83530911e+01 -1.73803654e-01  7.28138788e+02]]
+Destination points:
+ [[1516.   490.5]
+ [1532.  2162. ]
+ [ 350.  1515. ]
+ [ 391.   135. ]]
+Transformed points:
+ [[1516.19150279  495.13390132]
+ [1531.81872801 2157.6136592 ]
+ [ 350.21402267 1520.17882748]
+ [ 390.77574653  129.57361201]]
+pixel_per_meter: 18.315046895211022
+load poses and maps ...
+  0%|          | 0/3 [00:00<?, ?it/s] 67%|██████▋   | 2/3 [00:00<00:00, 16.37it/s]100%|██████████| 3/3 [00:00<00:00, 16.73it/s]
+Length Test Set:  11
+length of test_set:  11
+  0%|          | 0/1 [00:00<?, ?it/s]Before loading data
+xFormers not available
+xFormers not available
+xFormers not available
+xFormers not available
+Depth image  0  done.
+Depth image  1  done.
+Depth image  2  done.
+Depth image  3  done.
+Depth image  4  done.
+Depth image  5  done.
+Depth image  6  done.
+Depth image  7  done.
+Depth image  8  done.
+Depth image  9  done.
+Depth image  10  done.
+Depth image  11  done.
+Depth image  12  done.
+Depth image  13  done.
+Depth image  14  done.
+Depth image  15  done.
+Depth image  16  done.
+Depth image  17  done.
+Depth image  18  done.
+Depth image  19  done.
+Depth image  20  done.
+Depth image  21  done.
+Depth image  22  done.
+Depth image  23  done.
+Depth image  24  done.
+Depth image  25  done.
+Depth image  26  done.
+Depth image  27  done.
+Depth image  28  done.
+Depth image  29  done.
+Depth image  30  done.
+Depth image  31  done.
+Depth image  32  done.
+Depth image  33  done.
+Depth image  34  done.
+Depth image  35  done.
+Depth image  36  done.
+Depth image  37  done.
+Depth image  38  done.
+Depth image  39  done.
+Depth image  40  done.
+Depth image  41  done.
+Depth image  42  done.
+Depth image  43  done.
+Depth image  44  done.
+Depth image  45  done.
+Depth image  46  done.
+Depth image  47  done.
+Depth image  48  done.
+Depth image  49  done.
+Depth image  50  done.
+Depth image  51  done.
+Depth image  52  done.
+Depth image  53  done.
+Depth image  54  done.
+Depth image  55  done.
+Depth image  56  done.
+Depth image  57  done.
+Depth image  58  done.
+Depth image  59  done.
+Depth image  60  done.
+Depth image  61  done.
+Depth image  62  done.
+Depth image  63  done.
+Depth image  64  done.
+Depth image  65  done.
+Depth image  66  done.
+Depth image  67  done.
+Depth image  68  done.
+Depth image  69  done.
+Depth image  70  done.
+Depth image  71  done.
+Depth image  72  done.
+Depth image  73  done.
+Depth image  74  done.
+Depth image  75  done.
+Depth image  76  done.
+Depth image  77  done.
+Depth image  78  done.
+Depth image  79  done.
+Depth image  80  done.
+Depth image  81  done.
+Depth image  82  done.
+Depth image  83  done.
+Depth image  84  done.
+Depth image  85  done.
+Depth image  86  done.
+Depth image  87  done.
+Depth image  88  done.
+Depth image  89  done.
+Depth image  90  done.
+Depth image  91  done.
+Depth image  92  done.
+Depth image  93  done.
+Depth image  94  done.
+Depth image  95  done.
+Depth image  96  done.
+Depth image  97  done.
+Depth image  98  done.
+Depth image  99  done.
+(100, 1920, 1440)
+After loading data
+After getting desdf
+After map to desdf
+100
+eval_filtering_extended_working_HGE_own_depthmodel.py:491: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:274.)
+  poses = torch.tensor(data["poses"], device=device).unsqueeze(0)
+tensor poses
+prior loaded to gpu
+start looping over sequences
+t =  0
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 9.855286738555268 to 58.46481057916754
+tensor([22.5015, 58.4648, 29.1215, 15.4305,  9.9947,  9.8553, 10.1985, 10.7624,
+        11.3316, 12.0472], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 6.093793469830189e-09 to 6.093793469830189e-09
+prior sum: 0.9999997019767761
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 5.382767565009772e-09 to 1.587129538904719e-08
+likelihood sum: 1.0000001192092896
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 5.382766232742142e-09 to 1.5871291836333512e-08
+posterior sum: 0.9999994039535522
+/cluster/home/wueestm/anaconda3/envs/f3loc/lib/python3.8/site-packages/torch/functional.py:512: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at ../aten/src/ATen/native/TensorShape.cpp:3587.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.31796035170555115
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9707553386688232
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 7.718727534331082e-35 to 1.3166576273704322e-08
+transition:  tensor([ 0.7482, -0.1545,  0.0172])
+t =  1
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 8.772391955511857 to 56.81157899154032
+tensor([30.1647, 56.8116, 26.1848, 14.6364,  8.9499,  8.7724,  9.1336,  9.6626,
+        10.1882, 10.9117], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 7.718727534331082e-35 to 1.3166576273704322e-08
+prior sum: 0.9999998807907104
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 5.305244688003086e-09 to 1.5375533735095814e-08
+likelihood sum: 0.9999998211860657
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 6.455862040407784e-35 to 2.962651279858619e-08
+posterior sum: 1.000000238418579
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.3179939091205597
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9077593684196472
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 2.5921348623114682e-08
+transition:  tensor([ 0.7145, -0.1410,  0.1184])
+t =  2
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 7.602744273954069 to 46.64398955178978
+tensor([46.6440, 18.7398, 11.6205,  7.6027,  7.6258,  7.9405,  8.3656,  8.9229,
+         9.5970, 10.4865], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 2.5921348623114682e-08
+prior sum: 0.9999998807907104
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 5.0425130737608015e-09 to 1.810976080207638e-08
+likelihood sum: 0.9999998807907104
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 5.161881588833239e-08
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.31726789474487305
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.844602108001709
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 4.455292312854908e-08
+transition:  tensor([ 0.4770, -0.1801, -0.1284])
+t =  3
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 7.043317679177745 to 59.92439769193748
+tensor([26.8612, 59.9244, 24.8359, 13.1027,  8.5238,  7.0433,  7.3126,  7.6408,
+         8.0983,  8.6679], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 4.455292312854908e-08
+prior sum: 1.000000238418579
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 5.110118550533116e-09 to 1.606283639432604e-08
+likelihood sum: 1.0
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 8.886539148988959e-08
+posterior sum: 1.0000001192092896
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.31780675053596497
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9599702954292297
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 8.070030332874012e-08
+transition:  tensor([ 0.4796, -0.1648, -0.2820])
+t =  4
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 6.623814756286477 to 63.52717611969541
+tensor([ 6.9333, 10.0801, 13.3159, 23.5556, 63.5272, 31.1801, 14.3923,  9.6866,
+         6.6354,  6.6238], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 8.070030332874012e-08
+prior sum: 0.9999998807907104
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 5.220823773299799e-09 to 1.720604281274518e-08
+likelihood sum: 1.0000001192092896
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 1.1417328238394475e-07
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.31429383158683777
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9029967188835144
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 8.683475982707023e-08
+transition:  tensor([ 0.7385, -0.0083, -0.1426])
+t =  5
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 5.527751229080248 to 60.58058009723687
+tensor([ 5.5278,  5.9468,  8.1261, 11.6506, 17.3752, 30.7870, 60.5806, 21.7126,
+        11.8767,  8.6548], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 8.683475982707023e-08
+prior sum: 1.0
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 5.196319374789482e-09 to 1.7322191681046206e-08
+likelihood sum: 0.9999998807907104
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 1.630477726166646e-07
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.3104281723499298
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9479241967201233
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 1.1583907166823337e-07
+transition:  tensor([ 0.5156,  0.0976, -0.0641])
+t =  6
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 4.629847395881382 to 53.99621970897247
+tensor([ 4.6298,  5.2258,  6.7215,  9.6190, 11.1124, 16.6516, 32.8710, 53.9962,
+        20.4228, 11.2059], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 1.1583907166823337e-07
+prior sum: 1.0
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 5.098943489656449e-09 to 1.7411014852086737e-08
+likelihood sum: 1.0
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 2.3587365660659998e-07
+posterior sum: 0.9999999403953552
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.309240460395813
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9446172118186951
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 1.6674935920946155e-07
+transition:  tensor([0.5314, 0.0937, 0.0634])
+t =  7
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 5.519122174529068 to 62.37377133797992
+tensor([ 5.5191,  6.5787,  9.4551, 10.2834, 15.0896, 27.8013, 62.3738, 25.1367,
+        13.1035,  9.1786], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 1.6674935920946155e-07
+prior sum: 1.0
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 5.231073796352348e-09 to 1.607341459930467e-08
+likelihood sum: 1.0
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 3.2240913583336805e-07
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.3102010488510132
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9763238430023193
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 2.2884260886257834e-07
+transition:  tensor([ 0.5264,  0.0501, -0.0155])
+t =  8
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 4.509748033913423 to 56.44757252601292
+tensor([ 5.5133,  4.5097,  9.0466,  9.6934, 14.4684, 21.9104, 56.4476, 32.1100,
+        15.1906,  9.8407], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 2.2884260886257834e-07
+prior sum: 1.0000001192092896
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 5.1651665167185e-09 to 1.54016372988508e-08
+likelihood sum: 1.0
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 3.983867316037504e-07
+posterior sum: 0.9999999403953552
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.31516867876052856
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9113631248474121
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 2.792447446609003e-07
+transition:  tensor([ 0.5464,  0.0347, -0.0305])
+t =  9
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 3.444922147646246 to 45.18729272929812
+tensor([ 3.4449,  5.7201,  7.8461,  8.0689, 13.6842, 17.1824, 36.3666, 45.1873,
+        18.8719, 11.1154], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 2.792447446609003e-07
+prior sum: 1.0
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 5.090039500998955e-09 to 1.5478921255862588e-08
+likelihood sum: 1.0000001192092896
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 4.5369159806796233e-07
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.31755539774894714
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.835263729095459
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 3.70171818531162e-07
+transition:  tensor([0.5026, 0.0448, 0.0448])
+t =  10
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 5.1013445445792 to 70.11869932714448
+tensor([ 5.1013,  7.3150,  7.4510,  9.0359, 13.1483, 25.5817, 70.1187, 28.8883,
+        14.4590,  9.6578], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 3.70171818531162e-07
+prior sum: 1.0
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 5.183237838934929e-09 to 1.6824509785351438e-08
+likelihood sum: 0.9999999403953552
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 6.829054086665565e-07
+posterior sum: 0.9999999403953552
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.3159859776496887
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.894479513168335
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 4.751323672280705e-07
+transition:  tensor([ 0.5337,  0.0098, -0.1207])
+t =  11
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 4.054111397231171 to 49.38554779236423
+tensor([ 4.0541,  6.9420,  6.6313,  6.7726,  7.6727, 12.6656, 17.6303, 37.1883,
+        49.3855, 20.0777], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 4.751323672280705e-07
+prior sum: 1.0
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 5.018684579027877e-09 to 1.6302948324664612e-08
+likelihood sum: 0.9999999403953552
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 7.215348887257278e-07
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.3134998381137848
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9499658346176147
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 5.91658476878365e-07
+transition:  tensor([ 0.5218,  0.0817, -0.0227])
+t =  12
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 3.805889280755831 to 53.95888263559177
+tensor([ 3.8059,  6.4624,  5.8655,  5.9787,  7.0684, 11.8967, 15.0970, 32.5906,
+        53.9589, 22.5469], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 5.91658476878365e-07
+prior sum: 0.9999998807907104
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 4.926405949845503e-09 to 1.6413531866987796e-08
+likelihood sum: 0.9999998807907104
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 9.752802725415677e-07
+posterior sum: 0.9999999403953552
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.31800809502601624
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9910823106765747
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 7.513759783250862e-07
+transition:  tensor([ 0.4875,  0.1008, -0.0095])
+t =  13
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 5.259216725236241 to 52.259648567198454
+tensor([ 5.6127,  5.2592,  5.4643,  5.4773,  6.8929, 11.4120, 14.5600, 28.6404,
+        52.2596, 22.7976], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 7.513759783250862e-07
+prior sum: 1.0
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 4.913515816440395e-09 to 1.5321813151558672e-08
+likelihood sum: 1.0
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 1.3022611256019445e-06
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.31744322180747986
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.8463212847709656
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 9.077265303858439e-07
+transition:  tensor([ 0.5035,  0.0820, -0.0464])
+t =  14
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 4.867640852319152 to 48.606830796583324
+tensor([ 5.2900,  4.8676,  4.9875,  4.8702,  5.9554, 10.5923, 10.8917, 20.6688,
+        48.6068, 36.3911], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 9.077265303858439e-07
+prior sum: 1.0
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 4.782755524956883e-09 to 1.4019494010142353e-08
+likelihood sum: 1.0
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 1.2221441920701182e-06
+posterior sum: 0.9999999403953552
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.3118649125099182
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9935755133628845
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 1.0206797469436424e-06
+transition:  tensor([0.5054, 0.1810, 0.2698])
+t =  15
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 5.226227662850081 to 52.96719823182262
+tensor([ 5.2262,  6.3215, 10.3905, 11.1914, 20.8993, 52.9672, 34.0118, 16.6856,
+        10.8282,  8.4725], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 1.0206797469436424e-06
+prior sum: 1.0
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 5.2113464654723884e-09 to 1.6640750999386e-08
+likelihood sum: 1.0
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 1.7938286873686593e-06
+posterior sum: 1.0000001192092896
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.3101900815963745
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.8925013542175293
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 1.4206142395778443e-06
+transition:  tensor([0.6431, 0.1752, 0.4026])
+t =  16
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 3.450318825995981 to 38.047730706758536
+tensor([36.0259, 38.0477, 19.5221, 11.0598,  8.4786,  6.3569,  5.2073,  4.4210,
+         3.8362,  3.4503], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 1.4206142395778443e-06
+prior sum: 0.9999999403953552
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 4.633883499138847e-09 to 1.605822141925728e-08
+likelihood sum: 1.0
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 2.4948155896709068e-06
+posterior sum: 0.9999999403953552
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.31597810983657837
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.8751118779182434
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 1.9135688944516005e-06
+transition:  tensor([ 0.5874, -0.0473,  0.3856])
+t =  17
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 2.399933023264817 to 6.181657900095771
+tensor([6.1817, 5.0417, 4.2447, 3.6851, 3.2789, 2.9715, 2.7476, 2.5673, 2.3999,
+        2.8246], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 1.9135688944516005e-06
+prior sum: 0.9999999403953552
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 3.4557987582672922e-09 to 1.3603075110779628e-08
+likelihood sum: 1.0
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 3.212648380213068e-06
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.31249627470970154
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9453610777854919
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 2.7768580821430078e-06
+transition:  tensor([ 0.5984, -0.2506,  0.0636])
+t =  18
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 2.0022509968800857 to 4.6389730737853645
+tensor([4.6390, 3.8882, 3.3569, 2.9635, 2.6606, 2.4339, 2.2677, 2.1419, 2.0647,
+        2.0023], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 2.7768580821430078e-06
+prior sum: 1.0
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 3.2486748846594082e-09 to 1.2764472145931904e-08
+likelihood sum: 1.0
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 4.132547474000603e-06
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.31815385818481445
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.8881217241287231
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 3.6882952372252475e-06
+transition:  tensor([ 0.6039, -0.4061, -0.1401])
+t =  19
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 1.7908661222457332 to 6.226698403961689
+tensor([6.2267, 6.1996, 3.9117, 3.2588, 2.7974, 2.4680, 2.2224, 2.0363, 1.8955,
+        1.7909], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 3.6882952372252475e-06
+prior sum: 1.0
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 3.4253087033420115e-09 to 1.33656206102728e-08
+likelihood sum: 1.0
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 5.646381850965554e-06
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.3128807246685028
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9150592684745789
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 4.733307378046447e-06
+transition:  tensor([ 0.4582, -0.2519, -0.2043])
+t =  20
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 2.0148288358941366 to 17.993138886458482
+tensor([17.9931, 10.5632,  6.5668,  5.3265,  5.0467,  3.1817,  2.7409,  2.4342,
+         2.2039,  2.0148], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 4.733307378046447e-06
+prior sum: 1.0
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 3.9039971255760975e-09 to 1.4603437570315236e-08
+likelihood sum: 1.0
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 7.018863016128307e-06
+posterior sum: 1.0000001192092896
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.31586921215057373
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9800546765327454
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 6.160532393550966e-06
+transition:  tensor([ 0.4625, -0.2192, -0.1015])
+t =  21
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 2.2029593913277354 to 46.466350882803205
+tensor([46.4664, 26.2046, 11.4551,  7.0041,  5.0497,  4.5695,  4.7201,  2.7925,
+         2.4664,  2.2030], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 6.160532393550966e-06
+prior sum: 1.0
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 4.234877337694343e-09 to 1.3728396197620896e-08
+likelihood sum: 0.9999999403953552
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 8.567312761442736e-06
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.3126140832901001
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.8308891654014587
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 7.642161108378787e-06
+transition:  tensor([ 0.6904, -0.2686, -0.0430])
+t =  22
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 3.7174943257612094 to 43.800294753614665
+tensor([31.9441, 43.8003, 16.7633,  9.0607,  6.1384,  4.6911,  3.7175,  3.7822,
+         4.0235,  3.9402], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 7.642161108378787e-06
+prior sum: 1.0
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 4.412351373161982e-09 to 1.4175712159669729e-08
+likelihood sum: 0.9999999403953552
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 1.0413483323645778e-05
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.31241437792778015
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9900569915771484
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 9.029667126014829e-06
+transition:  tensor([ 0.6103, -0.3089,  0.0973])
+t =  23
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 2.7737275223106193 to 42.260304974396036
+tensor([42.2603, 15.0236,  8.8324,  6.1900,  4.7320,  3.8438,  3.2387,  2.7737,
+         2.9508,  3.2699], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 9.029667126014829e-06
+prior sum: 1.0000001192092896
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 4.07918143707775e-09 to 1.464666876671572e-08
+likelihood sum: 1.0
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 1.2704386790574063e-05
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.31558287143707275
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.8417723178863525
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 1.0603371265460737e-05
+transition:  tensor([ 0.5084, -0.2739,  0.0458])
+t =  24
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 2.141018236783212 to 22.428691167974897
+tensor([22.4287, 11.6938,  7.0924,  5.2014,  4.1186,  3.4169,  2.9470,  2.5885,
+         2.3419,  2.1410], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 1.0603371265460737e-05
+prior sum: 1.0000001192092896
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 3.901782008597365e-09 to 1.4607440590452825e-08
+likelihood sum: 1.0
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 1.393542333971709e-05
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.31103962659835815
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9846316576004028
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 1.2202413017803337e-05
+transition:  tensor([ 0.4462, -0.3247, -0.0997])
+t =  25
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 2.7835224273250168 to 38.32373947282239
+tensor([38.3237, 27.0271, 14.1488,  8.8247,  6.7551,  5.0488,  4.1468,  3.5364,
+         3.0891,  2.7835], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 1.2202413017803337e-05
+prior sum: 1.0
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 4.3793204618225445e-09 to 1.5844186407321104e-08
+likelihood sum: 1.0
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 1.774194788595196e-05
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.3087640106678009
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9967405200004578
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 1.4296448171080556e-05
+transition:  tensor([ 0.2216, -0.2644, -0.4306])
+t =  26
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 5.704317317470227 to 34.192807556157646
+tensor([ 5.7043,  6.8165,  8.5401, 11.8806, 18.4448, 34.1928, 30.7816, 13.8375,
+        10.1586,  7.0888], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 1.4296448171080556e-05
+prior sum: 1.0
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 5.14612175095408e-09 to 1.5882243076248415e-08
+likelihood sum: 1.0
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 2.5833058316493407e-05
+posterior sum: 0.9999999403953552
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.3178856372833252
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.8764292597770691
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 1.7855782061815262e-05
+transition:  tensor([ 0.1679, -0.2670, -0.4873])
+t =  27
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 2.427898889249216 to 12.318441153052287
+tensor([ 2.4279,  2.5926,  2.8430,  3.1426,  3.5345,  4.2414,  4.9820,  6.1393,
+         8.1583, 12.3184], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 1.7855782061815262e-05
+prior sum: 1.0
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 3.8169547522670655e-09 to 1.4851757157430256e-08
+likelihood sum: 1.0000001192092896
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 2.749376290012151e-05
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.3109632134437561
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9347736835479736
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 2.062288513116073e-05
+transition:  tensor([ 0.3824, -0.3990, -0.4104])
+t =  28
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 2.0397764607623965 to 9.155722778892363
+tensor([9.1557, 8.2860, 7.6682, 4.1240, 2.5579, 2.2006, 2.0398, 2.2135, 2.4207,
+        2.7194], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 2.062288513116073e-05
+prior sum: 1.0
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 3.6955352111789352e-09 to 1.3771469298262673e-08
+likelihood sum: 0.9999998807907104
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 2.3058031729306094e-05
+posterior sum: 1.0000001192092896
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.3168206214904785
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.999905526638031
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 1.9551496734493412e-05
+transition:  tensor([ 0.6167, -0.3485, -0.2628])
+t =  29
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 2.009383874079586 to 44.69056218770903
+tensor([44.6906, 42.8768, 16.7547, 11.3525,  7.3796,  6.7219,  5.6677,  3.6608,
+         3.2022,  2.0094], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 1.9551496734493412e-05
+prior sum: 1.0
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 4.568500244772622e-09 to 1.395606030740737e-08
+likelihood sum: 1.0
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 1.9771210645558313e-05
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.3175531029701233
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9952236413955688
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 1.7384172679157928e-05
+transition:  tensor([ 0.4859, -0.1671, -0.0069])
+t =  30
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 2.8573681046568815 to 47.428415793741976
+tensor([47.4284, 40.0271, 14.9473, 10.7577,  6.5073,  6.6054,  5.2966,  4.5062,
+         3.9879,  2.8574], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 1.7384172679157928e-05
+prior sum: 1.0
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 4.5770316425830515e-09 to 1.4642252743612971e-08
+likelihood sum: 1.0
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 1.661871101532597e-05
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.3119432032108307
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9972739815711975
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 1.5007255569798872e-05
+transition:  tensor([ 0.5286, -0.1610, -0.0052])
+t =  31
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 3.4586954694563516 to 40.84327765014096
+tensor([40.8433, 37.7968, 14.4741, 10.2607,  6.1869,  5.7126,  5.2458,  4.3989,
+         3.8570,  3.4587], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 1.5007255569798872e-05
+prior sum: 1.0
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 4.529938202324502e-09 to 1.5625683857933836e-08
+likelihood sum: 0.9999998807907104
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 1.3300692444317974e-05
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.30639493465423584
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9640693068504333
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 1.275776685361052e-05
+transition:  tensor([ 0.5345, -0.1618,  0.0681])
+t =  32
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 3.1819884784200436 to 41.07976311387883
+tensor([41.0798, 18.3769,  9.5654,  8.5480,  5.1715,  5.1011,  4.6708,  3.9092,
+         3.5941,  3.1820], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 1.275776685361052e-05
+prior sum: 1.0
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 4.3239194447153295e-09 to 1.5369277406307447e-08
+likelihood sum: 1.0
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 1.6687346942489967e-05
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.3119283616542816
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9282222390174866
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 1.4825260223005898e-05
+transition:  tensor([ 0.5174, -0.1931,  0.0273])
+t =  33
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 2.899350964795794 to 32.681277568874485
+tensor([32.6813, 13.1635,  8.8071,  7.9923,  4.5874,  4.1806,  4.2029,  3.7152,
+         3.1744,  2.8994], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 1.4825260223005898e-05
+prior sum: 1.0
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 4.170882750287319e-09 to 1.512624869803858e-08
+likelihood sum: 0.9999999403953552
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 2.547344411141239e-05
+posterior sum: 0.9999999403953552
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.3181163966655731
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9890708923339844
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 2.2668627934763208e-05
+transition:  tensor([ 0.5185, -0.2983, -0.2723])
+t =  34
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 3.6560009802889835 to 48.58746028673776
+tensor([12.3185, 18.3654, 38.1600, 48.5875, 17.1957, 11.5281,  7.8693,  7.1958,
+         4.3609,  3.6560], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 2.2668627934763208e-05
+prior sum: 1.0
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 5.015749593439978e-09 to 1.5583220047687973e-08
+likelihood sum: 1.0
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 3.077487781411037e-05
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.3177204728126526
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9697785973548889
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 2.6677509595174342e-05
+transition:  tensor([ 0.5620, -0.1565, -0.1570])
+t =  35
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 7.205943664270947 to 49.01880381929632
+tensor([ 7.2059,  9.9758, 11.9265, 18.2172, 42.1431, 49.0188, 17.7555, 11.4867,
+         7.2738,  7.8883], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 2.6677509595174342e-05
+prior sum: 1.0
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 5.283658843779904e-09 to 1.5029712585601374e-08
+likelihood sum: 0.9999999403953552
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 3.088088851654902e-05
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.31665053963661194
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9816054701805115
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 2.6974517822964117e-05
+transition:  tensor([ 0.5691, -0.0537, -0.0736])
+t =  36
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 6.3077167204981315 to 43.74139763106314
+tensor([ 6.3077,  7.2998, 10.1495, 12.2664, 20.1150, 40.4010, 43.7414, 17.3226,
+        11.1372,  7.3416], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 2.6974517822964117e-05
+prior sum: 1.0
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 5.256470370085253e-09 to 1.6969581295711578e-08
+likelihood sum: 0.9999998807907104
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 2.93375469482271e-05
+posterior sum: 0.9999999403953552
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.3163672983646393
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9861590266227722
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 2.4935998226283118e-05
+transition:  tensor([ 0.5653, -0.0418, -0.0118])
+t =  37
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 5.736654129751065 to 50.18273397786704
+tensor([ 5.7367,  6.7604,  9.3171, 11.0749, 18.4378, 37.2991, 50.1827, 19.8880,
+        10.9101, 10.0142], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 2.4935998226283118e-05
+prior sum: 0.9999999403953552
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 5.247727585810935e-09 to 1.677685013135033e-08
+likelihood sum: 1.0
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 2.6626001272234134e-05
+posterior sum: 0.9999998807907104
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.314826101064682
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.8525794148445129
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 2.2928270482225344e-05
+transition:  tensor([ 0.5591, -0.0587, -0.0399])
+t =  38
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 4.836718215537577 to 49.23422461172764
+tensor([ 4.8367,  5.6346,  7.7844,  9.0756, 13.2862, 21.3105, 49.2342, 37.2507,
+        17.5707,  9.9152], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 2.2928270482225344e-05
+prior sum: 0.9999999403953552
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 5.152567261745844e-09 to 1.480613498472394e-08
+likelihood sum: 1.0
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 2.0551347915898077e-05
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.3179668188095093
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9623900651931763
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 1.889616578409914e-05
+transition:  tensor([ 0.5300, -0.1096, -0.0677])
+t =  39
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 4.222926958111889 to 65.92769626354331
+tensor([ 4.2229,  4.7738,  5.6034,  7.7484,  8.7439, 12.5281, 24.5311, 65.9277,
+        32.0359, 17.9184], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 1.889616578409914e-05
+prior sum: 0.9999999403953552
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 4.984533230611987e-09 to 1.7492521209305778e-08
+likelihood sum: 0.9999998807907104
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 2.596461672510486e-05
+posterior sum: 0.9999999403953552
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.3103378415107727
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.8846253752708435
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 1.815641917346511e-05
+transition:  tensor([ 0.5422, -0.1037,  0.1395])
+t =  40
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 4.745157603175529 to 44.913893817662846
+tensor([ 4.7452,  6.3809,  8.3399, 10.3286, 17.4681, 41.9004, 44.9139, 22.4634,
+        13.9219, 10.0716], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 1.815641917346511e-05
+prior sum: 1.0
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 5.209707332198832e-09 to 1.5651879792244472e-08
+likelihood sum: 1.0
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 3.3124524634331465e-05
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.3152044713497162
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.8647634387016296
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 2.2758553313906305e-05
+transition:  tensor([ 0.5235, -0.1327,  0.0491])
+t =  41
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 4.2326631050076005 to 60.048424258572524
+tensor([ 4.2327,  6.4043,  7.1591, 11.5012, 17.1962, 60.0484, 30.8654, 17.3423,
+        12.5659,  8.8537], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 2.2758553313906305e-05
+prior sum: 0.9999999403953552
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 5.127152480355335e-09 to 1.571153873669573e-08
+likelihood sum: 1.0
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 4.587490184349008e-05
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.31723079085350037
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9716710448265076
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 2.920334372902289e-05
+transition:  tensor([ 0.5516, -0.1441,  0.0170])
+t =  42
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 5.109371431254205 to 55.97426237299422
+tensor([ 5.1094,  6.3415,  6.8242, 10.4662, 15.4233, 55.9743, 28.5771, 16.7388,
+        11.9624, 10.8285], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 2.920334372902289e-05
+prior sum: 1.0
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 5.147634762892039e-09 to 1.5093982952407714e-08
+likelihood sum: 1.0
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 4.6473051042994484e-05
+posterior sum: 0.9999998807907104
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.3084452152252197
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9116543531417847
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 3.535643554641865e-05
+transition:  tensor([ 0.5442, -0.1149,  0.1177])
+t =  43
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 5.702364932064344 to 41.73998148304071
+tensor([ 5.7024,  6.9536, 10.7608, 21.9318, 41.7400, 24.4730, 15.6757, 11.3827,
+        10.8210,  7.8829], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 3.535643554641865e-05
+prior sum: 0.9999998807907104
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 5.218266707629482e-09 to 1.6332382557493474e-08
+likelihood sum: 1.0000001192092896
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 5.545221938518807e-05
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.31551307439804077
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9396207332611084
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 4.342630199971609e-05
+transition:  tensor([ 0.5614, -0.1332,  0.0250])
+t =  44
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 5.228423623981682 to 41.63285733638054
+tensor([ 5.2284,  7.5487,  7.3578, 41.6329, 37.8942, 21.7640, 15.1850, 11.4232,
+        11.0244,  8.7918], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 4.342630199971609e-05
+prior sum: 1.0
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 5.187283491636663e-09 to 1.559919127203102e-08
+likelihood sum: 1.0
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 8.01617352408357e-05
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.3113948702812195
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9996914863586426
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 5.5993044952629134e-05
+transition:  tensor([ 0.5527, -0.1123,  0.1763])
+t =  45
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 6.303286808497917 to 49.909314608018725
+tensor([ 6.5785, 49.9093, 31.5623, 21.2126, 14.5536, 11.7243, 10.4279, 10.1540,
+         7.5528,  6.3033], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 5.5993044952629134e-05
+prior sum: 1.0
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 5.2065689537528215e-09 to 1.5270153141955234e-08
+likelihood sum: 1.0000001192092896
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 9.87394669209607e-05
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.3121919631958008
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.8335573077201843
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 6.818037218181416e-05
+transition:  tensor([ 0.5336, -0.1411,  0.0446])
+t =  46
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 5.770714060352005 to 42.779394996592146
+tensor([ 5.8109, 42.7794, 26.0848, 18.9829, 14.1453,  9.9666,  9.4876,  8.1588,
+         7.1889,  5.7707], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 6.818037218181416e-05
+prior sum: 1.0
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 5.077279485732333e-09 to 1.6377468270434292e-08
+likelihood sum: 1.0000001192092896
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 0.00010100054350914434
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.3125965893268585
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9814566969871521
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 7.795612327754498e-05
+transition:  tensor([ 0.5233, -0.1747, -0.1009])
+t =  47
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 5.021159466659966 to 41.41279249187622
+tensor([ 5.1353,  5.0212, 41.4128, 26.9196, 19.7196, 13.3764, 13.5343,  9.0333,
+        10.2016, 10.2496], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 7.795612327754498e-05
+prior sum: 0.9999999403953552
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 5.1453183935734614e-09 to 1.429050744405913e-08
+likelihood sum: 1.0
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 9.346612205263227e-05
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.3077766001224518
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9085427522659302
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 7.005652150837705e-05
+transition:  tensor([ 0.5570, -0.0799,  0.0563])
+t =  48
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 4.148298197888846 to 47.2274385507367
+tensor([ 4.1483, 47.2274, 33.2600, 20.9351, 15.0523, 12.4536,  8.8384,  8.2162,
+         8.3466,  6.7816], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 7.005652150837705e-05
+prior sum: 1.0
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 5.103692135577376e-09 to 1.4923376312481196e-08
+likelihood sum: 0.9999999403953552
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 0.00011284070205874741
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.31396642327308655
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9820789694786072
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 7.953216845635325e-05
+transition:  tensor([ 0.5560, -0.0866, -0.1007])
+t =  49
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 3.194029195985199 to 39.652724937180494
+tensor([ 3.1940, 13.7485, 39.6527, 36.8781, 21.0538, 14.0978, 11.3788, 10.0394,
+         7.2809,  7.4092], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 7.953216845635325e-05
+prior sum: 1.0
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 5.135860181582075e-09 to 1.6595866014768035e-08
+likelihood sum: 1.0
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 0.0001153344928752631
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.31510865688323975
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9989813566207886
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 8.529459591954947e-05
+transition:  tensor([ 0.5631, -0.0394,  0.0032])
+t =  50
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 6.715327710016538 to 53.38697490282465
+tensor([ 9.5828, 18.5934, 53.3870, 32.3998, 20.2751, 13.3490, 10.8939, 10.4146,
+         7.1630,  6.7153], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 8.529459591954947e-05
+prior sum: 1.0
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 5.309226391858601e-09 to 1.7210036062920153e-08
+likelihood sum: 1.0
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 0.00015394292131531984
+posterior sum: 1.0000001192092896
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.31764933466911316
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9739396572113037
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 0.00010517993359826505
+transition:  tensor([ 0.5855, -0.0133,  0.0162])
+t =  51
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 5.847176206401839 to 40.745692327322566
+tensor([10.7223, 20.9780, 40.7457, 29.0900, 17.1708, 13.0164, 10.1340, 10.9772,
+         6.6755,  5.8472], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 0.00010517993359826505
+prior sum: 0.9999999403953552
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 5.275862857700986e-09 to 1.8145874136621387e-08
+likelihood sum: 1.0
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 0.00018224380619358271
+posterior sum: 1.0000001192092896
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.31652456521987915
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9963861703872681
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 0.00011999379057670012
+transition:  tensor([ 0.5323, -0.0568, -0.0933])
+t =  52
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 7.57834838593164 to 50.9758810643197
+tensor([ 8.2692, 12.1196, 22.2560, 50.9759, 27.7951, 17.0673, 11.8450,  9.3185,
+         9.3525,  7.5783], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 0.00011999379057670012
+prior sum: 1.0
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 5.326754592971383e-09 to 1.6804939662051765e-08
+likelihood sum: 0.9999998807907104
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 0.0002026739966822788
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.305444598197937
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9003812670707703
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 0.00012700149090960622
+transition:  tensor([ 0.5543, -0.0689, -0.1421])
+t =  53
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 4.8078905148378865 to 37.25818572490688
+tensor([ 4.8079,  7.2200,  8.2074, 13.0379, 27.1966, 37.2582, 24.7523, 15.7509,
+        11.4288,  8.7054], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 0.00012700149090960622
+prior sum: 1.0
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 5.201997499426625e-09 to 1.777868696706264e-08
+likelihood sum: 0.9999999403953552
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 0.00018070331134367734
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.3094469904899597
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9837409257888794
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 0.0001262012665392831
+transition:  tensor([ 0.5411, -0.0931, -0.3363])
+t =  54
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 2.4504023805153525 to 38.9949047039642
+tensor([ 2.4504,  2.7510,  3.0956,  3.6269,  5.4024,  6.7949,  7.9593, 12.8968,
+        25.4602, 38.9949], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 0.0001262012665392831
+prior sum: 1.0
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 4.3271568550551365e-09 to 1.525518023015593e-08
+likelihood sum: 1.0
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 0.0001753074611769989
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.3170429468154907
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9993405938148499
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 0.00013353208487387747
+transition:  tensor([ 0.4979,  0.0779, -0.0847])
+t =  55
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 1.897388572663256 to 27.879402239025588
+tensor([ 1.8974,  2.0887,  2.3314,  2.6669,  3.0901,  4.6592,  5.8091,  6.5718,
+        10.8087, 27.8794], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 0.00013353208487387747
+prior sum: 1.0000001192092896
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 3.9116176964171245e-09 to 1.4667149272895585e-08
+likelihood sum: 1.0000001192092896
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 0.00018574496789369732
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.31598058342933655
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9953044056892395
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 0.0001451486605219543
+transition:  tensor([0.4792, 0.1710, 0.0804])
+t =  56
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 2.0664549058163075 to 39.97957499682522
+tensor([ 2.0665,  2.3184,  2.6191,  3.7972,  4.5789,  5.3391,  6.2877,  9.8624,
+        20.4402, 39.9796], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 0.0001451486605219543
+prior sum: 0.9999999403953552
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 4.1547694173971195e-09 to 1.507806501876985e-08
+likelihood sum: 0.9999998807907104
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 0.00022937197354622185
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.3150915503501892
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9230213761329651
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 0.00015819344844203442
+transition:  tensor([0.5330, 0.1279, 0.0590])
+t =  57
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 2.3050767774693077 to 61.93689205001131
+tensor([ 2.3051,  3.1057,  3.5749,  4.2216,  4.6096,  5.4397,  8.9844, 15.1313,
+        61.9369, 30.4482], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 0.00015819344844203442
+prior sum: 1.0
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 4.3281609407586075e-09 to 1.4596238884223567e-08
+likelihood sum: 0.9999998807907104
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 0.00023232214152812958
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.3157431185245514
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.8736818432807922
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 0.00017138638941105455
+transition:  tensor([0.5540, 0.1418, 0.2113])
+t =  58
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 3.917315541673531 to 37.62731175125912
+tensor([ 3.9173,  3.9707,  4.7967,  8.0802, 10.9796, 23.4135, 37.6273, 23.7308,
+        18.4164, 11.7881], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 0.00017138638941105455
+prior sum: 0.9999998807907104
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 4.925706065250779e-09 to 1.5721210999686264e-08
+likelihood sum: 1.0
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 0.00024224021763075143
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.3117491900920868
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9105261564254761
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 0.0001649685436859727
+transition:  tensor([0.5210, 0.0689, 0.1179])
+t =  59
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 4.250385972086208 to 37.657724820582324
+tensor([ 4.2504,  5.6086,  8.2604, 14.2279, 37.6577, 34.6159, 23.0294, 14.1899,
+        11.4927, 16.3571], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 0.0001649685436859727
+prior sum: 1.0
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 5.204306763317845e-09 to 1.5383847085104208e-08
+likelihood sum: 1.0
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 0.00023310305550694466
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.31467679142951965
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9958691596984863
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 0.00016634742496535182
+transition:  tensor([0.5280, 0.0556, 0.3426])
+t =  60
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 5.221795858666638 to 52.58462343239075
+tensor([52.5846, 30.7915, 23.2093, 14.9069, 11.4631, 19.6858,  7.4876,  7.2185,
+        16.8598,  5.2218], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 0.00016634742496535182
+prior sum: 1.0
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 5.3080024819962546e-09 to 1.344754352317068e-08
+likelihood sum: 1.0
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 0.0002189596270909533
+posterior sum: 0.9999998807907104
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.3162536025047302
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9661378264427185
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 0.00017407326959073544
+transition:  tensor([ 0.5079, -0.0998,  0.1058])
+t =  61
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 4.818875335537043 to 30.41660038273851
+tensor([30.4166, 20.1726, 14.1333, 11.2772, 15.2001,  7.8722,  6.7214,  6.8719,
+         6.1590,  4.8189], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 0.00017407326959073544
+prior sum: 1.0
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 4.953813359520609e-09 to 1.555967976685224e-08
+likelihood sum: 1.0
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 0.00024400872644037008
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.30597397685050964
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9999536275863647
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 0.00018269488646183163
+transition:  tensor([ 0.5311, -0.1718, -0.0879])
+t =  62
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 6.126092961015013 to 65.18473927218152
+tensor([65.1847, 29.0961, 19.3921, 13.3692, 10.5284, 10.6641,  8.9102,  6.2546,
+         6.1483,  6.1261], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 0.00018269488646183163
+prior sum: 1.0
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 5.105233569224765e-09 to 1.6788094470143733e-08
+likelihood sum: 1.0000001192092896
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 0.0002704857033677399
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.31024473905563354
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9070525169372559
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 0.0001996511418838054
+transition:  tensor([ 0.5429, -0.1128,  0.0312])
+t =  63
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 5.397383273533825 to 38.23973234297363
+tensor([38.2397, 23.7191, 18.3052, 12.8125, 10.1048,  9.2079,  9.9834,  5.9580,
+         5.3974,  5.7174], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 0.0001996511418838054
+prior sum: 1.0
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 5.035472483427839e-09 to 1.695286755420966e-08
+likelihood sum: 1.0
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 0.00028216079226695
+posterior sum: 0.9999999403953552
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.3089706599712372
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.8683820962905884
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 0.00019457697635516524
+transition:  tensor([ 0.5454, -0.1109, -0.1248])
+t =  64
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 6.112093600194872 to 61.52084333172814
+tensor([24.8666, 61.5208, 25.8881, 17.1921, 11.8108,  9.0191, 10.4035,  8.7148,
+         6.8507,  6.1121], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 0.00019457697635516524
+prior sum: 0.9999999403953552
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 5.221102217234375e-09 to 1.5570119415997397e-08
+likelihood sum: 0.9999999403953552
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 0.0003006769984494895
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.31680959463119507
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9179633259773254
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 0.00022335140965878963
+transition:  tensor([ 0.5742, -0.0640, -0.1453])
+t =  65
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 6.687759679759756 to 36.90863620953289
+tensor([10.5716, 17.2300, 28.4683, 36.9086, 20.5300, 14.6835,  9.7255,  7.7364,
+         7.7004,  6.6878], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 0.00022335140965878963
+prior sum: 1.0
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 5.26791188448783e-09 to 1.592099430069993e-08
+likelihood sum: 0.9999998807907104
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 0.00036918549449183047
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.3128794729709625
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9683989882469177
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 0.00024322843819390982
+transition:  tensor([ 0.5557,  0.0389, -0.0693])
+t =  66
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 6.728240107760984 to 40.335287116880316
+tensor([ 8.5266, 12.4803, 18.2490, 40.3353, 32.5267, 18.9907, 13.5174,  9.0341,
+         6.7484,  6.7282], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 0.00024322843819390982
+prior sum: 0.9999999403953552
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 5.277133396930367e-09 to 1.5945467168876348e-08
+likelihood sum: 0.9999999403953552
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 0.0003084561030846089
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.3154508173465729
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9848672151565552
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 0.00023086104192771018
+transition:  tensor([ 0.6273,  0.0294, -0.1622])
+t =  67
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 6.810928904666552 to 47.28760528398148
+tensor([ 6.8109,  7.3324,  9.6761, 12.1471, 19.6604, 47.2876, 27.2738, 17.9070,
+        12.6205,  7.9606], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 0.00023086104192771018
+prior sum: 1.0000001192092896
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 5.277737802344973e-09 to 1.5253972307505137e-08
+likelihood sum: 1.0000001192092896
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 0.00030354326008819044
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.31720244884490967
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9723962545394897
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 0.00024091177328955382
+transition:  tensor([0.5616, 0.1018, 0.0167])
+t =  68
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 6.780722935387303 to 54.88155052423242
+tensor([ 6.7807,  8.1609, 10.8181, 15.9587, 22.1814, 54.8816, 22.7775, 16.6683,
+        12.1007,  7.2875], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 0.00024091177328955382
+prior sum: 0.9999998807907104
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 5.312766671039526e-09 to 1.5900665673029835e-08
+likelihood sum: 1.0
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 0.0003526661603245884
+posterior sum: 0.9999999403953552
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.30985188484191895
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.8441861271858215
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 0.0002446475555188954
+transition:  tensor([ 0.5651,  0.0675, -0.0461])
+t =  69
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 6.0471934683215025 to 34.87047880765969
+tensor([ 6.0472,  7.1988, 10.1444, 10.8453, 16.3532, 30.7034, 34.8705, 16.5181,
+        11.1131, 10.5724], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 0.0002446475555188954
+prior sum: 0.9999999403953552
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 5.249424450681772e-09 to 1.544026062560988e-08
+likelihood sum: 0.9999998807907104
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 0.0004140987293794751
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.3109091520309448
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9813572764396667
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 0.0002830013108905405
+transition:  tensor([ 0.5873,  0.0815, -0.0137])
+t =  70
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 6.031432145745254 to 44.55330500161638
+tensor([ 6.0314,  7.1415,  9.4355, 10.3487, 15.4329, 27.5388, 44.5533, 16.1019,
+        14.9792, 10.1117], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 0.0002830013108905405
+prior sum: 1.0
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 5.249909840188138e-09 to 1.466633747781998e-08
+likelihood sum: 1.0000001192092896
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 0.0004042029904667288
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.31683987379074097
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.8478566408157349
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 0.0002564296592026949
+transition:  tensor([0.5721, 0.1043, 0.0406])
+t =  71
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 6.937991475280735 to 59.92467778591654
+tensor([ 6.9380,  8.9432,  9.0513, 13.8246, 19.6424, 59.9247, 22.9240, 14.5390,
+         9.3122,  9.5440], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 0.0002564296592026949
+prior sum: 1.0
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 5.2770308123228915e-09 to 1.5444364009908895e-08
+likelihood sum: 1.0
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 0.0003563920618034899
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.3140828311443329
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.920888364315033
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 0.00027586263604462147
+transition:  tensor([ 0.5735,  0.0330, -0.1458])
+t =  72
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 4.9233968284355285 to 59.78314903441458
+tensor([ 4.9234,  5.9849,  8.2663,  8.1945, 11.8734, 13.4555, 23.7730, 59.7831,
+        19.2470, 13.0624], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 0.00027586263604462147
+prior sum: 1.0000001192092896
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 5.132457570056204e-09 to 1.4775802803512761e-08
+likelihood sum: 1.0
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 0.0003935739223379642
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.31495141983032227
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.8516560196876526
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 0.0002652804832905531
+transition:  tensor([ 0.5743,  0.1360, -0.0472])
+t =  73
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 4.789738747121527 to 47.58985356416888
+tensor([ 4.7897,  7.1309,  7.7006,  7.5578,  9.4735, 12.5989, 17.0698, 47.5899,
+        33.1796, 12.8759], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 0.0002652804832905531
+prior sum: 1.0
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 5.091858046313291e-09 to 1.527398474365782e-08
+likelihood sum: 0.9999999403953552
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 0.0003562771016731858
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.3154087960720062
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.8934033513069153
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 0.00028536099125631154
+transition:  tensor([ 0.5596,  0.1487, -0.1208])
+t =  74
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 4.11689915785244 to 55.355270430200676
+tensor([ 4.1169,  5.4490,  6.2672,  6.9087,  6.7854,  8.5728, 11.6086, 16.5745,
+        25.2688, 55.3553], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 0.00028536099125631154
+prior sum: 0.9999998807907104
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 4.833572209150816e-09 to 1.599986987343982e-08
+likelihood sum: 0.9999998807907104
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 0.00038828898686915636
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.3163710832595825
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.8335303068161011
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 0.00026432526647113264
+transition:  tensor([ 0.5567,  0.1848, -0.0427])
+t =  75
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 3.1723852329597997 to 45.88989107712274
+tensor([ 3.9450,  3.6036,  3.3624,  3.1724,  6.0329,  7.3068, 10.5553, 11.5519,
+        18.1698, 45.8899], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 0.00026432526647113264
+prior sum: 1.0
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 4.4304329094302375e-09 to 1.4589668140274625e-08
+likelihood sum: 0.9999999403953552
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 0.00034653604961931705
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.30724483728408813
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.832664430141449
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 0.0002747226972132921
+transition:  tensor([0.5250, 0.2111, 0.0445])
+t =  76
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 2.552020936496527 to 59.975996244768766
+tensor([ 2.7430,  2.5520,  5.2312,  5.7465,  6.7823,  9.5589, 11.0291, 15.8810,
+        28.2126, 59.9760], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 0.0002747226972132921
+prior sum: 1.0
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 4.662606301053529e-09 to 1.5441550260675285e-08
+likelihood sum: 1.0
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 0.00038159414543770254
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.31738340854644775
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9806041121482849
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 0.0002761280338745564
+transition:  tensor([ 0.5602,  0.1552, -0.0140])
+t =  77
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 4.658382658765495 to 55.385479500550694
+tensor([ 4.7905,  4.6584,  4.8333,  5.5373,  6.4598,  8.9468, 10.1056, 14.6723,
+        21.2654, 55.3855], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 0.0002761280338745564
+prior sum: 1.0000001192092896
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 4.708310186174458e-09 to 1.667345195244252e-08
+likelihood sum: 1.0000001192092896
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 0.00036343585816212
+posterior sum: 0.9999999403953552
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.3151831030845642
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.8321186900138855
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 0.00027109013171866536
+transition:  tensor([0.5376, 0.1509, 0.0444])
+t =  78
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 4.080870721604888 to 42.570975657992996
+tensor([ 4.0809,  4.5586,  5.1636,  6.0564,  8.2118,  9.0150, 10.0981, 14.6199,
+        39.1700, 42.5710], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 0.00027109013171866536
+prior sum: 1.0
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 4.767914951742114e-09 to 1.5330741121033498e-08
+likelihood sum: 1.0
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 0.0003560386539902538
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.3161667585372925
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.8961265683174133
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 0.00027472942019812763
+transition:  tensor([ 0.5422,  0.0670, -0.2076])
+t =  79
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 3.239564420194319 to 13.093451872135843
+tensor([ 3.2396,  3.3385,  3.6551,  4.0631,  4.6046,  5.9003,  7.3053,  8.0257,
+         9.1976, 13.0935], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 0.00027472942019812763
+prior sum: 0.9999999403953552
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 4.125241037655769e-09 to 1.5647952267272558e-08
+likelihood sum: 1.0
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 0.0003634883323684335
+posterior sum: 0.9999999403953552
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.3168020248413086
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9995861649513245
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 0.0002788629208225757
+transition:  tensor([ 0.5496,  0.1523, -0.0852])
+t =  80
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 2.4013890140913263 to 7.077896046071002
+tensor([2.4014, 2.5401, 2.7189, 2.9129, 3.1491, 3.4815, 4.6914, 5.5218, 6.0442,
+        7.0779], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 0.0002788629208225757
+prior sum: 0.9999998807907104
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 3.6145286763655804e-09 to 1.3947337507147495e-08
+likelihood sum: 1.0
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 0.00031651181052438915
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.31521210074424744
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9966520667076111
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 0.00025577834458090365
+transition:  tensor([0.4503, 0.2541, 0.1687])
+t =  81
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 2.9556336315631366 to 14.261925440822466
+tensor([ 2.9556,  3.2350,  3.5611,  4.6950,  5.3183,  6.2329,  6.3234,  7.2324,
+         9.5808, 14.2619], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 0.00025577834458090365
+prior sum: 0.9999998807907104
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 4.1446104326325894e-09 to 1.5716496548634495e-08
+likelihood sum: 1.0
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 0.0003498270525597036
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.3092484772205353
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9806243181228638
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 0.00027615262661129236
+transition:  tensor([0.4990, 0.1795, 0.0733])
+t =  82
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 3.49690522385768 to 38.32082989809644
+tensor([ 3.4969,  3.8286,  4.2967,  4.8891,  5.3158,  5.7905,  6.2993,  9.3167,
+         9.3048, 38.3208], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 0.00027615262661129236
+prior sum: 1.0
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 4.260598984728858e-09 to 1.568455232359156e-08
+likelihood sum: 1.0
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 0.00033318018540740013
+posterior sum: 1.0000001192092896
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.3109492063522339
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.8541297912597656
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 0.0002591226657386869
+transition:  tensor([0.5301, 0.1512, 0.1348])
+t =  83
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 4.03622412791251 to 48.88126667905611
+tensor([ 4.0362,  4.5390,  4.6288,  5.0850,  5.5905,  6.2407,  6.8890, 21.4351,
+        48.8813, 20.5621], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 0.0002591226657386869
+prior sum: 0.9999999403953552
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 4.500212202884768e-09 to 1.4859133479205866e-08
+likelihood sum: 1.0
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 0.0002918640384450555
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.31026309728622437
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.999646008014679
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 0.00023836402397137135
+transition:  tensor([0.5140, 0.1398, 0.0854])
+t =  84
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 3.789752705804063 to 11.46923196608962
+tensor([ 3.7898,  4.2325,  4.8173,  4.6952,  6.4364,  5.1943, 10.1748, 10.1375,
+        10.2685, 11.4692], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 0.00023836402397137135
+prior sum: 1.0000001192092896
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 4.3584336140156665e-09 to 1.5925435192798432e-08
+likelihood sum: 1.0
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 0.00025742847356013954
+posterior sum: 0.9999999403953552
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.3166236877441406
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9761065244674683
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 0.00021415147057268769
+transition:  tensor([0.5204, 0.1125, 0.1028])
+t =  85
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 3.942929302161198 to 42.747450686007156
+tensor([ 4.0567,  3.9429,  5.4382,  5.9499, 12.0142, 32.5689, 42.7475, 16.5971,
+        12.0374,  9.8829], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 0.00021415147057268769
+prior sum: 1.0
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 4.849911583448829e-09 to 1.4342264265110316e-08
+likelihood sum: 1.0
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 0.00025863037444651127
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.31227415800094604
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.8862046599388123
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 0.00021606140944641083
+transition:  tensor([0.5216, 0.0975, 0.1220])
+t =  86
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 4.689344987000103 to 47.21249314622739
+tensor([ 6.9134,  4.6893,  5.9952, 12.8344, 47.2125, 26.4246, 14.5726, 11.3792,
+         8.6319,  8.6512], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 0.00021606140944641083
+prior sum: 1.0
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 5.028394589601248e-09 to 1.4016619864776203e-08
+likelihood sum: 1.0
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 0.0003000101714860648
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.31231021881103516
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.992060661315918
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 0.0002299695770489052
+transition:  tensor([ 0.5510,  0.0334, -0.0089])
+t =  87
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 3.03026236999539 to 50.306735784002136
+tensor([ 3.0303,  3.4759,  8.6694, 12.6159, 50.3067, 27.1879, 13.2180, 10.1704,
+         7.8059,  7.8073], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 0.0002299695770489052
+prior sum: 1.0
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 4.863057512238811e-09 to 1.55250301503429e-08
+likelihood sum: 1.0000001192092896
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 0.000302744098007679
+posterior sum: 0.9999997615814209
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.311278373003006
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9273927807807922
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 0.00022257183445617557
+transition:  tensor([0.5467, 0.0549, 0.1147])
+t =  88
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 6.9712473765555085 to 47.22029047300618
+tensor([ 7.0903, 10.1783, 22.6090, 47.2203, 14.9184, 10.3901,  8.9787,  6.9903,
+         6.9712,  7.7533], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 0.00022257183445617557
+prior sum: 1.0000001192092896
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 5.0584270105957785e-09 to 1.449052255964034e-08
+likelihood sum: 0.9999998807907104
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 0.0002423242258373648
+posterior sum: 0.9999999403953552
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.31210026144981384
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9951508045196533
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 0.0002001323300646618
+transition:  tensor([ 0.5237, -0.0290, -0.0803])
+t =  89
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 6.169944306950843 to 50.13068605930732
+tensor([ 6.1699,  7.2327, 10.1129, 22.7548, 50.1307, 16.1069, 10.6100, 10.8843,
+         6.6334,  6.5247], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 0.0002001323300646618
+prior sum: 0.9999999403953552
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 5.053347074124304e-09 to 1.4199341258347431e-08
+likelihood sum: 1.0
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 0.00025892173289321363
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.31346195936203003
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9156304597854614
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 0.00020169056369923055
+transition:  tensor([ 0.5755, -0.0793, -0.2042])
+t =  90
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 4.560983281569676 to 50.03703917548222
+tensor([ 4.5610,  4.7402,  5.4028,  5.7467,  9.1862, 14.1478, 50.0370, 27.1024,
+        12.8685,  8.9393], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 0.00020169056369923055
+prior sum: 1.0
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 4.837384715017379e-09 to 1.5019105958913315e-08
+likelihood sum: 1.0
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 0.0002645596396178007
+posterior sum: 0.9999998807907104
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.3173285126686096
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9954298734664917
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 0.00020515582582447678
+transition:  tensor([ 0.5823,  0.0357, -0.1678])
+t =  91
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 4.183507320518371 to 44.41283151153259
+tensor([ 4.3064,  4.1835,  4.3761,  5.0056,  5.0598,  9.1352,  8.9879, 16.8952,
+        44.4128, 27.0156], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 0.00020515582582447678
+prior sum: 1.0
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 4.59306059852338e-09 to 1.4862028940854088e-08
+likelihood sum: 1.0
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 0.0002623804030008614
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.3079639971256256
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.8995415568351746
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 0.0002128410415025428
+transition:  tensor([ 0.5425,  0.1197, -0.1198])
+t =  92
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 3.6096649307683326 to 33.807245264953444
+tensor([ 3.7660,  3.6113,  3.6097,  4.0804,  4.4527,  4.5429,  8.7138,  8.6187,
+        12.6775, 33.8072], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 0.0002128410415025428
+prior sum: 1.0
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 4.2130672284201864e-09 to 1.5095048766511354e-08
+likelihood sum: 0.9999998807907104
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 0.0002924316213466227
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.3035343289375305
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9546853303909302
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 0.00021731064771302044
+transition:  tensor([0.5196, 0.2116, 0.2403])
+t =  93
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 3.614594252792785 to 39.24786942889868
+tensor([ 3.6808,  3.6146,  3.9580,  7.2568,  6.7040, 10.0266, 21.0254, 39.2479,
+        17.2402, 10.2009], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 0.00021731064771302044
+prior sum: 1.0
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 4.681048881849392e-09 to 1.6532785807044093e-08
+likelihood sum: 1.0
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 0.0002717937168199569
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.3093632757663727
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9833264946937561
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 0.00020726933144032955
+transition:  tensor([0.5307, 0.1385, 0.1616])
+t =  94
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 5.421349860593708 to 41.18657986753237
+tensor([ 6.5142,  6.0779,  5.7492,  9.9397, 19.3535, 41.1866, 17.2922,  9.9702,
+         5.9182,  5.4213], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 0.00020726933144032955
+prior sum: 0.9999998807907104
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 4.864684211014492e-09 to 1.7077342207016954e-08
+likelihood sum: 1.0
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 0.000234111153986305
+posterior sum: 0.9999999403953552
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.3126809895038605
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9995042681694031
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 0.00018829081091098487
+transition:  tensor([ 0.5920,  0.0196, -0.0022])
+t =  95
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 5.113435361480411 to 43.748024025001605
+tensor([ 5.4425,  5.1134,  5.1252,  9.4610, 19.6743, 43.7480, 17.1570, 10.3269,
+         8.5173,  5.1978], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 0.00018829081091098487
+prior sum: 1.0
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 4.841840706149014e-09 to 1.616390044034688e-08
+likelihood sum: 1.0
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 0.00023065073764882982
+posterior sum: 1.0
+filters_trans shape: torch.Size([72, 71, 71])
+filters_trans range: 0.0 to 0.31817716360092163
+filter_rot shape: torch.Size([71])
+filter_rot range: 0.0 to 0.9751269817352295
+prob_vol shape: torch.Size([1274, 1789, 72])
+prob_vol range: 0.0 to 0.00018025567987933755
+transition:  tensor([0.5820, 0.0109, 0.0714])
+t =  96
+percentiles shape:  (1440,)
+Type:  <class 'numpy.ndarray'>
+downsampled_percentiles shape:  (90,)
+Got pred_depths
+rays shape: (10,)
+rays range: 4.811366328590582 to 41.76612387477006
+tensor([ 4.9351,  5.0853,  8.7155, 15.7601, 41.7661, 21.0674, 11.6955,  8.7525,
+         5.0999,  4.8114], device='cuda:0', dtype=torch.float64)
+torch.Size([10])
+Before localize
+prior shape: torch.Size([1274, 1789, 72])
+prior range: 0.0 to 0.00018025567987933755
+prior sum: 0.9999999403953552
+likelihood shape: torch.Size([1274, 1789, 72])
+likelihood range: 4.815301490879165e-09 to 1.7059180734690926e-08
+likelihood sum: 1.0
+posterior shape: torch.Size([1274, 1789, 72])
+posterior range: 0.0 to 0.00020929246966261417
+posterior sum: 1.0000001192092896
+10m recall =  0.010309278350515464
+5m recall =  0.0
+2m recall =  0.0
+1m recall =  0.0
+0.5m recall =  0.0
+0.1m recall =  0.0
+1m 30 deg recall =  0.0
+last_errors [46.116905 45.92478  45.703327 45.321663 44.99199  44.594814 44.403988
+ 44.177616 44.102333 43.87688 ]
+100%|██████████| 1/1 [13:40<00:00, 820.36s/it]100%|██████████| 1/1 [13:40<00:00, 820.36s/it]
