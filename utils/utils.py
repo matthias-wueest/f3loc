@@ -122,8 +122,142 @@ def gravity_align_depth(depth_img, r, p, K=np.array([[240, 0, 320], [0, 240, 240
     # Use numpy's advanced indexing to assign the values
     aligned_depth_img[y_rot, x_rot] = z_rot
 
-    return aligned_depth_img
+    # Create a mask with 1 for non-zero pixels and 0 for zero pixels
+    mask = (aligned_depth_img > 0).astype(np.uint8)
 
+    return aligned_depth_img, mask
+
+
+def gravity_align_normal(normals_img, depth_img, r, p, K=np.array([[240, 0, 320], [0, 240, 240], [0, 0, 1]]).astype(np.float32)):
+    """
+    Align the normals image with gravity direction, both normal vectors and pixel positions
+    Input:
+        normals_img: input normals image (HxWx3)
+        depth_img: input depth image (HxW)
+        r: roll
+        p: pitch
+        K: camera intrinsics
+    Output:
+        aligned_normals_img: gravity-aligned normals image (HxWx3)
+    """
+    # Calculate R_gc from roll and pitch
+    p = -p  # Adjust pitch as before
+    cr = np.cos(r)
+    sr = np.sin(r)
+    cp = np.cos(p)
+    sp = np.sin(p)
+
+    # Compute R_cg first
+    # Pitch
+    R_x = np.array([[1, 0, 0], [0, cp, sp], [0, -sp, cp]])
+
+    # Roll
+    R_z = np.array([[cr, sr, 0], [-sr, cr, 0], [0, 0, 1]])
+
+    R_cg = R_z @ R_x
+    R_gc = R_cg.T  # Transpose to get R_gc
+
+    # Get the shape of the normal and depth images
+    h, w, _ = normals_img.shape
+
+    # Generate grid of (u, v) pixel coordinates
+    u, v = np.meshgrid(np.arange(w), np.arange(h))
+
+    # Back-project to 3D using depth image
+    z = depth_img.flatten()
+    x = (u.flatten() - K[0, 2]) * z / K[0, 0]
+    y = (v.flatten() - K[1, 2]) * z / K[1, 1]
+
+    # Stack to get 3D points
+    points_3D = np.vstack((x, y, z))
+
+    # Rotate points
+    rotated_points_3D = R_gc @ points_3D
+
+    # Rotate normals
+    normals_reshaped = normals_img.reshape(-1, 3).T
+    rotated_normals = R_gc @ normals_reshaped
+
+    # Project back to 2D
+    x_rot = (rotated_points_3D[0, :] * K[0, 0] / rotated_points_3D[2, :]) + K[0, 2]
+    y_rot = (rotated_points_3D[1, :] * K[1, 1] / rotated_points_3D[2, :]) + K[1, 2]
+
+    # Round and cast to int
+    x_rot = np.round(x_rot).astype(int)
+    y_rot = np.round(y_rot).astype(int)
+
+    # Create an empty aligned normal image
+    aligned_normals_img = np.zeros_like(normals_img)
+
+    # Mask for valid indices
+    valid_mask = (x_rot >= 0) & (x_rot < w) & (y_rot >= 0) & (y_rot < h)
+
+    # Filter valid points
+    x_rot = x_rot[valid_mask]
+    y_rot = y_rot[valid_mask]
+    rotated_normals = rotated_normals[:, valid_mask]
+
+    # Use numpy's advanced indexing to assign the rotated normals
+    aligned_normals_img[y_rot, x_rot, :] = rotated_normals.T
+
+    return aligned_normals_img
+
+
+def gravity_align_segmentation(
+    seg_map,
+    r,
+    p,
+    K=np.array([[240, 0, 320], [0, 240, 240], [0, 0, 1]]).astype(np.float32),
+    mode=0
+):
+    """
+    Align the segmentation map with gravity direction.
+    
+    Input:
+        seg_map: input segmentation map of shape (N, H, W), where N is the number of channels.
+        r: roll angle in radians.
+        p: pitch angle in radians.
+        K: camera intrinsics.
+        mode: interpolation mode for warping, default: 0 - 'linear', else 1 - 'nearest'
+    
+    Output:
+        aligned_seg_map: gravity-aligned segmentation map.
+    """
+    # Validate input shape
+    if seg_map.ndim != 3:
+        raise ValueError("Segmentation map must be a 3D array with shape (N, H, W).")
+    
+    N, h, w = seg_map.shape
+    
+    # Calculate R_gc from roll and pitch
+    p = -p  # This is because the pitch axis of robot and camera is in the opposite direction
+    cr = np.cos(r)
+    sr = np.sin(r)
+    cp = np.cos(p)
+    sp = np.sin(p)
+
+    # Compute R_cg first
+    R_x = np.array([[1, 0, 0], [0, cp, sp], [0, -sp, cp]])  # Pitch
+    R_z = np.array([[cr, sr, 0], [-sr, cr, 0], [0, 0, 1]])  # Roll
+
+    R_cg = R_z @ R_x
+    R_gc = R_cg.T
+
+    # Compute the homography matrix
+    persp_M = K @ R_gc @ np.linalg.inv(K)
+
+    # Create an empty array for the aligned segmentation map
+    aligned_seg_map = np.zeros_like(seg_map)
+    
+    # Process each channel independently
+    for i in range(N):
+        # Align the current channel
+        aligned_channel = cv2.warpPerspective(
+            seg_map[i, :, :], persp_M, (w, h), flags=cv2.INTER_NEAREST if mode == 1 else cv2.INTER_LINEAR
+        )
+        aligned_seg_map[i, :, :] = aligned_channel
+    
+    return aligned_seg_map
 
 
 def ray_cast(occ, pos, ang, dist_max=500):

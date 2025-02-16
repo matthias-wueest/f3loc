@@ -238,9 +238,9 @@ def evaluate_observation():
             pred_depths = data_dict["d"]
             pred_depths = pred_depths.squeeze(0).detach().cpu().numpy()
         elif net_type == "d" or (net_type == "comp_s" and use_mono):
-            #pred_depths, attn_2d, prob = d_net.encoder(ref_img_torch, ref_mask_torch)
-            #pred_depths = pred_depths.squeeze(0).detach().cpu().numpy()
-            pred_depths = data["ref_depth"]
+            pred_depths, attn_2d, prob = d_net.encoder(ref_img_torch, ref_mask_torch)
+            pred_depths = pred_depths.squeeze(0).detach().cpu().numpy()
+            #pred_depths = data["ref_depth"]
         elif net_type == "comp":
             pred_dict = comp_net.comp_d_net(data)
             pred_depths = pred_dict["d_comp"].squeeze(0).detach().cpu().numpy()

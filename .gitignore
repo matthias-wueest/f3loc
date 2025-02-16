@@ -50,3 +50,10 @@ data/
 tb_logs
 slurm-files
 evol_path
+
+
+depth_anything_v2/checkpoints
+depthpro/checkpoints
+metric3d/checkpoints
+f3loc_original/logs
+

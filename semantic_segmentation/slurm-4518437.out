@@ -1,0 +1,2 @@
+Hardware accelerator e.g. GPU is available in the environment, but no `device` argument is passed to the `Pipeline` object. Model will be on CPU.
+Inference time: 8.3230 seconds

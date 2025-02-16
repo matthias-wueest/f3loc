@@ -35,6 +35,49 @@ class Attention(nn.Module):
         return x, attn_weights
 
 
+class Attention_Assertions(nn.Module):
+
+    def __init__(self) -> None:
+        super().__init__()
+
+    def forward(self, Q, K, V, attn_mask=None):
+        """
+        one head attention
+        Input:
+            Q: queries, (N, L, D)
+            K: keys, (N, S, D)
+            V: values, (N, S, D)
+            attn_mask: mask on the KV, (N, L, S)
+        Output:
+            queried_values: gathered values, (N, L, D)
+            attn_weights: weights of the attention, (N, L, S)
+        """
+        # dot product
+        QK = torch.einsum("nld,nsd->nls", Q, K)  # (N, L, S)
+        #assert torch.isfinite(QK).all(), "Invalid values in QK computation"
+
+        if attn_mask is not None:
+            QK[attn_mask] = -torch.inf  # Set masked positions to -inf
+
+        # Softmax with scaling
+        D = Q.shape[2]
+        QK_scaled = QK / (D**0.5)
+        #QK_scaled = torch.clamp(QK_scaled, min=-1e9, max=1e9)  # Clamp extreme values to avoid NaNs
+        QK_scaled = torch.clamp(QK_scaled, min=-1e11, max=1e11)  # Clamp extreme values to avoid NaNs
+        #assert torch.isfinite(QK_scaled).all(), "Invalid values after scaling QK"
+        
+        attn_weights = torch.softmax(QK_scaled, dim=2)  # (N, L, S)
+        #assert torch.isfinite(attn_weights).all(), "Invalid values after softmax in attention"
+
+        # weighted average
+        x = torch.einsum("nsd,nls->nld", V, attn_weights)  # (N, L, D)
+        #assert torch.isfinite(x).all(), "Invalid values after attention output"
+
+        return x, attn_weights
+
+
+
+
 class ELU_Plus(nn.Module):
     def __init__(self) -> None:
         super().__init__()

@@ -13,8 +13,8 @@ def get_column_percentile_and_downsample(depth_img, p):
 
     # Initialize an array to store the percentiles
     percentiles = np.zeros(depth_img.shape[1])
-    print("percentiles shape: ", percentiles.shape)
-    print("Type: ", type(depth_img))
+    #print("percentiles shape: ", percentiles.shape)
+    #print("Type: ", type(depth_img))
 
     # Iterate over each column
     for col in range(depth_img.shape[1]):
@@ -38,3 +38,37 @@ def get_column_percentile_and_downsample(depth_img, p):
 # aligned_depth_img = ... (your aligned depth image here)
 # p = 90  # for example, the 90th percentile
 # downsampled_percentiles = column_percentile_nonzero_and_downsample(aligned_depth_img, p)
+
+
+def get_bottom_positive_column_value(depth_img):
+    """
+    Compute the p percentile of all non-zero values per column in the depth image and downsample the result.
+    Input:
+        depth_img: input depth image (2D array)
+        p: percentile (between 0 and 100)
+    Output:
+        downsampled_percentiles: downsampled array of p percentiles for each column
+    """
+
+    # Initialize an array to store the percentiles
+    bottom_values = np.zeros(depth_img.shape[1])
+    #print("percentiles shape: ", percentiles.shape)
+    #print("Type: ", type(depth_img))
+
+    # Iterate over each column
+    for col in range(depth_img.shape[1]):
+        # Get the non-zero values in the column
+        non_zero_values = depth_img[:, col][depth_img[:, col] > 0]
+        
+        if non_zero_values.size > 0:
+            # # Get the bottom-most non-zero value
+            bottom_values[col] = non_zero_values[-1]
+        else:
+            # If there are no non-zero values, set the percentile to zero
+            bottom_values[col] = 0
+
+    # Downsample the percentiles array to 1/16 of its original size
+    downsampled_bottom_values = bottom_values[::16]
+    print("downsampled_bottom_values shape: ", downsampled_bottom_values.shape)
+
+    return downsampled_bottom_values

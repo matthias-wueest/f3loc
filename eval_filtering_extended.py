@@ -281,11 +281,11 @@ def evaluate_filtering():
                 pred_depths = pred_dict["d"]
                 pred_depths = pred_depths.squeeze(0).detach().cpu().numpy()
             elif net_type == "d" or (net_type == "comp_s" and use_mono):
-                #pred_depths, attn_2d, prob = d_net.encoder(
-                #    input_dict["img"], input_dict["mask"]
-                #)
-                #pred_depths = pred_depths.squeeze(0).detach().cpu().numpy()
-                pred_depths = np.array(data["gt_depth"])[t + L,:]
+                pred_depths, attn_2d, prob = d_net.encoder(
+                    input_dict["img"], input_dict["mask"]
+                )
+                pred_depths = pred_depths.squeeze(0).detach().cpu().numpy()
+                #pred_depths = np.array(data["gt_depth"])[t + L,:]
                 #print(type(pred_depths))
                 #print(pred_depths.shape)
             elif net_type == "comp":

@@ -32,9 +32,9 @@ from src.helper_functions import *
 
 
 net_type = "d"
-dataset = "gibson_t" # "gibson_g" # 
+#dataset = "gibson_t" # "gibson_g" # 
 #dataset = "hge_customized_cropped"
-#dataset = "hge_customized_complete"
+dataset = "hge_customized_complete"
 
 if dataset == "gibson_t":
     dataset_path = "/cluster/project/cvg/data/gibson/Gibson_Floorplan_Localization_Dataset"
@@ -151,8 +151,16 @@ def resize_image(image, size):
 #evol_path = "/cluster/home/wueestm/f3loc/evol_path/hge_customized_cropped/gt/"#pretty_filter_extended/0"
 #evol_path = "/cluster/home/wueestm/f3loc/evol_path/hge_customized_complete/gt/"#pretty_filter_extended/0"
 #evol_path = "/cluster/home/wueestm/f3loc/evol_path/hge_customized_cropped/gt/"
-#evol_path = "/cluster/home/wueestm/f3loc/evol_path/hge_customized_complete/metric3d_percentile/gravity_align"
-evol_path = "/cluster/home/wueestm/f3loc/evol_path/gibson_t"
+#evol_path = "/cluster/home/wueestm/f3loc/evol_path/hge_customized_complete/gt/gravity_align/"
+#evol_path = "/cluster/home/wueestm/f3loc/evol_path/hge_customized_complete/metric3d_normals_p05/gravity_align/"
+#evol_path = "/cluster/home/wueestm/f3loc/evol_path/hge_customized_complete/metric3d_normals/gravity_align/"
+#evol_path = "/cluster/home/wueestm/f3loc/evol_path/hge_customized_complete/metric3d_trained_epoch3/gravity_align/"
+#evol_path = "/cluster/home/wueestm/f3loc/evol_path/gibson_t"
+#evol_path = "/cluster/home/wueestm/f3loc/evol_path/hge_customized_complete/metric3d_trained_epoch4/gravity_align/"
+#evol_path = "/cluster/home/wueestm/f3loc/evol_path/hge_customized_complete/metric3d_trained_version89_epoch17/gravity_align/"
+
+evol_path = "/cluster/home/wueestm/f3loc/evol_path/hge_customized_complete/depthanything_72traj_len_100_dt_1_laplace_epoch49/"
+
 
 ### Create GIF
 # for data_idx in tqdm.tqdm(range(0,1)):

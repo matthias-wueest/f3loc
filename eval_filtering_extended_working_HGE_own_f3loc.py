@@ -45,8 +45,8 @@ from src.helper_functions import *
 
 net_type = "d"
 #dataset = "gibson_t" # "gibson_g" # 
-dataset = "hge_customized_cropped"
-#dataset = "hge_customized_complete"
+#dataset = "hge_customized_cropped"
+dataset = "hge_customized_complete"
 
 if dataset == "gibson_t":
     dataset_path = "/cluster/project/cvg/data/gibson/Gibson_Floorplan_Localization_Dataset"
@@ -56,22 +56,27 @@ if dataset == "gibson_t":
     orn_slice = 36
 elif dataset == "hge_customized_cropped":
     dataset_path = "/cluster/project/cvg/data/lamar/HGE_customized_cropped"
-    evol_path = "./evol_path/hge_customized_cropped/gt"
+    #evol_path = "./evol_path/hge_customized_cropped/gt"
+    #evol_path = "./evol_path/hge_customized_cropped/gt/f3loc_own"
+    evol_path = "./evol_path/hge_customized_cropped/f3loc_own"
     desdf_resolution = 0.1
     orn_slice = 36
     #desdf_resolution = 1
     #orn_slice = 360
 elif dataset =="hge_customized_complete":
     dataset_path = "/cluster/project/cvg/data/lamar/HGE_customized_complete"
-    evol_path = "./evol_path/hge_customized_complete/gt/gravity_align"
+    #evol_path = "./evol_path/hge_customized_complete/gt/gravity_align"
+    evol_path = "./evol_path/hge_customized_complete/f3loc_own"
     desdf_resolution = 0.1
     orn_slice = 36
 
 
 ckpt_path = "./logs"
-checkpoint_path = "./tb_logs/my_model/version_42/checkpoints/epoch=19-step=19100.ckpt"
+#checkpoint_path = "./tb_logs/my_model/version_42/checkpoints/epoch=19-step=19100.ckpt"
 #checkpoint_path = "./tb_logs/my_model/version_48/checkpoints/epoch=26-step=25785.ckpt"
-traj_len = 100#8#100#100#50
+#checkpoint_path = "./tb_logs/my_model/version_48/checkpoints/epoch=49-step=47750.ckpt"
+checkpoint_path = "./tb_logs/my_model/version_60/checkpoints/epoch=19-step=19100.ckpt"
+traj_len = 100#15#8#100#100#50
 
 
 # In[3]:
@@ -1361,15 +1366,15 @@ for data_idx in tqdm.tqdm(range(len(test_set))):
 # # In[ ]:
 # 
 # 
-# if log_timing:
-#     feature_extraction_time = feature_extraction_time / n_iter
-#     matching_time = matching_time / n_iter
-#     iteration_time = iteration_time / n_iter
-# 
-#     print("============================================")
-#     print("feature_extraction_time : ", feature_extraction_time)
-#     print("matching_time : ", matching_time)
-#     print("iteration_time : ", iteration_time)
+if log_timing:
+    feature_extraction_time = feature_extraction_time / n_iter
+    matching_time = matching_time / n_iter
+    iteration_time = iteration_time / n_iter
+
+    print("============================================")
+    print("feature_extraction_time : ", feature_extraction_time)
+    print("matching_time : ", matching_time)
+    print("iteration_time : ", iteration_time)
 
 
 # In[ ]:

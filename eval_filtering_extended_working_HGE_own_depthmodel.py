@@ -64,7 +64,8 @@ elif dataset == "hge_customized_cropped":
     #orn_slice = 360
 elif dataset =="hge_customized_complete":
     dataset_path = "/cluster/project/cvg/data/lamar/HGE_customized_complete"
-    evol_path = "./evol_path/hge_customized_complete/gt/gravity_align"
+    evol_path = "./evol_path/hge_customized_complete/f3loc_version42_epoch19/"
+    #evol_path = "./evol_path/hge_customized_complete/metric3d_trained_version89_epoch17/gravity_align"
     desdf_resolution = 0.1
     #orn_slice = 36
     orn_slice = 72
@@ -73,6 +74,11 @@ elif dataset =="hge_customized_complete":
 ckpt_path = "./logs"
 checkpoint_path = "./tb_logs/my_model/version_42/checkpoints/epoch=19-step=19100.ckpt"
 #checkpoint_path = "./tb_logs/my_model/version_48/checkpoints/epoch=26-step=25785.ckpt"
+#checkpoint_path = "./tb_logs/my_model/version_89/checkpoints/epoch=2-step=1434.ckpt"
+#checkpoint_path = "./tb_logs/my_model/version_89/checkpoints/epoch=3-step=1912.ckpt"
+#checkpoint_path = "./tb_logs/my_model/version_89/checkpoints/epoch=4-step=2390.ckpt"
+#checkpoint_path = "./tb_logs/my_model/version_89/epoch=17-step=8604.ckpt"
+#checkpoint_path = "./tb_logs/my_model/version_89/checkpoints/epoch=19-step=9560.ckpt"
 traj_len = 100#15# 15# 100#8#100#100#50
 
 
@@ -128,18 +134,7 @@ if ((dataset == "hge_customized_cropped") or (dataset =="hge_customized_complete
     #     pitch=0,
     #     without_depth=False, #without_depth=True,  
     # )
-#    test_set = TrajDataset_hge_customized_cropped_gravity_align(
-#        dataset_dir,
-#        split.test,
-#        L=traj_l,
-#        depth_dir=depth_dir,
-#        depth_suffix=depth_suffix,
-#        add_rp=False,
-#        roll=0,
-#        pitch=0,
-#        without_depth=False, #without_depth=True,  
-#    )
-    test_set = TrajDataset_hge_customized_metric3d(
+    test_set = TrajDataset_hge_customized_cropped_gravity_align(
         dataset_dir,
         split.test,
         L=traj_l,
@@ -150,6 +145,39 @@ if ((dataset == "hge_customized_cropped") or (dataset =="hge_customized_complete
         pitch=0,
         without_depth=False, #without_depth=True,  
     )
+#    test_set = TrajDataset_hge_customized_metric3d(
+#        dataset_dir,
+#        split.test,
+#        L=traj_l,
+#        depth_dir=depth_dir,
+#        depth_suffix=depth_suffix,
+#        add_rp=False,
+#        roll=0,
+#        pitch=0,
+#        without_depth=False, #without_depth=True,  
+#    )
+#    test_set = TrajDataset_hge_customized_metric3d(
+#        dataset_dir,
+#        split.test,
+#        L=traj_l,
+#        depth_dir=depth_dir,
+#        depth_suffix=depth_suffix,
+#        add_rp=False,
+#        roll=0,
+#        pitch=0,
+#        without_depth=False, #without_depth=True,  
+#    )
+#    test_set = TrajDataset_hge_customized_metric3d_removed_horizontals(
+#        dataset_dir,
+#        split.test,
+#        L=traj_l,
+#        depth_dir=depth_dir,
+#        depth_suffix=depth_suffix,
+#        add_rp=False,
+#        roll=0,
+#        pitch=0,
+#        without_depth=False, #without_depth=True,  
+#    )
 
 else:
 #    test_set = TrajDataset(
@@ -174,7 +202,7 @@ else:
         pitch=0,
         without_depth=False, #without_depth=True,  
     )    
-    
+ 
     
 
 
@@ -224,7 +252,7 @@ d_hyp = 0.2  # depth transform (uniform sampling in d**d_hyp)
 
 # models
 if net_type == "mvd" or net_type == "comp_s":
-    # instaciate model
+    # instantiate model
     mv_net = mv_depth_net_pl.load_from_checkpoint(
         checkpoint_path=os.path.join(log_dir, "mv.ckpt"),
         D=D,
@@ -233,8 +261,9 @@ if net_type == "mvd" or net_type == "comp_s":
         d_hyp=d_hyp,
     ).to(device)
 if net_type == "d" or net_type == "comp_s":
-    # instaciate model
-    #checkpoint_path = os.path.join(log_dir, "mono.ckpt")
+    # # instaciate model
+    # #checkpoint_path = os.path.join(log_dir, "mono.ckpt")
+    # 
     d_net = depth_net_pl.load_from_checkpoint(
         checkpoint_path=checkpoint_path,
         d_min=d_min,
@@ -242,6 +271,13 @@ if net_type == "d" or net_type == "comp_s":
         d_hyp=d_hyp,
         D=D,
     ).to(device)
+    #d_net = depth_net_metric3d_pl.load_from_checkpoint(
+    #    checkpoint_path=checkpoint_path,
+    #    d_min=d_min,
+    #    d_max=d_max,
+    #    d_hyp=d_hyp,
+    #    D=D,
+    #).to(device)
 if net_type == "comp":
     mv_net_pl = mv_depth_net_pl(D=D, d_hyp=d_hyp, F_W=F_W)
     mono_net_pl = depth_net_pl(d_min=d_min, d_max=d_max, d_hyp=d_hyp, D=D, F_W=F_W)
@@ -436,13 +472,38 @@ iteration_time = 0
 feature_extraction_time = 0
 n_iter = 0
 
+# record stats II
+mean_depth_MAE_ls = []
+mean_depth_cos_sim_ls = []
+mean_ray_MAE_ls = []
+mean_obs_pos_err_ls = []
+mean_obs_orn_err_ls = []
+mean_post_pos_err_ls = []
+mean_post_orn_err_ls = []
+recalls_all_ls = []
+successes_all_ls = []
+RMSEs_all_ls = []
+metric_depth_l1_loss_ls_ls = []
+metric_depth_shape_loss_ls_ls = []
+metric_ray_l1_loss_ls_ls = []
+metric_observation_position_err_ls_ls = []
+metric_observation_orientation_err_ls_ls = []
+metric_posterior_position_err_ls_ls = []
+metric_posterior_orientation_err_ls_ls = []
+gt_depths_ls_ls = []
+predicted_depths_ls_ls = []
+distance_travelled_arr_ls = []
+bounding_box_diagonal_arr_ls = []
+
+###
+
 print("Length Test Set: ", len(test_set))
 
 # loop the over scenes
 print("length of test_set: ", len(test_set))
 #for data_idx in tqdm.tqdm(range(36, len(test_set))):
 for data_idx in tqdm.tqdm(range(len(test_set))):
-#for data_idx in tqdm.tqdm(range(5,6)):
+#for data_idx in tqdm.tqdm(range(1)):
 #for data_idx in tqdm.tqdm(range(8,9)):
 #for data_idx in tqdm.tqdm(range(5,len(test_set))):
 #for data_idx in tqdm.tqdm(range(16,len(test_set))):
@@ -478,7 +539,7 @@ for data_idx in tqdm.tqdm(range(len(test_set))):
         gt_pose_desdf[:, 0] = (gt_pose_desdf[:, 0] - desdf["l"]) / resolution_ratio
         gt_pose_desdf[:, 1] = (gt_pose_desdf[:, 1] - desdf["t"]) / resolution_ratio
         gt_pose_desdf[:, 2] = gt_pose_desdf[:, 2]
-        #masks = torch.tensor(data["masks"], device=device).unsqueeze(0)
+        masks = torch.tensor(data["masks"], device=device).unsqueeze(0)
     else:
         original_resolution = 0.01
         gt_pose_desdf = poses_map.copy()
@@ -509,6 +570,8 @@ for data_idx in tqdm.tqdm(range(len(test_set))):
         metric_posterior_orientation_err_ls = []
         bf_current_pose_ls = []
         bf_transition_ls = []
+        gt_depths_ls = []
+        predicted_depths_ls = []
 
     print("start looping over sequences")
     # loop over the sequences
@@ -538,15 +601,14 @@ for data_idx in tqdm.tqdm(range(len(test_set))):
             #    }
             #)
 
-            # depth images without masks
+            # depth images
             input_dict.update(
                 {
                     "img": imgs[:, t + L, :, :],
-                    "mask": None
+                    #"mask": None
+                    "mask": masks[:, t + L, :, :]
                 }
             )
-
-
 
         # check which model to use if hardcoded selection
         if net_type == "comp_s":
@@ -574,26 +636,29 @@ for data_idx in tqdm.tqdm(range(len(test_set))):
             pred_depths = pred_dict["d"]
             pred_depths = pred_depths.squeeze(0).detach().cpu().numpy()
         elif net_type == "d" or (net_type == "comp_s" and use_mono):
-            # ### Trained model:
-            # pred_depths, attn_2d, prob = d_net.encoder(
-            #     input_dict["img"], input_dict["mask"]
-            # )
-            # pred_depths = pred_depths.squeeze(0).detach().cpu().numpy()
-            # ###
+            ### Trained model:
+            input_img_np = input_dict["img"].squeeze(0).detach().cpu().numpy()
+            pred_depths, attn_2d, prob = d_net.encoder(
+                input_dict["img"], input_dict["mask"]
+            )
+            pred_depths = pred_depths.squeeze(0).detach().cpu().numpy()
+            ###
 
             # ### GT:
             # pred_depths = np.array(data["gt_depth"])[t + L,:]
             # ###
             
-            ### Percentile of depth image
-            input_img_np = input_dict["img"].squeeze(0).detach().cpu().numpy()
-
-            if ((dataset == "hge_customized_cropped") or (dataset =="hge_customized_complete")):
-                correction_factor = 1.5
-            else:
-                correction_factor = 1.0
-
-            pred_depths = correction_factor*get_column_percentile_and_downsample(input_img_np, p=95)
+            # ### Percentile of depth image
+            # input_img_np = input_dict["img"].squeeze(0).detach().cpu().numpy()
+# 
+            # if ((dataset == "hge_customized_cropped") or (dataset =="hge_customized_complete")):
+            #     correction_factor = 1.5
+            # else:
+            #     correction_factor = 1.0
+            # 
+            # pred_depths = correction_factor*get_bottom_positive_column_value(input_img_np)
+            # #pred_depths = correction_factor*get_column_percentile_and_downsample(input_img_np, p=5)
+            # #pred_depths = correction_factor*get_column_percentile_and_downsample(input_img_np, p=95)
 
         elif net_type == "comp":
             pred_dict = comp_net.comp_d_net(input_dict)
@@ -797,7 +862,8 @@ for data_idx in tqdm.tqdm(range(len(test_set))):
             metric_observation_orientation_err_ls.append(metric_observation_orientation_err)
             metric_posterior_position_err_ls.append(metric_posterior_position_err)
             metric_posterior_orientation_err_ls.append(metric_posterior_orientation_err)
-
+            gt_depths_ls.append(gt_depths)
+            predicted_depths_ls.append(predicted_depths)
 
             #### Plot Figure ------------------------------------------------
             #print("Before preparing plots")
@@ -805,7 +871,7 @@ for data_idx in tqdm.tqdm(range(len(test_set))):
             fig.clf()
 
             ### Image
-            ax = fig.add_subplot(1, 6, 1)
+            ax = fig.add_subplot(1, 5, 1)
             if ((dataset == "hge_customized_cropped") or (dataset =="hge_customized_complete")):
                 img_path = os.path.join(dataset_dir, scene, "rgb", '{:05d}'.format((idx_within_scene * traj_l) + (t + L)) + "-0.jpg")
             else:
@@ -816,19 +882,19 @@ for data_idx in tqdm.tqdm(range(len(test_set))):
             ax.set_title("t=" + str(t))
 
 
-            # Plot the depth image
-            ax = fig.add_subplot(1, 6, 2)
-            if ((dataset == "hge_customized_cropped") or (dataset =="hge_customized_complete")):
-                img = ax.imshow(input_img_np, cmap='gray', vmin=0, vmax=40)
-            else:
-                img = ax.imshow(input_img_np, cmap='gray', vmin=0, vmax=15)
-            fig.colorbar(img, ax=ax, label='Depth [m]')
-            ax.axis('off')
-            #ax.set_title('Depth Image')
+            # # Plot the depth image
+            # ax = fig.add_subplot(1, 6, 2)
+            # if ((dataset == "hge_customized_cropped") or (dataset =="hge_customized_complete")):
+            #     img = ax.imshow(input_img_np, cmap='gray', vmin=0, vmax=40)
+            # else:
+            #     img = ax.imshow(input_img_np, cmap='gray', vmin=0, vmax=15)
+            # fig.colorbar(img, ax=ax, label='Depth [m]')
+            # ax.axis('off')
+            # #ax.set_title('Depth Image')
 
 
             ### Quality of depth prediction: Predicted depth vs. GT depth
-            ax = fig.add_subplot(1, 6, 3)
+            ax = fig.add_subplot(1, 5, 2)
             ax.plot(gt_depths, label="GT Depths")
             ax.plot(predicted_depths, label="Predicted Depths")
             ax.set_title("L1 Loss: " + str(np.round(metric_depth_l1_loss, 2)) + " / Shape Loss: " + str(np.round(metric_depth_shape_loss,2)))
@@ -842,7 +908,7 @@ for data_idx in tqdm.tqdm(range(len(test_set))):
 
 
             ### Quality of matching: Matched ray vs. Predicted ray
-            ax = fig.add_subplot(1, 6, 4)
+            ax = fig.add_subplot(1, 5, 3)
             ax.plot(matched_rays, label="Matched Rays", marker='o')
             ax.plot(predicted_rays, label="Predicted Rays", marker='o')
             ax.set_title("L1 Loss: " + str(np.round(metric_ray_l1_loss, 2)))
@@ -857,7 +923,7 @@ for data_idx in tqdm.tqdm(range(len(test_set))):
 
             ### Quality of localization per observation: Predicted pose vs. GT pose
             s = 0.25
-            ax = fig.add_subplot(1, 6, 5)
+            ax = fig.add_subplot(1, 5, 4)
             if ((dataset == "hge_customized_cropped") or (dataset =="hge_customized_complete")):
                 ax.imshow(likelihood_2d, cmap="coolwarm")
             else:
@@ -898,7 +964,7 @@ for data_idx in tqdm.tqdm(range(len(test_set))):
             )
 
             ### Quality of localization per observation: Predicted pose vs. GT pose
-            ax = fig.add_subplot(1, 6, 6)
+            ax = fig.add_subplot(1, 5, 5)
             if ((dataset == "hge_customized_cropped") or (dataset =="hge_customized_complete")):
                 ax.imshow(posterior_2d.detach().cpu().numpy(), cmap="coolwarm")
             else:
@@ -1151,6 +1217,7 @@ for data_idx in tqdm.tqdm(range(len(test_set))):
             diagonal_length = minimum_bounding_box(current_positions) * original_resolution
             bounding_box_diagonals.append(diagonal_length)
         bounding_box_diagonal = np.array(bounding_box_diagonals)
+        bounding_box_diagonal_arr_ls.append(bounding_box_diagonal)
 
 
         ## Distance Travelled
@@ -1160,6 +1227,7 @@ for data_idx in tqdm.tqdm(range(len(test_set))):
         distances = np.sqrt((differences ** 2).sum(axis=1))* original_resolution
         # Calculate the accumulated distance for each timestamp
         distance_travelled = np.concatenate(([0], np.cumsum(distances)))
+        distance_travelled_arr_ls.append(distance_travelled)
 
         ## Plot Error vs. Distance Travelled
         fig = plt.figure(4, figsize=(6, 9))
@@ -1215,7 +1283,8 @@ for data_idx in tqdm.tqdm(range(len(test_set))):
             ax.tick_params(axis='x', labelsize=14)
             ax.tick_params(axis='y', labelsize=14) 
             if ((dataset == "hge_customized_cropped") or (dataset =="hge_customized_complete")):
-                ax.set_ylim([0,50])
+                #ax.set_ylim([0,50])
+                ax.set_ylim([0,20])
             else:
                 ax.set_ylim([0,5])
             ax.set_title("Depth Mean Absolute Error", fontsize=14)
@@ -1227,7 +1296,8 @@ for data_idx in tqdm.tqdm(range(len(test_set))):
             ax.set_ylabel("Similarity [-]", fontsize=14)
             ax.tick_params(axis='x', labelsize=14)
             ax.tick_params(axis='y', labelsize=14)
-            ax.set_ylim([-1.05, 1.05])
+            #ax.set_ylim([-1.05, 1.05])
+            ax.set_ylim([0.5, 1.05])
             ax.set_title("Depth Cosine Similarity", fontsize=14)
 
             ax = fig.add_subplot(4, 2, 3)
@@ -1384,12 +1454,6 @@ for data_idx in tqdm.tqdm(range(len(test_set))):
             fig.savefig(os.path.join(evol_path, "pretty_filter_extended", str(data_idx), "bugfixing" + ".png"))
 
 
-
-
-
-
-
-
     if log_error:
         pred_poses_map = np.stack(pred_poses_map)
         # record success rate, from map to global
@@ -1424,42 +1488,140 @@ for data_idx in tqdm.tqdm(range(len(test_set))):
             success_2.append(True)
         else:
             success_2.append(False)
+        
+        successes = [success_10, success_5, success_3, success_2]
+        
+    if log_error:
+        mean_depth_MAE_ls.append(np.mean(metric_depth_l1_loss_ls))
+        mean_depth_cos_sim_ls.append(np.mean(metric_depth_shape_loss_ls))
+        mean_ray_MAE_ls.append(np.mean(metric_ray_l1_loss_ls))
+        mean_obs_pos_err_ls.append(np.mean(metric_observation_position_err_ls))
+        mean_obs_orn_err_ls.append(np.mean(metric_observation_orientation_err_ls))
+        mean_post_pos_err_ls.append(np.mean(metric_posterior_position_err_ls))
+        mean_post_orn_err_ls.append(np.mean(metric_posterior_orientation_err_ls))
+        recalls_all_ls.append(np.array(recalls))
+        successes_all_ls.append(np.array(successes))
+        RMSEs_all_ls.append(np.array(RMSEs))
+        metric_depth_l1_loss_ls_ls.append(metric_depth_l1_loss_ls)
+        metric_depth_shape_loss_ls_ls.append(metric_depth_shape_loss_ls)
+        metric_ray_l1_loss_ls_ls.append(metric_ray_l1_loss_ls)
+        metric_observation_position_err_ls_ls.append(metric_observation_position_err_ls)
+        metric_observation_orientation_err_ls_ls.append(metric_observation_orientation_err_ls)
+        metric_posterior_position_err_ls_ls.append(metric_posterior_position_err_ls)
+        metric_posterior_orientation_err_ls_ls.append(metric_posterior_orientation_err_ls)
+        gt_depths_ls.append(gt_depths)
+        predicted_depths_ls.append(predicted_depths)
+
+# In[ ]:
+
+
+# stats I
+if log_error:
+    RMSEs = np.array(RMSEs)
+    success_10 = np.array(success_10)
+    success_5 = np.array(success_5)
+    success_3 = np.array(success_3)
+    success_2 = np.array(success_2)
+
+    print("============================================")
+    print("1.0 success rate : ", success_10.sum() / len(test_set))
+    print("0.5 success rate : ", success_5.sum() / len(test_set))
+    print("0.3 success rate : ", success_3.sum() / len(test_set))
+    print("0.2 success rate : ", success_2.sum() / len(test_set))
+    print("mean RMSE succeeded : ", RMSEs[success_10].mean())
+    print("mean RMSE all : ", RMSEs.mean())
+
+
+# stats II
+if log_error:
+    mean_mean_depth_MAE = np.mean(mean_depth_MAE_ls)
+    mean_mean_depth_cos_sim = np.mean(mean_depth_cos_sim_ls)
+    mean_mean_ray_MAE = np.mean(mean_ray_MAE_ls)
+    mean_mean_obs_pos_err = np.mean(mean_obs_pos_err_ls)
+    mean_mean_obs_orn_err = np.mean(mean_obs_orn_err_ls)
+    mean_mean_post_pos_err = np.mean(mean_post_pos_err_ls)
+    mean_mean_post_orn_err = np.mean(mean_post_orn_err_ls)
+    mean_recalls = np.mean(recalls_all_ls, axis=0)
+    mean_successes = np.mean(successes_all_ls, axis=0)
+    mean_RMSEs = np.mean(RMSEs_all_ls, axis=0)
+
+    print("============================================")
+    print("mean_mean_depth_MAE : ", mean_mean_depth_MAE)
+    print("mean_mean_depth_cos_sim : ", mean_mean_depth_cos_sim)
+    print("mean_mean_ray_MAE : ", mean_mean_ray_MAE)
+    print("mean_mean_obs_pos_err : ", mean_mean_obs_pos_err)
+    print("mean_mean_obs_orn_err : ", mean_mean_obs_orn_err)
+    print("mean_mean_post_pos_err : ", mean_mean_post_pos_err)
+    print("mean_mean_post_orn_err : ", mean_mean_post_orn_err)
+    print("mean_recalls : ", mean_recalls)
+    print("mean_successes : ", mean_successes)
+    print("mean_RMSEs : ", mean_RMSEs)
+
+#
+save_results = True
+results_dict = {}
+if save_results:
+
+    # Results over every single sequence and frame
+    results_dict["per_frame"] = {}
+    results_dict["per_frame"]["metric_depth_l1_loss_ls_ls"] = metric_depth_l1_loss_ls_ls
+    results_dict["per_frame"]["metric_depth_shape_loss_ls_ls"] = metric_depth_shape_loss_ls_ls
+    results_dict["per_frame"]["metric_ray_l1_loss_ls_ls"] = metric_ray_l1_loss_ls_ls
+    results_dict["per_frame"]["metric_observation_position_err_ls_ls"] = metric_observation_position_err_ls_ls
+    results_dict["per_frame"]["metric_observation_orientation_err_ls_ls"] = metric_observation_orientation_err_ls_ls
+    results_dict["per_frame"]["metric_posterior_position_err_ls_ls"] = metric_posterior_position_err_ls_ls
+    results_dict["per_frame"]["gt_depths_ls_ls"] = gt_depths_ls_ls
+    results_dict["per_frame"]["predicted_depths_ls_ls"] = predicted_depths_ls_ls
+    results_dict["per_frame"]["distance_travelled_arr_ls"] = distance_travelled_arr_ls
+    results_dict["per_frame"]["bounding_box_diagonal_arr_ls"] = bounding_box_diagonal_arr_ls
+
+    # Summary results over every single sequence
+    results_dict["per_seq"] = {}
+    results_dict["per_seq"]["mean_depth_MAE_ls"] = mean_depth_MAE_ls
+    results_dict["per_seq"]["mean_depth_cos_sim_ls"] = mean_depth_cos_sim_ls
+    results_dict["per_seq"]["mean_ray_MAE_ls"] = mean_ray_MAE_ls
+    results_dict["per_seq"]["mean_obs_pos_err_ls"] = mean_obs_pos_err_ls
+    results_dict["per_seq"]["mean_obs_orn_err_ls"] = mean_obs_orn_err_ls
+    results_dict["per_seq"]["mean_post_pos_err_ls"] = mean_post_pos_err_ls
+    results_dict["per_seq"]["mean_post_orn_err_ls"] = mean_post_orn_err_ls
+    results_dict["per_seq"]["recalls_all_ls"] = recalls_all_ls
+    results_dict["per_seq"]["successes_all_ls"] = successes_all_ls
+    results_dict["per_seq"]["RMSEs_all_ls"] = RMSEs_all_ls
+
+    # Summary results over all sequences
+    results_dict["overall"] = {}
+    results_dict["overall"]["mean_mean_depth_MAE"] = mean_mean_depth_MAE
+    results_dict["overall"]["mean_mean_depth_cos_sim"] = mean_mean_depth_cos_sim
+    results_dict["overall"]["mean_mean_ray_MAE"] = mean_mean_ray_MAE
+    results_dict["overall"]["mean_mean_obs_pos_err"] = mean_mean_obs_pos_err
+    results_dict["overall"]["mean_mean_obs_orn_err"] = mean_mean_obs_orn_err
+    results_dict["overall"]["mean_mean_post_pos_err"] = mean_mean_post_pos_err
+    results_dict["overall"]["mean_mean_post_orn_err"] = mean_mean_post_orn_err
+    results_dict["overall"]["mean_recalls"] = mean_recalls
+    results_dict["overall"]["mean_successes"] = mean_successes
+    results_dict["overall"]["mean_RMSEs"] = mean_RMSEs
+
+    # Save results
+    import pickle
+    filepath = os.path.join(evol_path, "pretty_filter_extended", "results.pkl")
+    with open(filepath, 'wb') as f:
+        pickle.dump(results_dict, f)
+
+
 
 
 # In[ ]:
 
 
+if log_timing:
+    feature_extraction_time = feature_extraction_time / n_iter
+    matching_time = matching_time / n_iter
+    iteration_time = iteration_time / n_iter
 
-
-
-# if log_error:
-#     RMSEs = np.array(RMSEs)
-#     success_10 = np.array(success_10)
-#     success_5 = np.array(success_5)
-#     success_3 = np.array(success_3)
-#     success_2 = np.array(success_2)
-# 
-#     print("============================================")
-#     print("1.0 success rate : ", success_10.sum() / len(test_set))
-#     print("0.5 success rate : ", success_5.sum() / len(test_set))
-#     print("0.3 success rate : ", success_3.sum() / len(test_set))
-#     print("0.2 success rate : ", success_2.sum() / len(test_set))
-#     print("mean RMSE succeeded : ", RMSEs[success_10].mean())
-#     print("mean RMSE all : ", RMSEs.mean())
-# 
-# 
-# # In[ ]:
-# 
-# 
-# if log_timing:
-#     feature_extraction_time = feature_extraction_time / n_iter
-#     matching_time = matching_time / n_iter
-#     iteration_time = iteration_time / n_iter
-# 
-#     print("============================================")
-#     print("feature_extraction_time : ", feature_extraction_time)
-#     print("matching_time : ", matching_time)
-#     print("iteration_time : ", iteration_time)
+    print("============================================")
+    print("feature_extraction_time : ", feature_extraction_time)
+    print("matching_time : ", matching_time)
+    print("iteration_time : ", iteration_time)
 
 
 # In[ ]:

@@ -35,12 +35,12 @@ from src.helper_functions import *
 
 
 net_type = "d"
-dataset = "gibson_f" # "gibson_g" # 
+#dataset = "gibson_f" # "gibson_g" # 
 #dataset_path = "C:/Users/matth/Downloads/Gibson_Floorplan_Localization_Dataset"
 #dataset_path = "C:\\Users\\matth\\Downloads\\Gibson_Floorplan_Localization_Dataset"
 dataset_path = "/cluster/project/cvg/data/gibson/Gibson_Floorplan_Localization_Dataset"
 #evol_path = "./evol_path"
-evol_path = "./evol_path/gibson_f/gt"
+evol_path = "./evol_path/gibson_t/f3loc_provided"
 #evol_path = "./evol_path/gibson_f/mono"
 ckpt_path = "./logs"
 traj_len = 100#25#50
@@ -336,19 +336,19 @@ for data_idx in tqdm.tqdm(range(len(test_set))):
             pred_depths = pred_dict["d"]
             pred_depths = pred_depths.squeeze(0).detach().cpu().numpy()
         elif net_type == "d" or (net_type == "comp_s" and use_mono):
-            # ### Trained model:
-            # pred_depths, attn_2d, prob = d_net.encoder(
-            #     input_dict["img"], input_dict["mask"]
-            # )
-            # pred_depths = pred_depths.squeeze(0).detach().cpu().numpy()
-            # ###
-
-            ### GT:
-            pred_depths = np.array(data["gt_depth"])[t + L,:]
+            ### Trained model:
+            pred_depths, attn_2d, prob = d_net.encoder(
+                input_dict["img"], input_dict["mask"]
+            )
+            pred_depths = pred_depths.squeeze(0).detach().cpu().numpy()
             ###
 
-            #print(type(pred_depths))
-            #print(pred_depths.shape)
+            # ### GT:
+            # pred_depths = np.array(data["gt_depth"])[t + L,:]
+            # ###
+
+            print(type(pred_depths))
+            print(pred_depths.shape)
         elif net_type == "comp":
             pred_dict = comp_net.comp_d_net(input_dict)
             pred_depths = pred_dict["d_comp"]

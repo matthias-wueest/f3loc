@@ -243,14 +243,14 @@ if __name__ == "__main__":
     pixel_per_meter = 18.315046895211292
     occ = floorplan*255 # occ: the map as occupancy
     original_resolution = 1/pixel_per_meter
-    resolution = 0.1
-    orn_slice = 72#36
+    resolution = 0.5
+    orn_slice = 360 #144 #72 #36
     max_dist = 10
 
 
     ### ORIGINAL
     desdf = raycast_desdf(occ, orn_slice=orn_slice, max_dist=max_dist, original_resolution=original_resolution, resolution=resolution)
-    filename = "desdf_complete_orn_slice_36_resolution_01.npy"
+    filename = "desdf_complete_orn_slice_360_resolution_05.npy" # "desdf_complete_orn_slice_36_resolution_01.npy"
     np.save(filename, desdf)
 
     ###
